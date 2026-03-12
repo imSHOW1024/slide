@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OpenClaw Audio → Notion Workflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#070A14;
+      --panel:#0B1026;
+      --panel2:#0A0F22;
+      --text:#EAF0FF;
+      --muted:#AAB6E6;
+      --cyan:#2CF6FF;
+      --violet:#A66BFF;
+      --green:#36FFB5;
+      --orange:#FFB86B;
+      --red:#FF4D7D;
+      --line:rgba(44,246,255,.35);
+      --stroke:rgba(166,107,255,.35);
+      --shadow:0 18px 45px rgba(0,0,0,.55);
+      --radius:18px;
+    }
+
+    html,body{height:100%;}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 700px at 20% 25%, rgba(44,246,255,.12), transparent 60%),
+                  radial-gradient(900px 600px at 80% 35%, rgba(166,107,255,.14), transparent 60%),
+                  radial-gradient(900px 700px at 60% 90%, rgba(54,255,181,.10), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      font-family: Inter, "Noto Sans TC", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      letter-spacing:.2px;
+      overflow:hidden;
+    }
+
+    .deck{height:100%; display:flex; align-items:center; justify-content:center;}
+
+    /* 16:9 frame */
+    .slide{
+      width:min(1280px, 96vw);
+      aspect-ratio: 16 / 9;
+      position:relative;
+      border-radius:24px;
+      background: linear-gradient(180deg, rgba(11,16,38,.86), rgba(10,15,34,.86));
+      box-shadow: var(--shadow);
+      outline:1px solid rgba(166,107,255,.18);
+      overflow:hidden;
+    }
+
+    .noise::before{
+      content:"";
+      position:absolute; inset:-30px;
+      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/></filter><rect width="160" height="160" filter="url(%23n)" opacity="0.15"/></svg>');
+      mix-blend-mode: overlay;
+      opacity:.10;
+      pointer-events:none;
+    }
+
+    .glow{
+      position:absolute; inset:-2px;
+      background: radial-gradient(800px 400px at 18% 18%, rgba(44,246,255,.16), transparent 55%),
+                  radial-gradient(700px 400px at 82% 20%, rgba(166,107,255,.18), transparent 55%),
+                  radial-gradient(700px 500px at 72% 88%, rgba(54,255,181,.12), transparent 60%);
+      pointer-events:none;
+      filter: blur(0px);
+    }
+
+    .topbar{
+      position:absolute; left:28px; right:28px; top:22px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px;
+      z-index:2;
+    }
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700;}
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: var(--cyan);
+      box-shadow: 0 0 18px rgba(44,246,255,.85);
+    }
+    .meta{color:var(--muted); font-weight:600; font-size:13px;}
+
+    .title{
+      position:absolute; left:44px; right:44px; top:86px;
+      z-index:2;
+    }
+    .title h1{margin:0; font-size:44px; line-height:1.1;}
+    .title p{margin:14px 0 0; color:var(--muted); font-size:18px; max-width:920px;}
+
+    .grid{
+      position:absolute; left:44px; right:44px; top:210px; bottom:70px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      z-index:2;
+    }
+
+    .panel{
+      background: rgba(9,13,30,.72);
+      border:1px solid rgba(44,246,255,.16);
+      border-radius: var(--radius);
+      padding:18px 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+
+    .panel h2{margin:0 0 10px; font-size:18px;}
+    .panel .sub{color:var(--muted); font-size:13px; margin-bottom:12px;}
+
+    .pillrow{display:flex; flex-wrap:wrap; gap:8px;}
+    .pill{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(166,107,255,.22);
+      background: rgba(166,107,255,.10);
+      color:#F2ECFF;
+      font-size:12px;
+      font-weight:600;
+    }
+    .pill.c{border-color:rgba(44,246,255,.26); background: rgba(44,246,255,.10);}
+    .pill.g{border-color:rgba(54,255,181,.22); background: rgba(54,255,181,.10);}
+    .pill.o{border-color:rgba(255,184,107,.20); background: rgba(255,184,107,.10);}
+
+    .steps{display:flex; flex-direction:column; gap:10px;}
+    .step{
+      display:grid;
+      grid-template-columns: 30px 1fr;
+      gap:10px;
+      padding:12px 12px;
+      border-radius:14px;
+      background: rgba(7,10,20,.55);
+      border:1px solid rgba(44,246,255,.12);
+    }
+    .num{
+      width:28px; height:28px;
+      border-radius:10px;
+      display:grid; place-items:center;
+      font-weight:800;
+      color:#051018;
+      background: linear-gradient(180deg, rgba(44,246,255,1), rgba(166,107,255,1));
+      box-shadow: 0 0 22px rgba(166,107,255,.35);
+    }
+    .step b{display:block; font-size:13px;}
+    .step span{display:block; color:var(--muted); font-size:12px; margin-top:2px; line-height:1.3;}
+
+    .footer{
+      position:absolute; left:28px; right:28px; bottom:18px;
+      display:flex; align-items:center; justify-content:space-between;
+      color:rgba(234,240,255,.75);
+      z-index:2;
+      font-size:12px;
+    }
+
+    .pager{display:flex; align-items:center; gap:10px;}
+    .kbd{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+         color: rgba(234,240,255,.85);
+         border:1px solid rgba(44,246,255,.20);
+         background: rgba(44,246,255,.06);
+         padding:4px 8px; border-radius:10px;}
+
+    /* slide switching */
+    .slide[data-active="false"]{display:none;}
+
+    /* print mode: show all slides as pages */
+    body.print{overflow:visible;}
+    body.print .deck{height:auto; display:block; padding:24px 0;}
+    body.print .slide{display:block !important; margin:0 auto 18px;}
+    body.print .slide{page-break-after:always; break-after:page;}
+    body.print .slide:last-of-type{page-break-after:auto; break-after:auto;}
+
+    /* small code-like block */
+    .code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:12px;
+      background: rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.08);
+      padding:10px 12px;
+      border-radius:14px;
+      color: rgba(234,240,255,.88);
+      line-height:1.45;
+      overflow:hidden;
+      white-space:pre-wrap;
+    }
+
+    .twoCols{display:grid; grid-template-columns: 1fr 1fr; gap:12px;}
+    .tag{color:var(--muted); font-size:12px; margin-bottom:6px;}
+
+    /* diagram */
+    .diagram{position:relative; height:100%;}
+    .nodes{display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; align-content:start;}
+    .card{
+      padding:12px 12px;
+      border-radius:16px;
+      background: rgba(7,10,20,.55);
+      border:1px solid rgba(166,107,255,.18);
+      min-height:98px;
+    }
+    .card h3{margin:0 0 6px; font-size:14px;}
+    .card ul{margin:0; padding-left:18px; color:var(--muted); font-size:12px; line-height:1.35;}
+    .card .mini{margin-top:8px; display:flex; flex-wrap:wrap; gap:6px;}
+    .mini .chip{font-size:11px; padding:4px 8px; border-radius:999px; border:1px solid rgba(44,246,255,.20); background: rgba(44,246,255,.08);}    
+
+    .arrowLayer{position:absolute; inset:0; pointer-events:none;}
+    svg{width:100%; height:100%;}
+    .arrow{stroke: rgba(44,246,255,.55); stroke-width:2.2; fill:none; filter: drop-shadow(0 0 10px rgba(44,246,255,.35));}
+    .arrow2{stroke: rgba(166,107,255,.55); stroke-width:2.2; fill:none; filter: drop-shadow(0 0 12px rgba(166,107,255,.30));}
+
+    /* print */
+    @page { size: A4 landscape; margin: 10mm; }
+
+    /* mobile: make it readable + scrollable */
+    @media (max-width: 720px){
+      body{overflow:auto;}
+      .deck{height:auto; align-items:flex-start; justify-content:center; padding:12px 0 24px;}
+      .slide{width: 96vw; aspect-ratio:auto; min-height: 88vh; height:auto; overflow:auto;}
+      .topbar{left:18px; right:18px; top:16px;}
+      .title{left:22px; right:22px; top:70px;}
+      .title h1{font-size:34px;}
+      .title p{font-size:15px;}
+      .grid{position:relative; left:auto; right:auto; top:auto; bottom:auto; margin: 18px 14px 64px; grid-template-columns:1fr;}
+      .footer{position:sticky; bottom:0; left:0; right:0; padding:10px 14px; background: linear-gradient(180deg, transparent, rgba(7,10,20,.85) 35%, rgba(7,10,20,.95));}
+    }
+
+    @media print{
+      body{overflow:visible; background:#070A14;}
+      .slide{box-shadow:none; outline:none; width: 100%; max-width: 100%;}
+      .deck{height:auto; display:block;}
+    }
+
+    /* floating nav (touch-friendly) */
+    .nav{
+      position: fixed;
+      left: 14px;
+      bottom: 14px;
+      z-index: 9999;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(7,10,20,.65);
+      border: 1px solid rgba(44,246,255,.18);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+    }
+    .nav button{
+      appearance:none;
+      border: 1px solid rgba(166,107,255,.22);
+      background: rgba(166,107,255,.10);
+      color: var(--text);
+      font-weight:700;
+      font-size: 14px;
+      padding: 10px 12px;
+      border-radius: 14px;
+    }
+    .nav .hint{color: rgba(234,240,255,.75); font-size: 12px; font-weight:600;}
+    .nav[hidden]{display:none;}
+    
+  </style>
+</head>
+<body>
+  <div class="deck">
+
+    <!-- Slide 1 -->
+    <section class="slide noise" id="s1" data-active="true">
+      <div class="glow"></div>
+      <div class="topbar">
+        <div class="brand"><span class="dot"></span> OpenClaw Workflow</div>
+        <div class="meta">Audio → Summary → Notion DB → DOCX</div>
+      </div>
+
+      <div class="title">
+        <h1>把錄音檔變成可交付的成果<br/>（接近自動化的工作流）</h1>
+        <p>你只要傳 <b>mp3/m4a</b> 或貼上雲端連結，OpenClaw 會逐步調用工具完成：下載 → 轉錄 → 摘要/決策/待辦 → 上傳 Notion DB → 產出 DOCX，最後回傳檔案路徑。</p>
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <h2>目標（Why）</h2>
+          <div class="sub">把「會議錄音」變成「可追蹤、可分享、可複用」的資料資產</div>
+          <div class="steps">
+            <div class="step"><div class="num">1</div><div><b>減少人工整理時間</b><span>把聽錄音、抄筆記、貼 Notion 的重複工作交給工具鏈。</span></div></div>
+            <div class="step"><div class="num">2</div><div><b>輸出一致、可比對</b><span>用固定模板：摘要 / 決策 / 待辦 / Q&A / 風險。</span></div></div>
+            <div class="step"><div class="num">3</div><div><b>交付更快</b><span>Notion DB 一鍵入庫；同時產 DOCX 方便對外寄送或歸檔。</span></div></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h2>使用到的核心能力（What）</h2>
+          <div class="sub">真實工具名稱 +（中文補充）給非資工同事看得懂</div>
+          <div class="pillrow">
+            <span class="pill c">browser（網頁操作/下載）</span>
+            <span class="pill c">web_fetch / web_search（抓資訊）</span>
+            <span class="pill g">read / write / edit（檔案處理）</span>
+            <span class="pill g">exec / process（跑程式/背景任務）</span>
+            <span class="pill o">Notion API（入庫到資料庫）</span>
+            <span class="pill">LLM（摘要/格式化）</span>
+          </div>
+          <div style="height:12px"></div>
+          <div class="code">輸入：mp3 / m4a / 雲端連結
+輸出：Notion DB page + 摘要文件（.md）+ 交付文件（.docx）+ 本機路徑</div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="pager"><span class="kbd">← →</span> 切換頁面</div>
+        <div>Page 1 / 7</div>
+      </div>
+    </section>
+
+    <!-- Slide 2 -->
+    <section class="slide noise" id="s2" data-active="false">
+      <div class="glow"></div>
+      <div class="topbar">
+        <div class="brand"><span class="dot"></span> Step 0 · Input</div>
+        <div class="meta">你提供什麼，我就從哪裡開始</div>
+      </div>
+
+      <div class="title">
+        <h1>輸入方式：檔案 or 連結</h1>
+        <p>同一條流程支援兩種起點：直接上傳音訊檔，或提供雲端硬碟連結（Google Drive/Dropbox/OneDrive…）。</p>
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <h2>Option A：直接上傳檔案</h2>
+          <div class="sub">Telegram/Discord 等聊天介面附檔</div>
+          <div class="steps">
+            <div class="step"><div class="num">A1</div><div><b>message（收檔）</b><span>使用者把 mp3/m4a 直接傳進來。</span></div></div>
+            <div class="step"><div class="num">A2</div><div><b>write（落盤）</b><span>存到本機工作目錄，並套用命名規則。</span></div></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h2>Option B：提供雲端連結</h2>
+          <div class="sub">不必上傳大檔，貼連結就能處理</div>
+          <div class="steps">
+            <div class="step"><div class="num">B1</div><div><b>browser（開連結）</b><span>必要時登入/點下載（可半自動）。</span></div></div>
+            <div class="step"><div class="num">B2</div><div><b>web_fetch（抓頁面資訊）</b><span>若是可直連下載，會先解析連結型態。</span></div></div>
+            <div class="step"><div class="num">B3</div><div><b>write（落盤）</b><span>下載完成後同樣統一命名與資料夾結構。</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="pager"><span class="kbd">← →</span> 切換頁面</div>
+        <div>Page 2 / 7</div>
+      </div>
+    </section>
+
+    <!-- Slide 3 -->
+    <section class="slide noise" id="s3" data-active="false">
+      <div class="glow"></div>
+      <div class="topbar">
+        <div class="brand"><span class="dot"></span> Step 1 · Acquire & Organize</div>
+        <div class="meta">先把檔案變得「可管理」</div>
+      </div>
+
+      <div class="title">
+        <h1>命名規則與資料夾：讓後續全自動</h1>
+        <p>先標準化「檔名、日期、專案、會議類型」，後面每一步都能靠規則串起來（減少人工決策）。</p>
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <h2>工具（Tools）</h2>
+          <div class="sub">讀寫檔案 + 產生固定路徑</div>
+          <div class="pillrow">
+            <span class="pill g">read（讀檔/看 metadata）</span>
+            <span class="pill g">write（寫檔/搬檔）</span>
+            <span class="pill g">exec（呼叫 ffmpeg/檢查音訊）</span>
+          </div>
+          <div style="height:12px"></div>
+          <div class="code">範例路徑（可依公司規則調整）
+/Users/openclaw/audio-inbox/2026-03-12_商務會談.m4a
+/Users/openclaw/whisperx-outputs/2026-03-12_商務會談.md
+/Users/openclaw/deliverables/2026-03-12_商務會談.docx</div>
+        </div>
+        <div class="panel">
+          <h2>模板用途（Templates）</h2>
+          <div class="sub">把「輸出格式」鎖定，讓不同會議也能一致</div>
+          <div class="steps">
+            <div class="step"><div class="num">T1</div><div><b>摘要模板（Summary）</b><span>背景 / 重點 / 結論（給快速閱讀）。</span></div></div>
+            <div class="step"><div class="num">T2</div><div><b>決策模板（Decisions）</b><span>決策事項、負責人、期限。</span></div></div>
+            <div class="step"><div class="num">T3</div><div><b>待辦模板（Action Items）</b><span>條列、可追蹤、可落到 Notion DB 欄位。</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="pager"><span class="kbd">← →</span> 切換頁面</div>
+        <div>Page 3 / 7</div>
+      </div>
+    </section>
+
+    <!-- Slide 4 -->
+    <section class="slide noise" id="s4" data-active="false">
+      <div class="glow"></div>
+      <div class="topbar">
+        <div class="brand"><span class="dot"></span> Step 2 · Transcribe</div>
+        <div class="meta">把聲音變成文字（後面才好摘要）</div>
+      </div>
+
+      <div class="title">
+        <h1>轉錄：Whisper / WhisperX</h1>
+        <p>將音訊轉成逐字稿（含時間戳/說話人分段可選），輸出成 Markdown 方便後續摘要與引用。</p>
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <h2>工具（Tools）</h2>
+          <div class="sub">在本機跑轉錄（可背景執行）</div>
+          <div class="pillrow">
+            <span class="pill g">exec（跑 whisper/whisperx）</span>
+            <span class="pill g">process（追蹤背景工作）</span>
+            <span class="pill g">read（讀轉錄結果）</span>
+          </div>
+          <div style="height:12px"></div>
+          <div class="code">輸出（例）
+/Users/openclaw/whisperx-outputs/2026-03-12_商務會談.md
+（含：時間戳、段落、可能的 speaker labels）</div>
+        </div>
+        <div class="panel">
+          <h2>品質控制（QC）</h2>
+          <div class="sub">確保後續摘要不會「看錯」</div>
+          <div class="steps">
+            <div class="step"><div class="num">Q1</div><div><b>抽樣檢查</b><span>隨機挑 2~3 段對照音訊（專有名詞/數字）。</span></div></div>
+            <div class="step"><div class="num">Q2</div><div><b>標記不確定字</b><span>用 [unclear] 或備註，避免硬猜。</span></div></div>
+            <div class="step"><div class="num">Q3</div><div><b>必要時二次處理</b><span>降噪、音量正規化（ffmpeg）。</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="pager"><span class="kbd">← →</span> 切換頁面</div>
+        <div>Page 4 / 7</div>
+      </div>
+    </section>
+
+    <!-- Slide 5 -->
+    <section class="slide noise" id="s5" data-active="false">
+      <div class="glow"></div>
+      <div class="topbar">
+        <div class="brand"><span class="dot"></span> Step 3 · Summarize</div>
+        <div class="meta">把逐字稿變成「能做事」的摘要</div>
+      </div>
+
+      <div class="title">
+        <h1>摘要：LLM + 固定模板</h1>
+        <p>LLM 不是只做「心得」，而是照模板產出：會議摘要、決策、待辦、風險、Q&A，方便直接入庫與派工。</p>
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <h2>摘要模板（可複用）</h2>
+          <div class="sub">把格式變成規格：不同會議也能一致</div>
+          <div class="code">輸出區塊（例）
+1) Executive Summary（高層 30 秒看懂）
+2) Key Points（重點條列）
+3) Decisions（決策：事項/Owner/Due）
+4) Action Items（待辦：可追蹤）
+5) Risks & Open Questions（風險/未決議）
+6) Appendix（必要引用逐字稿段落）</div>
+        </div>
+        <div class="panel">
+          <h2>工具（Tools）</h2>
+          <div class="sub">把「文字」轉成「結構化資料」</div>
+          <div class="pillrow">
+            <span class="pill">LLM（摘要/重寫/結構化）</span>
+            <span class="pill g">read（讀逐字稿）</span>
+            <span class="pill g">write（寫摘要 .md）</span>
+            <span class="pill c">web_search（查不確定名詞）</span>
+          </div>
+          <div style="height:12px"></div>
+          <div class="steps">
+            <div class="step"><div class="num">S1</div><div><b>結構化輸出</b><span>把「人話」拆成欄位：日期/客戶/主題/決策/待辦。</span></div></div>
+            <div class="step"><div class="num">S2</div><div><b>一致用字</b><span>中文為主，中英文術語保留（避免翻錯）。</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="pager"><span class="kbd">← →</span> 切換頁面</div>
+        <div>Page 5 / 7</div>
+      </div>
+    </section>
+
+    <!-- Slide 6 -->
+    <section class="slide noise" id="s6" data-active="false">
+      <div class="glow"></div>
+      <div class="topbar">
+        <div class="brand"><span class="dot"></span> Step 4 · Deliver</div>
+        <div class="meta">Notion 入庫 + DOCX 交付</div>
+      </div>
+
+      <div class="title">
+        <h1>交付：上傳 Notion DB，並回傳 DOCX 路徑</h1>
+        <p>把摘要拆成欄位寫入 Notion Database（可查詢/篩選/追蹤），同時產生 DOCX 方便寄給客戶或歸檔。</p>
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <h2>Notion DB（資料資產化）</h2>
+          <div class="sub">同一套 schema，累積就會變成可搜尋的「知識庫」</div>
+          <div class="pillrow">
+            <span class="pill o">Notion API（建立/更新頁面）</span>
+            <span class="pill g">write（存一份 md/docx）</span>
+            <span class="pill c">message（回覆連結與路徑）</span>
+          </div>
+          <div style="height:12px"></div>
+          <div class="code">Notion 欄位（例）
+- Date（日期）
+- Type（emba / 商務會談）
+- Participants（與會者）
+- Summary（摘要）
+- Decisions（決策）
+- Action Items（待辦）
+- Source Audio（原始音訊連結/檔名）</div>
+        </div>
+        <div class="panel">
+          <h2>回傳給同事的訊息（可直接轉貼）</h2>
+          <div class="sub">「看得懂、拿得到、找得到」</div>
+          <div class="code">✅ Done!
+📂 Notion DB: 商務會談摘要DB
+🔗 Page: https://www.notion.so/...
+💾 摘要（MD）: /Users/openclaw/whisperx-outputs/2026-03-12_商務會談.md
+📎 DOCX: /Users/openclaw/deliverables/2026-03-12_商務會談.docx</div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="pager"><span class="kbd">← →</span> 切換頁面</div>
+        <div>Page 6 / 7</div>
+      </div>
+    </section>
+
+    <!-- Slide 7 -->
+    <section class="slide noise" id="s7" data-active="false">
+      <div class="glow"></div>
+      <div class="topbar">
+        <div class="brand"><span class="dot"></span> System Architecture</div>
+        <div class="meta">OpenClaw 怎麼把能力串起來</div>
+      </div>
+
+      <div class="title">
+        <h1>架構圖：從 Chat 到 Tools 再到交付</h1>
+        <p>非資工視角：把它想成「協調員（Orchestrator）」負責決定下一步要用哪個工具，最後把結果整理成可交付物。</p>
+      </div>
+
+      <div class="grid">
+        <div class="panel diagram">
+          <h2>End-to-End（全流程模組）</h2>
+          <div class="sub">真實工具名稱 +（中文補充）</div>
+          <div class="nodes" id="nodes">
+            <div class="card" style="grid-column:1;">
+              <h3>Channels（訊息入口）</h3>
+              <ul>
+                <li>Telegram / Discord</li>
+                <li>File upload / Link</li>
+              </ul>
+              <div class="mini"><span class="chip">message（收/發訊息）</span></div>
+            </div>
+            <div class="card" style="grid-column:2;">
+              <h3>Orchestrator（流程協調）</h3>
+              <ul>
+                <li>判斷輸入型態</li>
+                <li>選擇下一個 tool</li>
+                <li>套用模板</li>
+              </ul>
+              <div class="mini"><span class="chip">policy（規則/路由）</span></div>
+            </div>
+            <div class="card" style="grid-column:3;">
+              <h3>LLM（理解 & 產出）</h3>
+              <ul>
+                <li>摘要 / 結構化</li>
+                <li>語氣統一</li>
+                <li>欄位映射</li>
+              </ul>
+              <div class="mini"><span class="chip">LLM（語言模型）</span></div>
+            </div>
+            <div class="card" style="grid-column:4;">
+              <h3>Deliverables（交付）</h3>
+              <ul>
+                <li>Notion DB page</li>
+                <li>DOCX 檔</li>
+                <li>本機路徑回報</li>
+              </ul>
+              <div class="mini"><span class="chip">Notion API（入庫）</span><span class="chip">write（產檔）</span></div>
+            </div>
+
+            <div class="card" style="grid-column:1 / span 2;">
+              <h3>Acquire（取得檔案）</h3>
+              <ul>
+                <li>browser（網頁下載/登入）</li>
+                <li>web_fetch（解析頁面/抓直連）</li>
+              </ul>
+              <div class="mini"><span class="chip">browser（自動化點擊）</span><span class="chip">web_fetch（抓內容）</span></div>
+            </div>
+            <div class="card" style="grid-column:3 / span 2;">
+              <h3>Compute（本機處理）</h3>
+              <ul>
+                <li>exec（跑 whisper/whisperx）</li>
+                <li>process（背景任務）</li>
+                <li>read/write（輸入輸出）</li>
+              </ul>
+              <div class="mini"><span class="chip">exec（執行）</span><span class="chip">read/write（檔案）</span></div>
+            </div>
+          </div>
+
+          <div class="arrowLayer">
+            <svg viewBox="0 0 1000 420" preserveAspectRatio="none">
+              <defs>
+                <marker id="m1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                  <path d="M0,0 L9,3 L0,6" fill="rgba(44,246,255,.75)" />
+                </marker>
+                <marker id="m2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                  <path d="M0,0 L9,3 L0,6" fill="rgba(166,107,255,.75)" />
+                </marker>
+              </defs>
+              <!-- arrows are decorative (not perfectly anchored) -->
+              <path class="arrow" marker-end="url(#m1)" d="M115 110 C220 110, 230 110, 330 110"/>
+              <path class="arrow" marker-end="url(#m1)" d="M365 110 C470 110, 480 110, 585 110"/>
+              <path class="arrow2" marker-end="url(#m2)" d="M620 110 C740 110, 760 110, 870 110"/>
+              <path class="arrow" marker-end="url(#m1)" d="M250 220 C250 260, 250 270, 260 300"/>
+              <path class="arrow2" marker-end="url(#m2)" d="M740 300 C740 270, 740 250, 750 220"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>你同事會聽得懂的說法</h2>
+          <div class="sub">一句話版</div>
+          <div class="steps">
+            <div class="step"><div class="num">1</div><div><b>我把錄音交給 OpenClaw</b><span>它會自己判斷要「下載/轉錄/摘要/入庫」。</span></div></div>
+            <div class="step"><div class="num">2</div><div><b>每一步都有工具在做事</b><span>不是魔法：browser 下載、exec 轉錄、write 產檔、Notion API 入庫。</span></div></div>
+            <div class="step"><div class="num">3</div><div><b>最後交付兩種成果</b><span>Notion DB（可查可追蹤）+ DOCX（可寄可存），並附本機路徑。</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="pager"><span class="kbd">← →</span> 切換頁面</div>
+        <div>Page 7 / 7</div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="nav" id="nav" hidden>
+    <button id="prev" aria-label="Previous">← Prev</button>
+    <button id="next" aria-label="Next">Next →</button>
+    <span class="hint" id="navHint">Swipe ◀▶ / Tap</span>
+  </div>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const max = slides.length;
+
+    const params = new URLSearchParams(location.search);
+    const printMode = params.get('print') === '1';
+
+    function show(n){
+      const idx = Math.min(max, Math.max(1, n));
+      slides.forEach((s,i)=> s.dataset.active = (i===idx-1) ? 'true' : 'false');
+      location.hash = `#s${idx}`;
+    }
+    function current(){
+      const h = (location.hash || '#s1').replace('#','');
+      const m = h.match(/^s(\d+)$/);
+      return m ? parseInt(m[1],10) : 1;
+    }
+
+    if(printMode){
+      document.body.classList.add('print');
+      slides.forEach(s => s.dataset.active = 'true');
+    } else {
+      // show floating nav for mobile/without keyboard
+      const nav = document.getElementById('nav');
+      const prevBtn = document.getElementById('prev');
+      const nextBtn = document.getElementById('next');
+      nav.hidden = false;
+
+      prevBtn.addEventListener('click', ()=> show(current()-1));
+      nextBtn.addEventListener('click', ()=> show(current()+1));
+
+      // keyboard
+      window.addEventListener('keydown', (e)=>{
+        if(['ArrowRight','PageDown',' '].includes(e.key)) show(current()+1);
+        if(['ArrowLeft','PageUp'].includes(e.key)) show(current()-1);
+      });
+
+      // swipe
+      let startX = null;
+      let startY = null;
+      const threshold = 40;
+      window.addEventListener('touchstart', (e)=>{
+        const t = e.touches && e.touches[0];
+        if(!t) return;
+        startX = t.clientX;
+        startY = t.clientY;
+      }, {passive:true});
+      window.addEventListener('touchend', (e)=>{
+        if(startX === null) return;
+        const t = e.changedTouches && e.changedTouches[0];
+        if(!t) return;
+        const dx = t.clientX - startX;
+        const dy = t.clientY - startY;
+        // horizontal swipe only
+        if(Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > threshold){
+          if(dx < 0) show(current()+1);
+          else show(current()-1);
+        }
+        startX = null; startY = null;
+      }, {passive:true});
+
+      window.addEventListener('hashchange', ()=> show(current()));
+      show(current());
+    }
+  </script>
+</body>
+</html>
