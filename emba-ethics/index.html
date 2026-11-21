@@ -1,416 +1,448 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#FFFFFF">
-  <meta name="description" content="主案例：Klarna 用 AI 取代客服、後來又找回真人（貫穿全報告）">
-  <title>企業倫理期中報告：四個倫理視角的引導案例</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <script>document.documentElement.classList.add("js")</script>
-  <style>
-    :root {
-      --bg: #FFFFFF;
-      --text: #0F1419;
-      --muted: #536471;
-      --line: #EFF3F4;
-      --accent: #1D9BF0;
-      --accent-soft: #E7F5FE;
-      --hover: #F7F9F9;
-      --max: 600px;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="主案例：Klarna 的 AI 客服做了相當於 700 人的工作，公司該如何決定哪些案件要由真人負責？（貫穿全報告）">
+<title>四個倫理視角：引導案例卡片（主推＋備選）</title>
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem("emba-ethics-theme");
+    if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+  document.documentElement.classList.add("js");
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+TC:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
 
-    * { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; }
-    html, body { margin: 0; background: var(--bg); color: var(--text); }
-    body {
-      font-family: Inter, "Noto Sans TC", "PingFang TC", "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif;
-      font-size: 16px;
-      line-height: 1.65;
-      line-break: strict;
-      overflow-wrap: break-word;
-    }
-    button, a { -webkit-tap-highlight-color: rgba(29, 155, 240, .18); }
-    :focus { outline: none; }
-    :focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
+:root {
+  --bg: #FFFFFF;
+  --text: #0F1419;
+  --muted: #536471;
+  --line: #EFF3F4;
+  --hover: rgba(15, 20, 25, .04);
+  --accent: #1D9BF0;
+  --accent-soft: #E8F5FD;
+  --bar: rgba(255, 255, 255, .94);
+  --card: #FFFFFF;
+  --max: 600px;
+  --bar-h: 53px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --text: #E7E9EA;
+    --muted: #71767B;
+    --line: #2F3336;
+    --hover: rgba(231, 233, 234, .08);
+    --accent: #1D9BF0;
+    --accent-soft: rgba(29, 155, 240, .16);
+    --bar: rgba(0, 0, 0, .9);
+    --card: #000000;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #FFFFFF;
+  --text: #0F1419;
+  --muted: #536471;
+  --line: #EFF3F4;
+  --hover: rgba(15, 20, 25, .04);
+  --accent: #1D9BF0;
+  --accent-soft: #E8F5FD;
+  --bar: rgba(255, 255, 255, .94);
+  --card: #FFFFFF;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg: #000000;
+  --text: #E7E9EA;
+  --muted: #71767B;
+  --line: #2F3336;
+  --hover: rgba(231, 233, 234, .08);
+  --accent: #1D9BF0;
+  --accent-soft: rgba(29, 155, 240, .16);
+  --bar: rgba(0, 0, 0, .9);
+  --card: #000000;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+html, body { margin: 0; background: var(--bg); color: var(--text); }
+body {
+  font-family: Inter, "Noto Sans TC", "PingFang TC", "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+button, a { -webkit-tap-highlight-color: transparent; }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+.skip {
+  position: absolute; left: 12px; top: 8px; z-index: 40;
+  padding: 8px 12px; border-radius: 999px; background: var(--bg); color: var(--text);
+  border: 1px solid var(--line); transform: translateY(-140%);
+}
+.skip:focus { transform: none; }
+.shell { width: min(var(--max), 100%); margin: 0 auto; min-height: 100vh; }
+.appbar {
+  position: sticky; top: 0; z-index: 30;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  height: calc(var(--bar-h) + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) 16px 0;
+  background: var(--bar);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.appbar-title { margin: 0; font-size: 17px; font-weight: 800; letter-spacing: -0.2px; }
+#theme-toggle {
+  appearance: none; -webkit-appearance: none;
+  margin: 0; border: 1px solid var(--line); background: transparent; color: var(--text);
+  font: inherit; font-size: 13px; font-weight: 700;
+  min-height: 32px; padding: 0 12px; border-radius: 999px; cursor: pointer;
+}
+#theme-toggle:hover { background: var(--hover); }
+.intro { padding: 18px 16px 6px; }
+h1 {
+  margin: 0; font-size: 23px; line-height: 1.35; font-weight: 800; letter-spacing: -0.3px;
+}
+.fine { margin: 10px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.65; }
+.feature, .card {
+  margin: 12px 16px; border: 1px solid var(--line); border-radius: 16px; background: var(--card);
+}
+.feature { margin-top: 14px; }
+.feature h2, .card h3 { margin: 0; font-size: inherit; font-weight: inherit; line-height: inherit; }
+.feature, .card.is-main { box-shadow: inset 3px 0 0 var(--accent); }
+.keep { white-space: nowrap; }
+.expander {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 8px; row-gap: 6px;
+  width: 100%; margin: 0; padding: 14px 14px 16px;
+  border: 0; border-radius: 16px; background: transparent; color: inherit;
+  font: inherit; text-align: left; cursor: pointer;
+}
+.expander:hover { background: var(--hover); }
+.topline { grid-column: 1; display: flex; align-items: center; gap: 8px; min-width: 0; }
+.feature-title, .card-title {
+  grid-column: 1; font-weight: 800; letter-spacing: -0.2px; line-height: 1.4;
+}
+.feature-title { font-size: 18px; }
+.card-title { font-size: 16.5px; }
+.hook { grid-column: 1; color: var(--muted); font-size: 15px; font-weight: 400; line-height: 1.6; }
+.chev {
+  grid-column: 2; grid-row: 1 / span 3; align-self: start; margin-top: 2px; color: var(--muted);
+  transition: transform .18s ease;
+}
+.expander[aria-expanded="true"] .chev { transform: rotate(180deg); }
+.badge {
+  display: inline-flex; align-items: center; height: 24px; padding: 0 8px;
+  border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .02em; line-height: 1;
+}
+.badge-main { color: var(--text); background: var(--accent-soft); box-shadow: inset 0 0 0 1px var(--accent); }
+.badge-alt, .badge-ext { color: var(--muted); background: transparent; box-shadow: inset 0 0 0 1px var(--line); }
+.pip { width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; background: var(--accent); }
+.year { color: var(--muted); font-size: 13px; font-weight: 500; }
+html.js .detail { display: none; }
+html.js .detail.open { display: block; }
+.detail { padding: 0 14px 8px; }
+.k-sec { padding: 14px 0; border-top: 1px solid var(--line); }
+.k-sec h3, .block h4, .lens h4, .stake h4 {
+  margin: 0 0 8px; font-size: 13px; font-weight: 800; letter-spacing: .04em; color: var(--muted);
+}
+.lens h4, .stake h4 { color: var(--text); font-size: 15px; letter-spacing: 0; }
+.k-sec p, .block p, .lens p, .stake p, .points, .timeline, .decision {
+  margin: 0; font-size: 15.5px; line-height: 1.7;
+}
+.points, .timeline { padding: 0; list-style: none; }
+.points > li, .timeline > li { margin: 0 0 12px; }
+.points > li:last-child, .timeline > li:last-child { margin-bottom: 0; }
+.timeline { margin-left: 6px; border-left: 2px solid var(--line); padding-left: 14px; }
+.timeline > li { position: relative; }
+.timeline > li::before {
+  content: ""; position: absolute; left: -19px; top: .55em;
+  width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+}
+.timeline ul, .points ul { margin: 8px 0 0; padding-left: 1.1em; }
+.timeline ul li, .points ul li { margin: 0 0 6px; }
+.lens, .stake { padding: 12px 0; border-top: 1px solid var(--line); }
+.lens:first-child, .stake:first-child { border-top: 0; padding-top: 0; }
+.decision-lead, .decision-next { margin: 0 0 10px; font-size: 15.5px; line-height: 1.7; }
+.decision { margin: 0 0 12px; padding-left: 1.3em; }
+.decision li { margin: 0 0 8px; padding-left: 4px; }
+.decision-next { color: var(--text); }
+.sources { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.sources li {
+  display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: baseline;
+  padding: 10px 12px; border: 1px solid var(--line); border-radius: 16px;
+}
+.src { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.block { margin: 0 0 14px; }
+.block.back {
+  padding: 12px 14px; border-radius: 16px; background: var(--hover);
+}
+.posts { display: flex; flex-direction: column; gap: 10px; }
+.post {
+  display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 10px;
+  padding: 12px; border: 1px solid var(--line); border-radius: 16px;
+  color: inherit; text-decoration: none; background: var(--card);
+}
+.post:hover { background: var(--hover); }
+.avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 16px;
+}
+.post-main { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.post-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 6px; min-width: 0; }
+.who { font-weight: 800; font-size: 15px; }
+.handle, time, .dotsep { color: var(--muted); font-size: 14px; font-weight: 400; }
+.post-body { font-size: 15px; line-height: 1.5; color: var(--text); }
+.post-go {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 6px;
+  color: var(--accent); font-size: 13px; font-weight: 700;
+}
+.xmark { display: block; }
+.play {
+  display: inline-flex; margin-top: 4px; padding: 10px 14px; border-radius: 999px;
+  border: 1px solid var(--accent); color: var(--text); font-weight: 800; text-decoration: none;
+}
+.play:hover { background: var(--hover); }
+.hint { margin: -4px 0 8px; color: var(--muted); font-size: 13px; }
+.tail { margin: 8px 0 0; }
+.warmup { margin-top: 8px; }
+.warmup > h2, .theory {
+  margin: 0; padding: 16px 16px 0; font-size: 16px; line-height: 1.45; font-weight: 800;
+}
+.warmup > h2 { padding-bottom: 0; }
+.tabbar {
+  position: sticky; top: calc(var(--bar-h) + env(safe-area-inset-top)); z-index: 20;
+  background: var(--bar);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.tablist { display: flex; }
+.tab {
+  position: relative; flex: 1 1 0; min-width: 0; min-height: 48px;
+  margin: 0; padding: 14px 4px 12px; border: 0; background: transparent;
+  color: var(--muted); font: inherit; font-size: 15px; font-weight: 600;
+  cursor: pointer; white-space: nowrap;
+}
+.tab:hover { background: var(--hover); }
+.tab[aria-selected="true"] { color: var(--text); font-weight: 800; }
+.tab[aria-selected="true"]::after {
+  content: ""; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+  width: min(56px, 70%); height: 4px; border-radius: 999px; background: var(--accent);
+}
+html.js .panel { display: none; }
+html.js .panel.active { display: block; }
+.panel { scroll-margin-top: calc(var(--bar-h) + 56px + env(safe-area-inset-top)); }
+.bridge { margin: 12px 16px 0; padding: 12px 14px; border-radius: 16px; background: var(--accent-soft); }
+.bridge-kicker { margin: 0 0 4px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: var(--text); }
+.bridge p { margin: 0; font-size: 15px; line-height: 1.6; }
+.sensitive {
+  margin: 12px 12px 0; padding: 12px 14px; border-radius: 16px; border: 1px solid var(--line);
+}
+.sensitive strong { display: block; margin-bottom: 4px; font-size: 13px; }
+.sensitive p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
+.hotline {
+  display: inline-flex; margin-top: 10px; padding: 8px 12px; border-radius: 999px;
+  border: 1px solid var(--text); color: var(--text); font-weight: 800; text-decoration: none; font-size: 14px;
+}
+.hotline:hover { background: var(--hover); }
+.hotline-end { margin: 4px 0 12px; }
+.site-footer {
+  padding: 8px 16px calc(28px + env(safe-area-inset-bottom));
+  color: var(--muted); font-size: 13px; line-height: 1.6;
+  border-top: 1px solid var(--line); margin-top: 8px;
+}
+@media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
+@media (min-width: 760px) {
+  .shell { border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+  h1 { font-size: 26px; }
+  .intro { padding: 22px 20px 8px; }
+  .feature, .card, .bridge { margin-left: 20px; margin-right: 20px; }
+  .warmup > h2, .theory { padding-left: 20px; padding-right: 20px; }
+  .site-footer { padding-left: 20px; padding-right: 20px; }
+}
 
-    .shell {
-      width: min(var(--max), 100%);
-      margin: 0 auto;
-      min-height: 100vh;
-    }
-
-    .site-header { padding: 20px 16px 14px; }
-    h1 {
-      margin: 0;
-      font-size: 22px;
-      line-height: 1.35;
-      font-weight: 700;
-      letter-spacing: -0.2px;
-    }
-    .lede {
-      margin: 12px 0 0;
-      font-size: 16px;
-      line-height: 1.6;
-      font-weight: 600;
-    }
-    .hint {
-      margin: 8px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .tabbar {
-      position: sticky;
-      top: 0;
-      z-index: 5;
-      background: var(--bg);
-      border-bottom: 1px solid var(--line);
-      padding-top: env(safe-area-inset-top);
-    }
-    .tablist { display: flex; }
-    .tab {
-      position: relative;
-      flex: 1 1 0;
-      min-width: 0;
-      min-height: 48px;
-      margin: 0;
-      padding: 14px 2px 12px;
-      border: 0;
-      background: transparent;
-      color: var(--muted);
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 1.2;
-      white-space: nowrap;
-      cursor: pointer;
-    }
-    .tab[aria-selected="true"] { color: var(--text); font-weight: 700; }
-    .tab[aria-selected="true"]::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      width: min(56px, 72%);
-      height: 4px;
-      border-radius: 999px;
-      background: var(--accent);
-      transform: translateX(-50%);
-    }
-
-    .panel { scroll-margin-top: 64px; }
-    html.js .panel { display: none; }
-    html.js .panel.active { display: block; }
-    html.js .detail { display: none; }
-    html.js .detail.open { display: block; }
-
-    .core {
-      margin: 0;
-      padding: 16px 16px 14px;
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 1.55;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .card { border-bottom: 1px solid var(--line); background: var(--bg); }
-    .card.is-lead { box-shadow: inset 3px 0 0 var(--accent); background: var(--accent-soft); }
-    .card h3 { margin: 0; font-size: inherit; font-weight: inherit; line-height: inherit; }
-
-    .expander {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      column-gap: 10px;
-      row-gap: 6px;
-      width: 100%;
-      margin: 0;
-      padding: 14px 16px 16px;
-      border: 0;
-      background: transparent;
-      color: inherit;
-      font: inherit;
-      text-align: left;
-      cursor: pointer;
-    }
-    .expander:hover, .expander:active { background: var(--hover); }
-    .card.is-lead .expander:hover { background: #D9EFFC; }
-    .topline {
-      grid-column: 1;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      min-width: 0;
-    }
-    .card-title {
-      grid-column: 1;
-      font-size: 17px;
-      font-weight: 700;
-      line-height: 1.4;
-      letter-spacing: -0.1px;
-    }
-    .hook {
-      grid-column: 1;
-      color: var(--muted);
-      font-size: 15px;
-      font-weight: 400;
-      line-height: 1.6;
-    }
-    .chev {
-      grid-column: 2;
-      grid-row: 1 / span 3;
-      align-self: center;
-      color: var(--muted);
-      transition: transform .18s ease;
-    }
-    .expander[aria-expanded="true"] .chev { transform: rotate(180deg); }
-    @media (prefers-reduced-motion: reduce) {
-      .chev { transition: none; }
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      height: 24px;
-      padding: 0 8px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 1;
-      letter-spacing: .02em;
-    }
-    .badge-lead {
-      color: var(--text);
-      background: #fff;
-      box-shadow: inset 0 0 0 1.5px var(--accent);
-    }
-    .badge-alt { color: var(--muted); background: var(--line); }
-    .dot {
-      width: 8px;
-      height: 8px;
-      margin-right: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-    .year {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 500;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .detail { padding: 0 16px 8px; }
-    .static-card { padding: 14px 16px 16px; }
-    .static-card .card-title { display: block; margin-top: 8px; }
-    .block { margin: 0 0 14px; }
-    .block h4 {
-      margin: 0 0 4px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 1.4;
-    }
-    .block p {
-      margin: 0;
-      font-size: 16px;
-      line-height: 1.7;
-    }
-    .block.back {
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: var(--bg);
-    }
-    .card.is-lead .block.back { background: #fff; }
-
-    .xlinks { display: flex; flex-direction: column; gap: 8px; }
-    .xlink {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: 4px 8px;
-      padding: 12px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: #fff;
-      color: inherit;
-      text-decoration: none;
-    }
-    .xlink:hover { background: var(--hover); }
-    .xmark { flex: 0 0 auto; align-self: center; color: var(--text); }
-    .handle { font-size: 15px; font-weight: 700; }
-    .xdate { margin-left: auto; color: var(--muted); font-size: 13px; font-weight: 500; }
-    .xdesc {
-      flex: 1 0 100%;
-      color: var(--text);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .site-footer {
-      padding: 18px 16px calc(28px + env(safe-area-inset-bottom));
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.65;
-    }
-    .site-footer p { margin: 0 0 8px; }
-    .site-footer p:last-child { margin-bottom: 0; }
-
-    @media (min-width: 760px) {
-      .shell {
-        border-left: 1px solid var(--line);
-        border-right: 1px solid var(--line);
-      }
-      .site-header { padding: 32px 20px 18px; }
-      h1 { font-size: 28px; line-height: 1.3; }
-      .lede { font-size: 17px; }
-      .tab { font-size: 15px; }
-      .core, .expander, .static-card, .detail { padding-left: 20px; padding-right: 20px; }
-      .site-footer { padding-left: 20px; padding-right: 20px; }
-    }
-  </style>
+</style>
 </head>
 <body>
-  <div class="shell">
-    <header class="site-header">
-      <h1>企業倫理期中報告：四個倫理視角的引導案例</h1>
-      <p class="lede">主案例：Klarna 用 AI 取代客服、後來又找回真人（貫穿全報告）</p>
-      <p class="hint">點一下卡片展開。每張卡片包含：故事簡介／爭議點／為何選它／拉回 Klarna 的提問／X 代表貼文</p>
-    </header>
-    <nav class="tabbar" aria-label="倫理視角">
-      <div class="tablist" role="tablist" aria-label="倫理視角">
-        <button type="button" class="tab" role="tab" id="tab-benefit" aria-controls="benefit" aria-selected="true" tabindex="0" data-hash="benefit">效益論</button><button type="button" class="tab" role="tab" id="tab-duty" aria-controls="duty" aria-selected="false" tabindex="-1" data-hash="duty">義務論</button><button type="button" class="tab" role="tab" id="tab-virtue" aria-controls="virtue" aria-selected="false" tabindex="-1" data-hash="virtue">德性論</button><button type="button" class="tab" role="tab" id="tab-care" aria-controls="care" aria-selected="false" tabindex="-1" data-hash="care">關懷倫理</button><button type="button" class="tab" role="tab" id="tab-klarna" aria-controls="klarna" aria-selected="false" tabindex="-1" data-hash="klarna">Klarna</button>
-      </div>
-    </nav>
+<a class="skip" href="#tabs">跳到四個視角</a>
+<div class="shell">
+  <div class="appbar">
+    <p class="appbar-title">引導案例</p>
+    <button type="button" id="theme-toggle">淺色</button>
+  </div>
+  <div class="intro">
+    <h1>四個倫理視角：引導案例卡片<span class="keep">（主推＋備選）</span></h1>
+    <p class="fine">主案例：Klarna 的 AI 客服做了相當於 700 人的工作，公司該如何決定哪些案件要由真人負責？（貫穿全報告）</p><p class="fine">每張卡片包含：故事簡介／爭議點／為何選它／拉回 Klarna 的提問／X 代表貼文</p><p class="fine">標籤：［主推］上台用；［備選］主推不適用時替換；［延伸］［延伸閱讀］只放在閱讀頁，不上台。</p><p class="fine">資料說明：每則事實都附原始來源；X 貼文只當輿論佐證，不當事實證據。標「公司自述」的數字是 Klarna 自己公布的，沒有第三方驗證。</p>
+  </div>
+  
+<article class="feature" id="klarna">
+  <h2>
+    <button type="button" class="expander feature-btn" aria-expanded="false" aria-controls="klarna-detail">
+      <span class="topline"><span class="badge badge-main"><span class="pip" aria-hidden="true"></span>主案例</span><span class="year">貫穿全報告</span></span>
+      <span class="feature-title">Klarna 的 AI 客服做了相當於 700 名全職客服的工作量。效率提高之後，公司該如何決定哪些案件要由真人負責？</span>
+      <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </h2>
+  <div class="detail" id="klarna-detail">
+    <section class="k-sec"><h3>Klarna 是誰</h3><ul class="points"><li>瑞典的「先買後付」（BNPL）金融科技公司，2005 年成立，2024 年自稱全球有 1.5 億名活躍消費者（公司自述）。2023 年和 OpenAI 合作，執行長 Sebastian Siemiatkowski 說想當 OpenAI「最喜歡的白老鼠」。（來源：Bloomberg 2025/5/8 報導，存檔 <a class="src" href="https://archive.is/lRplR" target="_blank" rel="noopener noreferrer">archive.is<span class="sr-only">（在新分頁開啟）</span></a>）</li><li>2021 年估值最高約 456 億美元，2022 年募資時跌到約 67 億美元，因此有很強的降成本壓力。（來源：Reuters 2025/3/24 <a class="src" href="https://www.reuters.com/technology/klarna-ipo-filing-spurs-hope-british-fintech-listings-2025-03-24/" target="_blank" rel="noopener noreferrer">reuters.com<span class="sr-only">（在新分頁開啟）</span></a>）</li></ul></section>
+<section class="k-sec"><h3>時間軸</h3><ul class="timeline"><li>2023 年起：Klarna 停止招募新人，靠自然離職縮編，同時擴大使用 AI。執行長說公司自然離職率每年約 15–20%。（來源：CNBC 2025/5/14 <a class="src" href="https://www.cnbc.com/2025/05/14/klarna-ceo-says-ai-helped-company-shrink-workforce-by-40percent.html" target="_blank" rel="noopener noreferrer">cnbc.com<span class="sr-only">（在新分頁開啟）</span></a>）</li><li>2024/2/27：Klarna 發新聞稿公布 AI 客服上線第一個月的成績（公司自述）：<ul><li>處理 230 萬則對話，約占客服聊天的三分之二。</li><li>工作量「相當於 700 名全職客服」。這是工作量的換算，不是裁員人數。</li><li>顧客滿意度和真人客服相當；重複詢問減少 25%。</li><li>顧客解決問題的時間，從過去的 11 分鐘縮短到 2 分鐘以內。</li><li>預估 2024 年為公司帶來約 4,000 萬美元的獲利改善。</li><li>新聞稿同時寫明：顧客如果比較想找真人，仍然可以選擇真人客服。</li></ul><p class="tail">（來源：Klarna 新聞稿 <a class="src" href="https://www.prnewswire.com/news-releases/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month-302072740.html" target="_blank" rel="noopener noreferrer">prnewswire.com<span class="sr-only">（在新分頁開啟）</span></a>）</p></li><li>2024/5：執行長的受訪片段在 X 上流傳，他說生成式 AI 已經自動化了 700 名客服的工作，而且顧客比較喜歡和 AI 互動。（來源：X 貼文影片 <a class="src" href="https://x.com/tsarnick/status/1790567056112517510" target="_blank" rel="noopener noreferrer">x.com<span class="sr-only">（在新分頁開啟）</span></a>）</li><li>2024/12：公司對 Bloomberg 表示，過去一年沒有招募新的員工。（來源：Fortune 2025/5/9 引述 <a class="src" href="https://fortune.com/2025/05/09/klarna-ai-humans-return-on-investment/" target="_blank" rel="noopener noreferrer">fortune.com<span class="sr-only">（在新分頁開啟）</span></a>）</li><li>2025/3/14：向美國證管會（SEC）遞件申請在紐約證交所上市。公開說明書寫到，全職員工從 2022 年底的 5,527 人降到 2024 年底的 3,422 人，公司把原因歸於運用 AI 和整體縮編。（來源：CNBC 2025/3/14 <a class="src" href="https://www.cnbc.com/2025/03/14/buy-now-pay-later-lender-klarna-files-for-us-ipo.html" target="_blank" rel="noopener noreferrer">cnbc.com<span class="sr-only">（在新分頁開啟）</span></a>、CNBC 2025/5/14 同上）</li><li>2025/4/4：因為美國關稅政策造成市場動盪，暫緩上市計畫。（來源：Reuters <a class="src" href="https://www.reuters.com/technology/klarna-pauses-us-ipo-plans-amid-tariff-turmoil-wsj-reports-2025-04-04/" target="_blank" rel="noopener noreferrer">reuters.com<span class="sr-only">（在新分頁開啟）</span></a>）</li><li>2025/5/8：執行長接受 Bloomberg 專訪，原話是：「很遺憾，成本似乎成了規劃時過於主導的評估因素，結果就是品質變差。真正投資在真人客服的品質，才是我們的未來。」他說要讓顧客「永遠都能選擇找真人」，並試辦一種「類似 Uber 的模式」：遠距、自己選時段上線的客服人員，起步只有 2 人，目標是逐步取代目前外包的「幾千名」真人客服。（來源：Bloomberg 存檔 <a class="src" href="https://archive.is/lRplR" target="_blank" rel="noopener noreferrer">archive.is<span class="sr-only">（在新分頁開啟）</span></a>、Fortune 同上）</li><li>同一時期，Klarna 發言人對 Fortune 說：公司「仍然是 AI 優先」，離職員工依然不補人，只有外包客服部門例外招募自由工作者。（來源：Fortune 同上）</li><li>2025/5/14：執行長在 CNBC 說，公司已經從約 5,000 人縮到將近 3,000 人，原因包括 AI 和自然離職，不只是 AI。（來源：CNBC 同上）</li><li>2025/7/16：Klarna 回覆 SEC 的提問。SEC 引用媒體報導，問 AI 服務「品質較低」的說法。Klarna 的書面說明是：<ul><li>執行長談的是試辦「高技能的自由工作者」來提升「真人客服」的品質，和 AI 客服品質無關，Forbes 的報導有誤。</li><li>AI 客服在截至 2025/3/31 的 12 個月處理了 66% 的客服聊天，工作量「相當於 700 多名全職客服」。這個數字是用 AI 上線後、全職客服每月處理的聊天和電話平均減少量估算出來的。</li><li>2024 年約省下 3,900 萬美元成本；AI 處理的對話平均 2 分鐘解決，真人客服 2024 年平均 12 分鐘。</li><li>公司說自己採取「雙軌」做法：大規模用 AI，同時提供高品質的真人服務，所有顧客都可以選真人。</li></ul><p class="tail">（來源：Klarna 給 SEC 的書面回覆 <a class="src" href="https://www.sec.gov/Archives/edgar/data/2003292/000162828025034998/filename1.htm" target="_blank" rel="noopener noreferrer">sec.gov<span class="sr-only">（在新分頁開啟）</span></a>）</p></li><li>2025/9/10：在紐約證交所掛牌（代號 KLAR），每股 40 美元，募得約 13.7 億美元，估值約 151 億美元。同一天，執行長對 Reuters 說公司可能在用 AI 降成本上走得太快，接下來會把重點放在改善服務和產品。（來源：Klarna 公告 <a class="src" href="https://investors.klarna.com/News--Events/news/news-details/2025/Klarna-Announces-Pricing-of-its-Initial-Public-Offering/default.aspx" target="_blank" rel="noopener noreferrer">investors.klarna.com<span class="sr-only">（在新分頁開啟）</span></a>、Reuters <a class="src" href="https://www.reuters.com/business/finance/klarna-raises-137-billion-us-ipo-boosting-fintech-hopefuls-2025-09-09/" target="_blank" rel="noopener noreferrer">reuters.com<span class="sr-only">（在新分頁開啟）</span></a>、Reuters <a class="src" href="https://www.reuters.com/business/swedens-klarna-shifts-ai-focus-cost-cuts-growth-2025-09-10/" target="_blank" rel="noopener noreferrer">reuters.com<span class="sr-only">（在新分頁開啟）</span></a>）</li><li>2025/11/18：公司說員工數已從 5,527 人降到 2,907 人，主要靠自然離職；AI 客服的工作量換算提高到相當於 853 名全職人員；省下的成本讓員工平均薪資提高近 60%（公司自述）。（來源：The Guardian <a class="src" href="https://www.theguardian.com/business/2025/nov/18/buy-now-pay-later-klarna-ai-helped-halve-staff-boost-pay" target="_blank" rel="noopener noreferrer">theguardian.com<span class="sr-only">（在新分頁開啟）</span></a>）</li></ul></section>
+<section class="k-sec"><h3>常見誤解</h3><p class="hint">簡報時要講對</p><ul class="points"><li>「Klarna 裁了 700 人」是錯的。700 是工作量的換算。公司縮編主要靠停止招募加上自然離職；外包客服受到多少影響，公司沒有公布具體數字。</li><li>「Klarna 放棄 AI、找回真人」也不準確。2024 年上線時就保留了真人管道，2025 年的調整是「AI 仍是主力，再加強真人服務的品質」，而新找的真人是彈性上線的自由工作者，不是回聘原本的員工。</li><li>「滿意度和真人相當」「11 分鐘降到 2 分鐘」都是公司自己公布的平均值。帳務爭議、疑似詐騙這類難案表現如何，外界看不到。另外，新聞稿說「過去 11 分鐘」，SEC 文件說真人 2024 年平均 12 分鐘，兩個數字的比較基準不同。</li></ul></section>
+<section class="k-sec"><h3>為什麼選它</h3><ul class="points"><li>同時牽涉效率、對員工的責任、執行長的公開說法和弱勢顧客，四個理論都切得進去，而且每個理論看到的重點不一樣。</li><li>場景是每個人都用過的 AI 客服，同學不需要專業背景就懂。</li><li>事件有前後轉折（大力宣傳 AI → 承認太看重成本 → 上市），可以比較「當時的判斷」和「事後的修正」。</li><li>有公司新聞稿、SEC 文件、主流媒體專訪三種來源，證據比多數 AI 爭議完整，也看得到公司說法前後的落差。</li><li>同學多半是主管，「客服要配置多少真人」本身就是真實的經營決策題。</li></ul></section>
+<section class="k-sec"><h3>四個視角</h3><div class="lens"><h4>效益論</h4><p>算總帳。省下的成本（公司自述 2024 年約 3,900 萬美元）、多數顧客省下的時間，要和難案顧客多次求助的損失、品牌信任的流失、外包人員失去工作的代價一起比。還要問：有沒有代價更低的做法？例如把例行查詢省下的錢，拿來保留一批專接詐騙和扣款爭議的真人。</p></div><div class="lens"><h4>義務論</h4><p>守原則。顧客有沒有被清楚告知對面是 AI？有沒有權利要求轉真人，而且真的接得到人？AI 答錯了，公司能不能把責任推給機器？就算真人覆核成本很高，有些義務（例如受理異議）是否仍然不能省？</p></div><div class="lens"><h4>德性論</h4><p>看品格。執行長 2024 年高調宣傳「顧客更喜歡 AI」，2025 年公開承認「太看重成本、品質變差」。主動認錯是誠實與實踐智慧，還是上市前的形象管理？如果是你，2024 年對外會怎麼說？會主動公布哪些可能對自己不利的數字？</p></div><div class="lens"><h4>關懷倫理</h4><p>顧關係。誰最脆弱？不熟悉 App 的年長顧客、正被詐騙或付款快逾期的人、看不見的外包客服、每天只接到最難案件的留任客服。把例行問題交給 AI 之後，誰負責察覺「一直沒得到幫助的人」，並一路跟到問題解決？</p></div></section>
+<section class="k-sec"><h3>利害關係人</h3><div class="stake"><h4>外包客服人員</h4><p>AI 接走的工作量，有很大一部分原本是外包人力在做，他們最先受影響，卻最少被討論。</p></div><div class="stake"><h4>留任員工</h4><p>公司說薪資提高了，但人數減少、工作內容改變，真人客服接到的可能多是最難的案件。</p></div><div class="stake"><h4>年長或弱勢顧客</h4><p>不擅長用 App 或文字對話的人，最需要容易找到的真人。</p></div><div class="stake"><h4>詐騙受害者和帳務爭議的顧客</h4><p>問題複雜、情緒急迫，最怕被 AI 重複回答同一套說法。</p></div><div class="stake"><h4>投資人</h4><p>「700 人工作量」「省下多少成本」是上市故事的一部分，他們需要知道數字怎麼算出來的。</p></div><div class="stake"><h4>監管機關</h4><p>SEC 已經就 AI 說法提問；歐盟也在規範 AI 的透明度和消費者保護。</p></div></section>
+<section class="k-sec"><h3>共同決策題</h3><p class="hint">四組都回答同一題</p><p class="decision-lead">你是 Klarna 的客服營運主管，下一季真人客服席次有限：</p><ol class="decision"><li>哪些案件繼續以 AI 為預設？</li><li>哪些情況顧客一提出，就要直接轉真人？（例如：否認交易、疑似詐騙、第三次為同一問題求助、付款即將逾期）</li><li>你會用什麼證據來調整？（例如：分案型的解決率、重複求助率、轉真人的等待時間、申訴與退款爭議的結果）</li></ol><p class="decision-next">先請各組依自己的理論回答，再揭露 Klarna 2025 年的實際調整，最後整合成一個決策。</p></section>
+<section class="k-sec"><h3>來源</h3><ul class="sources"><li><span>Klarna 新聞稿（2024/2/27）</span><a class="src" href="https://www.prnewswire.com/news-releases/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month-302072740.html" target="_blank" rel="noopener noreferrer">prnewswire.com<span class="sr-only">（在新分頁開啟）</span></a></li><li><span>Klarna 給 SEC 的書面回覆（2025/7/16）</span><a class="src" href="https://www.sec.gov/Archives/edgar/data/2003292/000162828025034998/filename1.htm" target="_blank" rel="noopener noreferrer">sec.gov<span class="sr-only">（在新分頁開啟）</span></a></li><li><span>Bloomberg 專訪（2025/5/8，存檔）</span><a class="src" href="https://archive.is/lRplR" target="_blank" rel="noopener noreferrer">archive.is<span class="sr-only">（在新分頁開啟）</span></a></li><li><span>Fortune（2025/5/9）</span><a class="src" href="https://fortune.com/2025/05/09/klarna-ai-humans-return-on-investment/" target="_blank" rel="noopener noreferrer">fortune.com<span class="sr-only">（在新分頁開啟）</span></a></li><li><span>CNBC（2025/5/14，員工數）</span><a class="src" href="https://www.cnbc.com/2025/05/14/klarna-ceo-says-ai-helped-company-shrink-workforce-by-40percent.html" target="_blank" rel="noopener noreferrer">cnbc.com<span class="sr-only">（在新分頁開啟）</span></a></li><li>Reuters（2025/4/4 暫緩上市；2025/9/9 上市定價；2025/9/10 專訪）：見時間軸</li><li><span>Klarna 上市定價公告（2025/9/9）</span><a class="src" href="https://investors.klarna.com/News--Events/news/news-details/2025/Klarna-Announces-Pricing-of-its-Initial-Public-Offering/default.aspx" target="_blank" rel="noopener noreferrer">investors.klarna.com<span class="sr-only">（在新分頁開啟）</span></a></li><li><span>The Guardian（2025/11/18，員工數與 853 人工作量）</span><a class="src" href="https://www.theguardian.com/business/2025/nov/18/buy-now-pay-later-klarna-ai-helped-halve-staff-boost-pay" target="_blank" rel="noopener noreferrer">theguardian.com<span class="sr-only">（在新分頁開啟）</span></a></li></ul></section>
+<section class="k-sec"><h3>X 貼文</h3><p class="hint">輿論佐證</p><div class="posts"><a class="post" href="https://x.com/tsarnick/status/1790567056112517510" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#0E6780" aria-hidden="true">T</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who" translate="no">@tsarnick</span><span class="dotsep" aria-hidden="true">·</span><time>2024/5/15</time></span>
+    <span class="post-body">執行長受訪片段：AI 自動化了 700 名客服的工作，顧客更喜歡 AI</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a>
+<a class="post" href="https://x.com/IndiaTodayTech/status/1930939066511446305" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#B0135E" aria-hidden="true">I</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who" translate="no">@IndiaTodayTech</span><span class="dotsep" aria-hidden="true">·</span><time>2025/6/6</time></span>
+    <span class="post-body">媒體標題：「大力宣傳 AI 之後，Klarna 執行長說會為 VIP 客戶提供真人客服」。這是媒體的詮釋，公司正式說法是所有顧客都能選真人</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a></div></section>
+  </div>
+</article>
+
+  
+<section class="warmup" id="open" aria-labelledby="open-title">
+  <h2 id="open-title">開場：什麼是科技倫理（暖身卡）</h2>
+  
+<article class="card">
+  
+  <h3>
+    <button type="button" class="expander" aria-expanded="false" aria-controls="detail-open">
+      <span class="topline"><span class="badge badge-alt">暖身</span><span class="year">2016–2018</span></span>
+      <span class="card-title">MIT Moral Machine：自駕車煞車失靈，該撞誰？</span>
+      <span class="hook">MIT 媒體實驗室的團隊在 2016 年 6 月架設 Moral Machine 網站，讓全球網友面對「自駕車煞車失靈，只能二選一」的情境，例如撞向兩名乘客還是五名行人、守法的路人還是闖紅燈的人。</span>
+      <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </h3>
+  <div class="detail" id="detail-open">
+    <div class="block"><h4>故事簡介</h4><p>MIT 媒體實驗室的團隊在 2016 年 6 月架設 Moral Machine 網站，讓全球網友面對「自駕車煞車失靈，只能二選一」的情境，例如撞向兩名乘客還是五名行人、守法的路人還是闖紅燈的人。2018 年 10 月，Edmond Awad 等人把結果發表在 Nature：資料來自 233 個國家和地區、約 4,000 萬次的選擇。全球最一致的偏好是救人優先於動物、救多數優先於少數、救年輕人優先於年長者；但依文化和地理可以分成「西方」「東方」「南方」三群，例如東方群體偏好救年輕人的傾向比較弱。參與者是自願上網作答，不能代表各國全體人口。（來源：Nature 論文 <a class="src" href="https://www.nature.com/articles/s41586-018-0637-6" target="_blank" rel="noopener noreferrer">nature.com<span class="sr-only">（在新分頁開啟）</span></a>、MIT News 2018/10/24 <a class="src" href="https://news.mit.edu/2018/how-autonomous-vehicles-programmed-1024" target="_blank" rel="noopener noreferrer">news.mit.edu<span class="sr-only">（在新分頁開啟）</span></a>、研究者說明 2016/6/23 上線 <a class="src" href="https://communities.springernature.com/posts/inside-the-moral-machine" target="_blank" rel="noopener noreferrer">communities.springernature.com<span class="sr-only">（在新分頁開啟）</span></a>、MIT 媒體實驗室專案頁 <a class="src" href="https://www.media.mit.edu/projects/moral-machine/overview/" target="_blank" rel="noopener noreferrer">media.mit.edu<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
+    <div class="block"><h4>爭議點</h4><p>機器的道德判斷該由誰決定？多數網友的選擇，就是機器該採用的規則嗎？如果票選結果總是犧牲同一群人，車廠有理由照做嗎？</p></div>
+    <div class="block"><h4>為何選它</h4><p>一分鐘就能讓全班舉手表態，順勢說明「科技倫理就是：科技替我們做決定時，誰來決定什麼是對的」，再帶出今天用四種理論看同一件事，接著進入 Klarna。</p></div>
+    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>自駕車要決定撞誰，AI 客服要決定誰能找到真人。這些規則是誰寫的？依據什麼？</p></div>
+    <div class="block"><h4>互動</h4><a class="play" href="https://www.moralmachine.net/" target="_blank" rel="noopener noreferrer">可以現場讓同學用手機玩一題<span class="sr-only">（在新分頁開啟）</span></a></div>
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/iyadrahwan/status/1055474830118662145" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#0B6EAE" aria-hidden="true">I</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who">Iyad Rahwan</span><span class="handle" translate="no">@iyadrahwan</span><span class="dotsep" aria-hidden="true">·</span><time>2018/10/25</time></span>
+    <span class="post-body">研究者 Iyad Rahwan 公布 Nature 論文與資料集</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a></div></div>
+    
+  </div>
+</article>
+
+</section>
+
+  <nav class="tabbar" id="tabs" aria-label="四個倫理視角">
+    <div class="tablist" role="tablist" aria-label="四個倫理視角"><button type="button" class="tab" role="tab" id="tab-benefit" data-hash="benefit" aria-selected="true" aria-controls="benefit" tabindex="0">效益論</button><button type="button" class="tab" role="tab" id="tab-duty" data-hash="duty" aria-selected="false" aria-controls="duty" tabindex="-1">義務論</button><button type="button" class="tab" role="tab" id="tab-virtue" data-hash="virtue" aria-selected="false" aria-controls="virtue" tabindex="-1">德性論</button><button type="button" class="tab" role="tab" id="tab-care" data-hash="care" aria-selected="false" aria-controls="care" tabindex="-1">關懷倫理</button></div>
+  </nav>
+  <div class="feed-wrap">
     <main>
       
-<section class="panel active" id="benefit" role="tabpanel" aria-labelledby="tab-benefit" tabindex="0">
-  <h2 class="core">效益論｜算總帳：怎麼做能讓最多人得到最大好處？</h2>
+<section class="panel" id="benefit" role="tabpanel" aria-labelledby="tab-benefit" tabindex="0">
+  <aside class="bridge">
+    <p class="bridge-kicker">與 Klarna 的連結</p>
+    <p>Uber 的演算法在人最需要幫助時自動漲價，Klarna 的 AI 在難案時可能讓人找不到真人；兩家公司都要回答「效率省下的錢，該不該拿來照顧最急的那群人」。</p>
+  </aside>
+  <h2 class="theory">效益論｜算總帳：比較好處和傷害各有多大，有沒有代價更低的做法</h2>
   <div class="feed">
     
-<article class="card is-lead">
+<article class="card is-main">
+  
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-benefit-1">
-      <span class="topline"><span class="badge badge-lead"><span class="dot" aria-hidden="true"></span>主推</span><span class="year">2021</span></span>
-      <span class="card-title">台灣簡訊實聯制</span>
-      <span class="hook">2021 年 5 月疫情升溫，行政院推出「簡訊實聯制」，民眾進店掃 QR Code 傳一封免費簡訊，就能留下足跡供疫調使用。</span>
+      <span class="topline"><span class="badge badge-main"><span class="pip" aria-hidden="true"></span>主案例</span><span class="year">2014</span></span>
+      <span class="card-title">Uber 雪梨人質事件時動態加價</span>
+      <span class="hook">2014 年 12 月，雪梨市中心發生人質挾持事件，市中心民眾急著撤離，Uber 的演算法因為叫車需求暴增，自動啟動動態加價，引發眾怒。</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
   <div class="detail" id="detail-benefit-1">
-    <div class="block">
-      <h4>故事簡介</h4>
-      <p>2021 年 5 月疫情升溫，行政院推出「簡訊實聯制」，民眾進店掃 QR Code 傳一封免費簡訊，就能留下足跡供疫調使用。幾乎每個人都用過。</p>
-    </div>
-    <div class="block">
-      <h4>爭議點</h4>
-      <p>同年 6 月傳出警方透過通訊監察取得實聯制簡訊資料辦案，引發「防疫資料被挪作他用」的質疑。用一點隱私換全體的防疫效益，划算嗎？資料用途擴張的代價又由誰承擔？</p>
-    </div>
-    <div class="block">
-      <h4>為何選這個案例</h4>
-      <p>全班都親身經歷過，10 秒就懂；正好示範效益論的「成本效益計算」，以及它最大的盲點：少數人的權利可能被多數人的效益犧牲掉。</p>
-    </div>
-    <div class="block back">
-      <h4>拉回 Klarna 的提問</h4>
-      <p>AI 省下的成本和提升的效率，大過被裁員工與顧客體驗下降的代價嗎？</p>
-    </div>
-    <div class="block">
-      <h4>X 代表貼文</h4>
-      <div class="xlinks">
-        <a class="xlink" href="https://x.com/glenna9305/status/1406500233622671363" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@glenna9305</span><span class="xdate">2021/6/20</span><span class="xdesc">刑事局調閱實聯制簡訊的爭議</span><span class="sr-only">（在新分頁開啟）</span></a>
-<a class="xlink" href="https://x.com/tw_reporter_org/status/1395000391822053382" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@tw_reporter_org</span><span class="xdate">2021/5/19</span><span class="xdesc">報導者：行政院推出簡訊實聯制</span><span class="sr-only">（在新分頁開啟）</span></a>
-      </div>
-    </div>
+    <div class="block"><h4>故事簡介</h4><p>2014 年 12 月，雪梨市中心發生人質挾持事件，市中心民眾急著撤離，Uber 的演算法因為叫車需求暴增，自動啟動動態加價，引發眾怒。Uber 事後發表道歉聲明，承認「沒有立即停止加價是錯誤的決定」，改為提供離開市中心的免費乘車，當天沒有乘客為離開市中心付費，先前加價的車資也全額退還。（來源：Uber 澳洲道歉聲明 2014/12/23 <a class="src" href="https://www.uber.com/au/en/newsroom/an-apology/" target="_blank" rel="noopener noreferrer">uber.com<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
+    <div class="block"><h4>爭議點</h4><p>用效益論怎麼看？動態加價的理由是吸引更多司機上路、讓更多人撤離，看起來能讓整體效益最大；但要算清楚：實際多了多少車、誰因為付不起而走不了、司機承擔什麼風險。Uber 最後的做法「平台吸收成本、乘客免費」是第三種方案，可能比「漲價」或「不漲價」帶來更大的整體利益。效益論不只是比人數，還要找代價更低的做法。</p></div>
+    <div class="block"><h4>為何選它</h4><p>一句話就懂，又能示範「演算法眼中的效益最大化」和「人心裡的公平」之間的落差；Uber 承認錯誤並退款，正好可以討論效益的帳該怎麼算。</p></div>
+    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>討論問題：Uber 可以讓平台負擔緊急運能。Klarna 要不要用例行查詢省下的成本（公司自述 2024 年約 3,900 萬美元），保留一批專接詐騙和扣款爭議的真人？多保留一席，能避免多少損失，又會讓誰等更久？</p></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/bluecheddar1/status/544539475893030912" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#B45309" aria-hidden="true">B</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who" translate="no">@bluecheddar1</span><span class="dotsep" aria-hidden="true">·</span><time>2014/12/15</time></span>
+    <span class="post-body">轉述 Gawker 報導 Uber 道歉</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a>
+<a class="post" href="https://x.com/HimanshuKumar40/status/2122298340230758910" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#5B3DB8" aria-hidden="true">H</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who" translate="no">@HimanshuKumar40</span><span class="dotsep" aria-hidden="true">·</span><time>2026/11</time></span>
+    <span class="post-body">網友討論緊急情況下的動態加價</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a></div></div>
+    
   </div>
 </article>
 
-
 <article class="card">
+  
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-benefit-2">
-      <span class="topline"><span class="badge badge-alt">備選</span><span class="year">2018</span></span>
-      <span class="card-title">MIT Moral Machine：自駕車版電車難題</span>
-      <span class="hook">MIT 讓全球數百萬人線上回答「自駕車煞車失靈時該撞誰」，結果 2018 年刊登在 Nature，發現不同文化的道德偏好差異很大。</span>
+      <span class="topline"><span class="badge badge-alt">備選</span><span class="year">2021</span></span>
+      <span class="card-title">台灣簡訊實聯制</span>
+      <span class="hook">2021 年 5 月疫情升溫，政府推出「簡訊實聯制」，民眾進店掃 QR Code 傳一封免費簡訊到 1922，就能留下足跡供疫調使用。</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
   <div class="detail" id="detail-benefit-2">
-    <div class="block">
-      <h4>故事簡介</h4>
-      <p>MIT 讓全球數百萬人線上回答「自駕車煞車失靈時該撞誰」，結果 2018 年刊登在 Nature，發現不同文化的道德偏好差異很大。</p>
-    </div>
-    <div class="block">
-      <h4>爭議點</h4>
-      <p>生死能不能交給演算法用「救最多人」的公式計算？用群眾投票決定機器的道德，合理嗎？</p>
-    </div>
-    <div class="block">
-      <h4>為何選這個案例</h4>
-      <p>電車難題是效益論最經典的思想實驗，加上 AI 包裝就很有科技感，現場也很適合讓大家舉手表態。</p>
-    </div>
-    <div class="block back">
-      <h4>拉回 Klarna 的提問</h4>
-      <p>如果裁 700 人能讓幾百萬名顧客的服務變便宜、變快，這筆帳該怎麼算？</p>
-    </div>
-    <div class="block">
-      <h4>X 代表貼文</h4>
-      <div class="xlinks">
-        <a class="xlink" href="https://x.com/iyadrahwan/status/1055474830118662145" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@iyadrahwan</span><span class="xdate">2018/10/25</span><span class="xdesc">研究者 Iyad Rahwan 公布 Nature 論文與資料集</span><span class="sr-only">（在新分頁開啟）</span></a>
-      </div>
-    </div>
-  </div>
-</article>
-
-
-<article class="card">
-  <h3>
-    <button type="button" class="expander" aria-expanded="false" aria-controls="detail-benefit-3">
-      <span class="topline"><span class="badge badge-alt">備選</span><span class="year">2014</span></span>
-      <span class="card-title">Uber 雪梨人質事件時動態加價</span>
-      <span class="hook">2014 年 12 月雪梨市中心發生人質挾持事件，民眾急著撤離，Uber 的演算法自動啟動動態加價，引發眾怒，之後 Uber 道歉並提供免費載送。</span>
-      <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
-    </button>
-  </h3>
-  <div class="detail" id="detail-benefit-3">
-    <div class="block">
-      <h4>故事簡介</h4>
-      <p>2014 年 12 月雪梨市中心發生人質挾持事件，民眾急著撤離，Uber 的演算法自動啟動動態加價，引發眾怒，之後 Uber 道歉並提供免費載送。</p>
-    </div>
-    <div class="block">
-      <h4>爭議點</h4>
-      <p>用價格調節供需，可以吸引更多司機上路，看起來效益最大；但在緊急事故時漲價，算不算趁火打劫？</p>
-    </div>
-    <div class="block">
-      <h4>為何選這個案例</h4>
-      <p>示範「演算法眼中的效益最大化」和「人心裡的公平」之間的落差。</p>
-    </div>
-    <div class="block back">
-      <h4>拉回 Klarna 的提問</h4>
-      <p>效率的提升，有沒有可能正是用在人最需要真人協助的時候被犧牲掉？</p>
-    </div>
-    <div class="block">
-      <h4>X 代表貼文</h4>
-      <div class="xlinks">
-        <a class="xlink" href="https://x.com/bluecheddar1/status/544539475893030912" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@bluecheddar1</span><span class="xdate">2014/12/15</span><span class="xdesc">轉述 Gawker 報導 Uber 道歉</span><span class="sr-only">（在新分頁開啟）</span></a>
-<a class="xlink" href="https://x.com/HimanshuKumar40/status/2122298340230758910" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@HimanshuKumar40</span><span class="xdate">2026/11</span><span class="xdesc">網友至今仍在爭論緊急事故時的動態加價</span><span class="sr-only">（在新分頁開啟）</span></a>
-      </div>
-    </div>
+    <div class="block"><h4>故事簡介</h4><p>2021 年 5 月疫情升溫，政府推出「簡訊實聯制」，民眾進店掃 QR Code 傳一封免費簡訊到 1922，就能留下足跡供疫調使用。</p></div>
+    <div class="block"><h4>爭議點</h4><p>同年 6 月，有法官撰文質疑警方拿實聯制簡訊辦案。指揮中心說明，刑事局是在法院核准的通訊監察中，看到嫌犯發送的實聯制簡訊，再依場所代碼到現場比對，並沒有向指揮中心調閱疫調資料；之後要求警方辦案時主動排除實聯制簡訊。即使程序合法，「僅供防疫」的承諾涵蓋到哪裡？民眾若因此不信任、不配合，防疫效益會不會反而下降？（來源：中央社 2021/6/20 <a class="src" href="https://www.cna.com.tw/news/ahel/202106200132.aspx" target="_blank" rel="noopener noreferrer">cna.com.tw<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
+    <div class="block"><h4>為何選它</h4><p>多數同學都用過，很快就懂；正好示範效益論的「成本效益計算」，以及它的盲點：少數人的權利可能被多數人的效益犧牲掉。</p></div>
+    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>假設 AI 讓多數查詢變快，但少數帳務爭議要聯絡好幾次才解決。你會怎麼比較多數人省下的時間、少數人的損失，以及真人客服承接難案的負擔？</p></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/glenna9305/status/1406500233622671363" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#9A1B40" aria-hidden="true">G</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who" translate="no">@glenna9305</span><span class="dotsep" aria-hidden="true">·</span><time>2021/6/20</time></span>
+    <span class="post-body">轉述指揮中心說明：刑事局未調閱實聯制資料，是通訊監察中包含實聯制簡訊</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a>
+<a class="post" href="https://x.com/tw_reporter_org/status/1395000391822053382" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#B45309" aria-hidden="true">T</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who">報導者</span><span class="handle" translate="no">@tw_reporter_org</span><span class="dotsep" aria-hidden="true">·</span><time>2021/5/19</time></span>
+    <span class="post-body">報導者：政府推出簡訊實聯制</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a></div></div>
+    
   </div>
 </article>
 
@@ -419,113 +451,122 @@
 
 
 <section class="panel" id="duty" role="tabpanel" aria-labelledby="tab-duty" tabindex="0">
-  <h2 class="core">義務論｜守原則：有些事不論結果多好都不該做</h2>
+  <aside class="bridge">
+    <p class="bridge-kicker">與 Klarna 的連結</p>
+    <p>Air Canada 的 AI 客服答錯，公司想說「是機器講的」；Klarna 同樣用 AI 回答退款、扣款和爭議，答錯時責任一樣不能推給機器。</p>
+  </aside>
+  <h2 class="theory">義務論｜守原則：有些事不論結果多好都不該做</h2>
   <div class="feed">
     
-<article class="card is-lead">
+<article class="card is-main">
+  
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-duty-1">
-      <span class="topline"><span class="badge badge-lead"><span class="dot" aria-hidden="true"></span>主推</span><span class="year">2016</span></span>
-      <span class="card-title">Apple 拒絕 FBI 解鎖 iPhone</span>
-      <span class="hook">2015 年聖貝納迪諾槍擊案後，FBI 取得法院命令，要求 Apple 寫一套程式解鎖兇手的 iPhone。</span>
+      <span class="topline"><span class="badge badge-main"><span class="pip" aria-hidden="true"></span>主案例</span><span class="year">2024</span></span>
+      <span class="card-title">Air Canada 聊天機器人答錯，公司想推給機器</span>
+      <span class="hook">2022 年 11 月，Jake Moffatt 的祖母過世。</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
   <div class="detail" id="detail-duty-1">
-    <div class="block">
-      <h4>故事簡介</h4>
-      <p>2015 年聖貝納迪諾槍擊案後，FBI 取得法院命令，要求 Apple 寫一套程式解鎖兇手的 iPhone。Tim Cook 發公開信拒絕，認為這等於為所有 iPhone 開後門。最後 FBI 找第三方破解了這支手機，並撤回訴訟。</p>
-    </div>
-    <div class="block">
-      <h4>爭議點</h4>
-      <p>協助辦案的「結果」很可能是好的，但 Apple 主張「保護所有用戶隱私」是不能打破的原則。原則和公共安全衝突時，企業該站在哪一邊？</p>
-    </div>
-    <div class="block">
-      <h4>為何選這個案例</h4>
-      <p>最能代表康德式的「無條件義務」，也是科技巨頭和政府正面衝突的經典案例，EMBA 同學多半記得。</p>
-    </div>
-    <div class="block back">
-      <h4>拉回 Klarna 的提問</h4>
-      <p>企業對員工和顧客有沒有不能違背的義務？例如誠實告知、不把人只當成可以刪減的成本？</p>
-    </div>
-    <div class="block">
-      <h4>X 代表貼文</h4>
-      <div class="xlinks">
-        <a class="xlink" href="https://x.com/itspauldaniels/status/2122563667677810814" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@itspauldaniels</span><span class="xdate">2026/11/17</span><span class="xdesc">回顧「分裂美國的那支手機」，303 讚</span><span class="sr-only">（在新分頁開啟）</span></a>
-      </div>
-    </div>
+    <div class="block"><h4>故事簡介</h4><p>2022 年 11 月，Jake Moffatt 的祖母過世。他在 Air Canada 官網問客服聊天機器人喪親優惠票價，機器人回答可以先買票，90 天內再申請差額退款；但官網另一頁其實寫著旅程結束後不受理。Moffatt 照機器人的說法買了來回機票，事後申請被拒。Air Canada 的客服人員後來也承認機器人用了「誤導的文字」。審理時，Air Canada 主張聊天機器人是「要為自己行為負責的獨立法律主體」。2024 年 2 月 14 日，卑詩省民事仲裁庭（BC Civil Resolution Tribunal）在 Moffatt v. Air Canada 一案判決：仲裁委員 Christopher Rivers 說這是「很不尋常的主張」，聊天機器人只是 Air Canada 網站的一部分，公司要為網站上所有資訊負責，判 Air Canada 過失不實陳述成立，賠償 650.88 加幣（加上利息和規費共約 812 加幣）。（來源：判決全文 <a class="src" href="https://decisions.civilresolutionbc.ca/crt/crtd/en/525448/1/document.do" target="_blank" rel="noopener noreferrer">decisions.civilresolutionbc.ca<span class="sr-only">（在新分頁開啟）</span></a>、CBC 報導 <a class="src" href="https://www.cbc.ca/news/canada/british-columbia/air-canada-chatbot-lawsuit-1.7116416" target="_blank" rel="noopener noreferrer">cbc.ca<span class="sr-only">（在新分頁開啟）</span></a>、Law360 Canada <a class="src" href="https://www.law360.ca/ca/articles/1804075/court-rejects-air-canada-s-remarkable-denial-of-liability-regarding-misinformation-by-its-chatbot" target="_blank" rel="noopener noreferrer">law360.ca<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
+    <div class="block"><h4>爭議點</h4><p>用義務論怎麼看？義務論不問「這樣做划不划算」，而是問「企業對顧客有哪些不能違背的承諾」。公司用 AI 代替真人回答，對顧客說的話就是公司說的話；誠實告知、為自己的說法負責，不會因為說話的是機器就消失。判決處理的是法律責任（過失不實陳述），課堂上要再往前一步問：就算法律沒有要求，企業有沒有道德上的義務？</p></div>
+    <div class="block"><h4>為何選它</h4><p>和 Klarna 幾乎一對一對照，同樣是 AI 客服答錯；「機器人說可以退，公司說不算」一句就懂。事實寫在判決書裡，來源最硬，也不敏感。</p></div>
+    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>討論問題：Klarna 的 AI 客服答錯了退款或扣款規則，責任在誰？顧客有沒有權利知道對面是 AI、有沒有權利要求轉給能負責的真人？就算真人覆核成本很高，哪些義務仍然不能省？</p></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/washingtonpost/status/1759812894319906899" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#0B6EAE" aria-hidden="true">W</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who">華盛頓郵報</span><span class="handle" translate="no">@washingtonpost</span><span class="dotsep" aria-hidden="true">·</span><time>2024/2/20</time></span>
+    <span class="post-body">華盛頓郵報報導仲裁庭判決</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a></div></div>
+    
   </div>
 </article>
 
-
 <article class="card">
+  
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-duty-2">
-      <span class="topline"><span class="badge badge-alt">備選</span><span class="year">2018</span></span>
-      <span class="card-title">Facebook × Cambridge Analytica 個資事件</span>
-      <span class="hook">一款心理測驗 App 蒐集了大量 Facebook 用戶及其好友的資料，Cambridge Analytica 拿來做選舉的精準政治廣告。</span>
+      <span class="topline"><span class="badge badge-alt">備選</span><span class="year">2016</span></span>
+      <span class="card-title">Apple 拒絕 FBI 解鎖 iPhone</span>
+      <span class="hook">2015 年聖貝納迪諾槍擊案後，2016/2/16 法院命令 Apple 提供技術協助，讓 FBI 能嘗試破解兇手使用的工作用 iPhone。</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
   <div class="detail" id="detail-duty-2">
-    <div class="block">
-      <h4>故事簡介</h4>
-      <p>一款心理測驗 App 蒐集了大量 Facebook 用戶及其好友的資料，Cambridge Analytica 拿來做選舉的精準政治廣告。2018 年被《衛報》記者 Carole Cadwalladr 等人揭露，祖克柏因此出席國會聽證。</p>
-    </div>
-    <div class="block">
-      <h4>爭議點</h4>
-      <p>用戶從頭到尾沒有知情同意。就算資料「只是拿來做行銷」，把人當成工具操弄，本身就違反了義務論的「人是目的，不是手段」。</p>
-    </div>
-    <div class="block">
-      <h4>為何選這個案例</h4>
-      <p>知情同意是義務論最直覺的切入點，而且這個事件影響至今。</p>
-    </div>
-    <div class="block back">
-      <h4>拉回 Klarna 的提問</h4>
-      <p>顧客知道自己面對的是 AI 嗎？有沒有選擇找真人的權利？</p>
-    </div>
-    <div class="block">
-      <h4>X 代表貼文</h4>
-      <div class="xlinks">
-        <a class="xlink" href="https://x.com/carolecadwalla/status/976539356654653440" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@carolecadwalla</span><span class="xdate">2018/3/21</span><span class="xdesc">揭露記者本人的貼文，3,025 讚</span><span class="sr-only">（在新分頁開啟）</span></a>
-      </div>
-    </div>
+    <div class="block"><h4>故事簡介</h4><p>2015 年聖貝納迪諾槍擊案後，2016/2/16 法院命令 Apple 提供技術協助，讓 FBI 能嘗試破解兇手使用的工作用 iPhone。Tim Cook 同日發公開信拒絕，認為這等於做出可以重複使用的後門。後來 FBI 透過第三方取得手機資料，司法部撤回要求法院強制 Apple 協助的聲請。（來源：Apple 公開信 <a class="src" href="https://www.apple.com/customer-letter/" target="_blank" rel="noopener noreferrer">apple.com<span class="sr-only">（在新分頁開啟）</span></a>、美國司法部監察長報告 <a class="src" href="https://oig.justice.gov/archives/press/2018/2018-03-27.pdf" target="_blank" rel="noopener noreferrer">oig.justice.gov<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
+    <div class="block"><h4>爭議點</h4><p>協助辦案的「結果」很可能是好的，但 Apple 主張「保護所有用戶隱私」是不能打破的原則。原則和公共安全衝突時，企業該站在哪一邊？</p></div>
+    <div class="block"><h4>為何選它</h4><p>最能代表康德式的「無條件義務」，也是科技巨頭和政府正面衝突的經典案例，EMBA 同學多半記得。</p></div>
+    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>企業對員工和顧客有沒有不能違背的義務？例如誠實告知、不把人只當成可以刪減的成本？</p></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/itspauldaniels/status/2122563667677810814" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#B0135E" aria-hidden="true">I</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who" translate="no">@itspauldaniels</span><span class="dotsep" aria-hidden="true">·</span><time>2026/11/17</time></span>
+    <span class="post-body">回顧「分裂美國的那支手機」</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a></div></div>
+    
   </div>
 </article>
 
-
-<article class="card">
+<article class="card is-ext">
+  
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-duty-3">
-      <span class="topline"><span class="badge badge-alt">備選</span><span class="year">2018</span></span>
-      <span class="card-title">Amazon AI 招募工具歧視女性</span>
-      <span class="hook">Amazon 用過去十年的履歷訓練 AI 篩選求職者，結果 AI 學會給女性求職者扣分，Amazon 後來停用了這個工具（2018 年 Reuters 報導）。</span>
+      <span class="topline"><span class="badge badge-ext">延伸閱讀</span><span class="year">2018</span></span>
+      <span class="card-title">Facebook × Cambridge Analytica 個資事件</span>
+      <span class="hook">2014 年，研究者 Aleksandr Kogan 開發的心理測驗 App，約有 27 萬人安裝，卻連帶取得他們好友的資料，總數最多約 8,700 萬人。</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
   <div class="detail" id="detail-duty-3">
-    <div class="block">
-      <h4>故事簡介</h4>
-      <p>Amazon 用過去十年的履歷訓練 AI 篩選求職者，結果 AI 學會給女性求職者扣分，Amazon 後來停用了這個工具（2018 年 Reuters 報導）。</p>
-    </div>
-    <div class="block">
-      <h4>爭議點</h4>
-      <p>沒有人故意歧視，但結果就是不公平。企業對「平等對待每個人」的義務，能不能用「是演算法做的」來推卸？</p>
-    </div>
-    <div class="block">
-      <h4>為何選這個案例</h4>
-      <p>和 HR 直接相關，學員都是主管，很有共鳴。</p>
-    </div>
-    <div class="block back">
-      <h4>拉回 Klarna 的提問</h4>
-      <p>決定哪些職位被 AI 取代的過程，對每個員工公平嗎？</p>
-    </div>
-    <div class="block">
-      <h4>X 代表貼文</h4>
-      <div class="xlinks">
-        <a class="xlink" href="https://x.com/CatherineAdenle/status/1051008424496922625" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@CatherineAdenle</span><span class="xdate">2018/10/13</span><span class="xdesc">轉述 Reuters 報導</span><span class="sr-only">（在新分頁開啟）</span></a>
-      </div>
-    </div>
+    <div class="block"><h4>故事簡介</h4><p>2014 年，研究者 Aleksandr Kogan 開發的心理測驗 App，約有 27 萬人安裝，卻連帶取得他們好友的資料，總數最多約 8,700 萬人。Cambridge Analytica 拿這些資料做選民分析和政治廣告。2018 年 3 月由《衛報》《觀察家報》和《紐約時報》揭露，吹哨者是 Christopher Wylie，祖克柏因此出席國會聽證。（來源：《衛報》2018/3/17 原始報導 <a class="src" href="https://www.theguardian.com/news/2018/mar/17/cambridge-analytica-facebook-influence-us-election" target="_blank" rel="noopener noreferrer">theguardian.com<span class="sr-only">（在新分頁開啟）</span></a>、Facebook 2018/4 說明約 8,700 萬人 <a class="src" href="https://about.fb.com/news/2018/04/restricting-data-access/" target="_blank" rel="noopener noreferrer">about.fb.com<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
+    <div class="block"><h4>爭議點</h4><p>絕大多數被取得資料的好友，從來沒有同意過；安裝測驗的人，也是在「學術研究」的說法下授權的。資料被拿去影響選舉，把人當成工具操弄，本身就違反了義務論的「人是目的，不是手段」。</p></div>
+    <div class="block"><h4>為何選它</h4><p>知情同意是義務論最直覺的切入點，而且這個事件影響至今。</p></div>
+    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>顧客知道自己面對的是 AI 嗎？有沒有選擇找真人的權利？</p></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/carolecadwalla/status/976539356654653440" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#0E6780" aria-hidden="true">C</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who">Carole Cadwalladr</span><span class="handle" translate="no">@carolecadwalla</span><span class="dotsep" aria-hidden="true">·</span><time>2018/3/21</time></span>
+    <span class="post-body">揭露記者 Carole Cadwalladr 本人的貼文</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a></div></div>
+    
+  </div>
+</article>
+
+<article class="card is-ext">
+  
+  <h3>
+    <button type="button" class="expander" aria-expanded="false" aria-controls="detail-duty-4">
+      <span class="topline"><span class="badge badge-ext">延伸閱讀</span><span class="year">2018</span></span>
+      <span class="card-title">Amazon AI 招募工具歧視女性</span>
+      <span class="hook">Amazon 約從 2014 年開始，用過去十年的履歷訓練 AI 替求職者評分，結果系統會替出現「women&#x27;s」字樣的履歷（例如「女子西洋棋社社長」）扣分。</span>
+      <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </h3>
+  <div class="detail" id="detail-duty-4">
+    <div class="block"><h4>故事簡介</h4><p>Amazon 約從 2014 年開始，用過去十年的履歷訓練 AI 替求職者評分，結果系統會替出現「women&#x27;s」字樣的履歷（例如「女子西洋棋社社長」）扣分。團隊約在 2017 年初解散，2018 年由 Reuters 揭露；Amazon 表示招募人員從未只靠這套工具做決定。（來源：Reuters 報導轉載 <a class="src" href="https://www.rte.ie/news/business/2018/1010/1002144-amazon-ai-bias/" target="_blank" rel="noopener noreferrer">rte.ie<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
+    <div class="block"><h4>爭議點</h4><p>沒有人故意歧視，但結果就是不公平。企業對「平等對待每個人」的義務，能不能用「是演算法做的」來推卸？</p></div>
+    <div class="block"><h4>為何選它</h4><p>和 HR 直接相關，學員都是主管，很有共鳴。</p></div>
+    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>如果 Klarna 用模型決定哪些客訴優先轉真人，結果某些顧客總是被留在自助流程裡，誰有義務發現、說明並修正？</p></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/CatherineAdenle/status/1051008424496922625" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#B45309" aria-hidden="true">C</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who" translate="no">@CatherineAdenle</span><span class="dotsep" aria-hidden="true">·</span><time>2018/10/13</time></span>
+    <span class="post-body">轉述 Reuters 報導</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a></div></div>
+    
   </div>
 </article>
 
@@ -534,116 +575,110 @@
 
 
 <section class="panel" id="virtue" role="tabpanel" aria-labelledby="tab-virtue" tabindex="0">
-  <h2 class="core">德性論｜看品格：一個好的企業、好的領導者會怎麼做？</h2>
+  <aside class="bridge">
+    <p class="bridge-kicker">與 Klarna 的連結</p>
+    <p>Leike 公開說出對公司不利的事，Klarna 執行長也公開承認「太看重成本、品質變差」；德性論問的是，願意說出對自己不利的真話，算不算好的領導品格。</p>
+  </aside>
+  <h2 class="theory">德性論｜看品格：一個好的企業、好的領導者會怎麼做？</h2>
   <div class="feed">
     
-<article class="card is-lead">
+<article class="card is-main">
+  
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-virtue-1">
-      <span class="topline"><span class="badge badge-lead"><span class="dot" aria-hidden="true"></span>主推</span><span class="year">2024</span></span>
-      <span class="card-title">OpenAI 安全團隊負責人 Jan Leike 離職</span>
-      <span class="hook">2024 年 5 月，OpenAI 超級對齊團隊負責人 Jan Leike 宣布離職，並在 X 上公開說明原因：他和公司領導層對核心優先順序的看法長期不同，「安全文化和流程已經讓位給閃亮的產品」。</span>
+      <span class="topline"><span class="badge badge-main"><span class="pip" aria-hidden="true"></span>主案例</span><span class="year">2024</span></span>
+      <span class="card-title">OpenAI 安全團隊共同負責人 Jan Leike 離職</span>
+      <span class="hook">2024 年 5 月，和 Ilya Sutskever 共同領導 OpenAI 超級對齊團隊的 Jan Leike 宣布離職，並在 X 上公開說明原因：他和公司領導層對核心優先順序的看法長期不同，「安全文化和流程已經讓位給閃亮的產品」。</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
   <div class="detail" id="detail-virtue-1">
-    <div class="block">
-      <h4>故事簡介</h4>
-      <p>2024 年 5 月，OpenAI 超級對齊團隊負責人 Jan Leike 宣布離職，並在 X 上公開說明原因：他和公司領導層對核心優先順序的看法長期不同，「安全文化和流程已經讓位給閃亮的產品」。這串貼文有數百萬次觀看。</p>
-    </div>
-    <div class="block">
-      <h4>爭議點</h4>
-      <p>德性論不問規則也不算效益，而是問「這是一家什麼樣的公司」。為了搶先推出產品而犧牲安全，是商業上的務實，還是品格的失守？</p>
-    </div>
-    <div class="block">
-      <h4>為何選這個案例</h4>
-      <p>主角親自在 X 上發聲，資料是第一手的；這也是 AI 產業最具代表性的「品格與誠信」事件。</p>
-    </div>
-    <div class="block back">
-      <h4>拉回 Klarna 的提問</h4>
-      <p>CEO 高調宣傳 AI 取代 700 人，後來又改口找回真人，這是誠信，還是炒作？一個有德性的領導者會怎麼說、怎麼做？</p>
-    </div>
-    <div class="block">
-      <h4>X 代表貼文</h4>
-      <div class="xlinks">
-        <a class="xlink" href="https://x.com/janleike/status/1790603862132596961" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@janleike</span><span class="xdate">2024/5/15</span><span class="xdesc">「I resigned」，約 680 萬觀看</span><span class="sr-only">（在新分頁開啟）</span></a>
-<a class="xlink" href="https://x.com/janleike/status/1791498178346549382" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@janleike</span><span class="xdate">2024/5/17</span><span class="xdesc">說明和領導層的分歧</span><span class="sr-only">（在新分頁開啟）</span></a>
-      </div>
-    </div>
+    <div class="block"><h4>故事簡介</h4><p>2024 年 5 月，和 Ilya Sutskever 共同領導 OpenAI 超級對齊團隊的 Jan Leike 宣布離職，並在 X 上公開說明原因：他和公司領導層對核心優先順序的看法長期不同，「安全文化和流程已經讓位給閃亮的產品」。這是他個人的說法，Sam Altman 和 Greg Brockman 當時也公開回應。（來源：OpenAI 成立團隊公告 <a class="src" href="https://openai.com/index/introducing-superalignment/" target="_blank" rel="noopener noreferrer">openai.com<span class="sr-only">（在新分頁開啟）</span></a>、Leike 本人貼文見下）</p></div>
+    <div class="block"><h4>爭議點</h4><p>德性論問的是「這是一家什麼樣的公司」。為了搶先推出產品而犧牲安全，是商業上的務實，還是品格的失守？</p></div>
+    <div class="block"><h4>為何選它</h4><p>主角親自在 X 上發聲，資料是第一手的；這也是 AI 產業具代表性的「品格與誠信」事件。</p></div>
+    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>執行長 2024 年高調宣傳 AI 做了 700 人的工作、顧客更喜歡 AI，2025 年又承認太看重成本、品質變差。主動認錯是誠實，還是事後補救？一個有德性的領導者會怎麼說、怎麼做？</p></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/janleike/status/1790603862132596961" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#0A7A4B" aria-hidden="true">J</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who">Jan Leike</span><span class="handle" translate="no">@janleike</span><span class="dotsep" aria-hidden="true">·</span><time>2024/5/15</time></span>
+    <span class="post-body">「I resigned」</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a>
+<a class="post" href="https://x.com/janleike/status/1791498178346549382" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#0A7A4B" aria-hidden="true">J</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who">Jan Leike</span><span class="handle" translate="no">@janleike</span><span class="dotsep" aria-hidden="true">·</span><time>2024/5/17</time></span>
+    <span class="post-body">說明和領導層的分歧</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a></div></div>
+    
   </div>
 </article>
 
-
 <article class="card">
+  
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-virtue-2">
-      <span class="topline"><span class="badge badge-alt">備選</span><span class="year">2018</span></span>
+      <span class="topline"><span class="badge badge-alt">備選</span><span class="year">2025</span></span>
+      <span class="card-title">Duolingo 執行長宣布「AI 優先」，又出面澄清</span>
+      <span class="hook">2025 年 4 月 28 日，Duolingo 執行長 Luis von Ahn 的全員信貼在公司官方 LinkedIn，宣布公司要「AI 優先」：會逐步停止用外包人員做 AI 能處理的工作；招募和績效考核都會看 AI 使用；團隊要先證明工作無法再自動化，才會給新人力。</span>
+      <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </h3>
+  <div class="detail" id="detail-virtue-2">
+    <div class="block"><h4>故事簡介</h4><p>2025 年 4 月 28 日，Duolingo 執行長 Luis von Ahn 的全員信貼在公司官方 LinkedIn，宣布公司要「AI 優先」：會逐步停止用外包人員做 AI 能處理的工作；招募和績效考核都會看 AI 使用；團隊要先證明工作無法再自動化，才會給新人力。信中也說「我們寧願帶著急迫感前進、偶爾在品質上吃點小虧」，以及「這不是用 AI 取代員工」。信件引發用戶和網友強烈反彈。2025 年 5 月下旬，他在 LinkedIn 補充說明：「我不認為 AI 會取代員工的工作（我們其實仍以同樣速度在招人）」，並承認發那封備忘錄時「沒有把話說清楚」。（來源：The Verge 備忘錄全文 <a class="src" href="https://www.theverge.com/news/657594/duolingo-ai-first-replace-contract-workers" target="_blank" rel="noopener noreferrer">theverge.com<span class="sr-only">（在新分頁開啟）</span></a>、Fortune 2025/5/24 <a class="src" href="https://fortune.com/2025/05/24/duolingo-ai-first-employees-ceo-luis-von-ahn/" target="_blank" rel="noopener noreferrer">fortune.com<span class="sr-only">（在新分頁開啟）</span></a>、Snopes 查核 <a class="src" href="https://www.snopes.com/fact-check/duolingo-ai-first/" target="_blank" rel="noopener noreferrer">snopes.com<span class="sr-only">（在新分頁開啟）</span></a>、TechRepublic（「沒有把話說清楚」原話）<a class="src" href="https://www.techrepublic.com/article/news-duolingo-ai-strategy-backlash/" target="_blank" rel="noopener noreferrer">techrepublic.com<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
+    <div class="block"><h4>爭議點</h4><p>領導者宣布重大轉變時，怎樣才算誠實？說「這不是要取代員工」，同時寫「逐步停止用外包」，是沒說清楚，還是避重就輕？事後承認沒講清楚，算不算有德性的表現？</p></div>
+    <div class="block"><h4>為何選它</h4><p>和 Klarna 的結構幾乎一樣：執行長高調宣告 AI 優先、外包人員先受影響、反彈後出面說明，大家也都用過 Duolingo。使用建議：可以在 Klarna 段落當 30 秒對照，不必獨立成段，避免和主案例講同一件事。</p></div>
+    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>討論問題：同樣宣告 AI 優先，Klarna 執行長事後說「品質變差」，Duolingo 執行長說「沒把話說清楚」，哪一種比較有德性？如果是你，第一次宣布時會怎麼說？</p></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/FortuneMagazine/status/1917599533686522189" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#0E6780" aria-hidden="true">F</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who">Fortune</span><span class="handle" translate="no">@FortuneMagazine</span><span class="dotsep" aria-hidden="true">·</span><time>2025/4/30</time></span>
+    <span class="post-body">Fortune：Duolingo 將逐步淘汰可由 AI 處理工作的外包人員</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a></div></div>
+    
+  </div>
+</article>
+
+<article class="card is-ext">
+  
+  <h3>
+    <button type="button" class="expander" aria-expanded="false" aria-controls="detail-virtue-3">
+      <span class="topline"><span class="badge badge-ext">延伸閱讀</span><span class="year">2018</span></span>
       <span class="card-title">Google 員工抗議軍方 AI 專案 Maven</span>
       <span class="hook">2018 年 Google 參與美國國防部用 AI 分析無人機影像的 Project Maven，數千名員工連署抗議，部分員工辭職。</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
-  <div class="detail" id="detail-virtue-2">
-    <div class="block">
-      <h4>故事簡介</h4>
-      <p>2018 年 Google 參與美國國防部用 AI 分析無人機影像的 Project Maven，數千名員工連署抗議，部分員工辭職。Google 最後決定合約到期後不再續約，並發布 AI 原則。2026 年 Google 又傳出和五角大廈洽談飛彈防禦的合作。</p>
-    </div>
-    <div class="block">
-      <h4>爭議點</h4>
-      <p>員工的道德勇氣能不能改變公司方向？八年後公司立場又變了，原則是真的，還是會隨著商業利益調整？</p>
-    </div>
-    <div class="block">
-      <h4>為何選這個案例</h4>
-      <p>示範德性論的「勇氣」和「言行一致」，而且有 2026 年的最新發展，很有反思空間。</p>
-    </div>
-    <div class="block back">
-      <h4>拉回 Klarna 的提問</h4>
-      <p>當公司決定用 AI 裁員時，內部有沒有人該站出來說話？</p>
-    </div>
-    <div class="block">
-      <h4>X 代表貼文</h4>
-      <div class="xlinks">
-        <a class="xlink" href="https://x.com/mer__edith/status/1008724675483095042" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@mer__edith</span><span class="xdate">2018/6</span><span class="xdesc">抗議發起人之一 Meredith Whittaker</span><span class="sr-only">（在新分頁開啟）</span></a>
-<a class="xlink" href="https://x.com/akishore/status/2116576748905373836" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@akishore</span><span class="xdate">2026/10/31</span><span class="xdesc">網友評論 Google 從抗議 Maven 走到參與飛彈防禦</span><span class="sr-only">（在新分頁開啟）</span></a>
-      </div>
-    </div>
-  </div>
-</article>
-
-
-<article class="card">
-  <h3>
-    <button type="button" class="expander" aria-expanded="false" aria-controls="detail-virtue-3">
-      <span class="topline"><span class="badge badge-alt">備選</span><span class="year">2025–2026</span></span>
-      <span class="card-title">AI washing：拿 AI 當裁員的包裝</span>
-      <span class="hook">越來越多企業把裁員的原因說成「投資 AI」，但實際上可能是業績壓力或外包。</span>
-      <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
-    </button>
-  </h3>
   <div class="detail" id="detail-virtue-3">
-    <div class="block">
-      <h4>故事簡介</h4>
-      <p>越來越多企業把裁員的原因說成「投資 AI」，但實際上可能是業績壓力或外包。連 OpenAI 的 Sam Altman 都公開提到「AI washing」，美國 SEC 也開始關注企業誇大 AI 的情況。</p>
-    </div>
-    <div class="block">
-      <h4>爭議點</h4>
-      <p>說「因為 AI」比說「因為沒達標」好聽，這是溝通技巧，還是不誠實？</p>
-    </div>
-    <div class="block">
-      <h4>為何選這個案例</h4>
-      <p>直接扣住「誠實」這個德性，又和 Klarna 同屬 AI 裁員議題，可以互相呼應。</p>
-    </div>
-    <div class="block back">
-      <h4>拉回 Klarna 的提問</h4>
-      <p>Klarna 說的 AI 成效，有多少是真的、多少是 IPO 前的故事？</p>
-    </div>
-    <div class="block">
-      <h4>X 代表貼文</h4>
-      <div class="xlinks">
-        <a class="xlink" href="https://x.com/factsforupsc/status/2025880646124814460" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@factsforupsc</span><span class="xdate">2026/2/23</span><span class="xdesc">Sam Altman 談 AI washing</span><span class="sr-only">（在新分頁開啟）</span></a>
-<a class="xlink" href="https://x.com/JadeCole2112/status/2119179641105625320" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@JadeCole2112</span><span class="xdate">2026/11/7</span><span class="xdesc">「很多裁員其實是 AI washing」，242 讚</span><span class="sr-only">（在新分頁開啟）</span></a>
-      </div>
-    </div>
+    <div class="block"><h4>故事簡介</h4><p>2018 年 Google 參與美國國防部用 AI 分析無人機影像的 Project Maven，數千名員工連署抗議，部分員工辭職。Google 最後決定合約到期後不再續約，並發布 AI 原則，承諾不把 AI 用在武器和監控。2025 年 2 月，Google 修改 AI 原則，刪除了這項承諾。2026 年 10 月，Bloomberg 報導 Google 正洽談參與美國「金穹」（Golden Dome）飛彈防禦計畫的資料安全工作，尚未簽約。（來源：Washington Post 2025/2/4 <a class="src" href="https://www.washingtonpost.com/technology/2025/02/04/google-ai-policies-weapons-harm/" target="_blank" rel="noopener noreferrer">washingtonpost.com<span class="sr-only">（在新分頁開啟）</span></a>、Bloomberg 2026/10 <a class="src" href="https://news.bloomberglaw.com/federal-contracting/alphabet-is-in-talks-to-join-trumps-golden-dome-defense-program" target="_blank" rel="noopener noreferrer">news.bloomberglaw.com<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
+    <div class="block"><h4>爭議點</h4><p>員工的道德勇氣能不能改變公司方向？七年後公司把承諾拿掉，原則是真的，還是會隨著商業利益調整？</p></div>
+    <div class="block"><h4>為何選它</h4><p>示範德性論的「勇氣」和「言行一致」，而且有 2025 到 2026 年的新發展，很有反思空間。</p></div>
+    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>第一線客服發現 AI 把部分沒解決的申訴算成「已解決」，主管收到這樣的意見，該怎麼回應？</p></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/mer__edith/status/1008724675483095042" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#0B6EAE" aria-hidden="true">M</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who">Meredith Whittaker</span><span class="handle" translate="no">@mer__edith</span><span class="dotsep" aria-hidden="true">·</span><time>2018/6</time></span>
+    <span class="post-body">抗議發起人之一 Meredith Whittaker</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a>
+<a class="post" href="https://x.com/akishore/status/2116576748905373836" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#9A1B40" aria-hidden="true">A</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who" translate="no">@akishore</span><span class="dotsep" aria-hidden="true">·</span><time>2026/10/31</time></span>
+    <span class="post-body">網友評論 Google 從抗議 Maven 走到洽談飛彈防禦的資料安全工作</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a></div></div>
+    
   </div>
 </article>
 
@@ -652,48 +687,51 @@
 
 
 <section class="panel" id="care" role="tabpanel" aria-labelledby="tab-care" tabindex="0">
-  <h2 class="core">關懷倫理｜顧關係：誰最脆弱？誰在照顧他們？</h2>
+  <aside class="bridge">
+    <p class="bridge-kicker">與 Klarna 的連結</p>
+    <p>照護機器人和 AI 客服都把一部分工作交給科技；關懷倫理問的是，交出去之後，誰負責察覺那個一直沒得到幫助的人。</p>
+  </aside>
+  <h2 class="theory">關懷倫理｜顧關係：誰最脆弱？誰在照顧他們？</h2>
   <div class="feed">
     
-<article class="card is-lead">
+<article class="card is-main">
+  
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-care-1">
-      <span class="topline"><span class="badge badge-lead"><span class="dot" aria-hidden="true"></span>主推</span><span class="year">2024–2026</span></span>
-      <span class="card-title">AI 聊天機器人與青少年自殺</span>
-      <span class="hook">2024 年，美國一名 14 歲少年長期和 Character.AI 的角色聊天機器人建立情感依附後自殺，母親提告；2025 年又有 16 歲少年 Adam Raine 的家長控告 OpenAI，指 ChatGPT 在對話中沒有適當介入。</span>
+      <span class="topline"><span class="badge badge-main"><span class="pip" aria-hidden="true"></span>主案例</span><span class="year">2012 年至今</span></span>
+      <span class="card-title">日本照護機器人與台灣超高齡社會</span>
+      <span class="hook">日本面對高齡化和照護人力短缺，經產省和厚勞省從 2012 年起訂定照護機器人的重點發展領域（例如移位輔助、行走輔助、如廁輔助、失智者看護），大力推動。</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
   <div class="detail" id="detail-care-1">
-    <div class="block">
-      <h4>故事簡介</h4>
-      <p>2024 年，美國一名 14 歲少年長期和 Character.AI 的角色聊天機器人建立情感依附後自殺，母親提告；2025 年又有 16 歲少年 Adam Raine 的家長控告 OpenAI，指 ChatGPT 在對話中沒有適當介入。美國國會也舉行了聽證會。</p>
-    </div>
-    <div class="block">
-      <h4>爭議點</h4>
-      <p>產品設計成讓人一直聊下去，對成年人可能只是黏著度，對孤單的青少年卻可能是危險。企業對最脆弱的使用者，負有什麼樣的照顧責任？</p>
-    </div>
-    <div class="block">
-      <h4>為何選這個案例</h4>
-      <p>這是 X 上吵得最兇的 AI 倫理議題之一，也最能點出關懷倫理的核心：關係、依賴、脆弱性。</p>
-    </div>
-    <div class="block back">
-      <h4>拉回 Klarna 的提問</h4>
-      <p>被 AI 取代的客服人員、不擅長用 AI 的年長顧客，有誰在照顧他們？</p>
-    </div>
-    <div class="block">
-      <h4>X 代表貼文</h4>
-      <div class="xlinks">
-        <a class="xlink" href="https://x.com/Raindropsmedia1/status/1960490997705527784" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@Raindropsmedia1</span><span class="xdate">2025/8</span><span class="xdesc">家長控告 ChatGPT</span><span class="sr-only">（在新分頁開啟）</span></a>
-<a class="xlink" href="https://x.com/LuizaJarovsky/status/1983630537680957506" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@LuizaJarovsky</span><span class="xdate">2025/10</span><span class="xdesc">AI 倫理學者評論 Character.AI 限制未成年使用</span><span class="sr-only">（在新分頁開啟）</span></a>
-<a class="xlink" href="https://x.com/TakeJusticeBack/status/2049957854132474042" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@TakeJusticeBack</span><span class="xdate">2026/4</span><span class="xdesc">參議院聽證會</span><span class="sr-only">（在新分頁開啟）</span></a>
-      </div>
-    </div>
+    <div class="block"><h4>故事簡介</h4><p>日本面對高齡化和照護人力短缺，經產省和厚勞省從 2012 年起訂定照護機器人的重點發展領域（例如移位輔助、行走輔助、如廁輔助、失智者看護），大力推動。人類學者 James Wright 在照護機構的田野研究發現，部分設備反而增加了設定、搬運和協調的工作，照服員陪伴長輩的時間不一定變多；但也有研究發現導入機器人和照服員留任率較高有關。結果因設備和指標而異，不能一概而論。台灣也走到同一個路口：內政部統計，2025 年 12 月底 65 歲以上人口占 20.06%，正式進入超高齡社會。（來源：厚勞省 <a class="src" href="https://www.mhlw.go.jp/stf/houdou/2r9852000002p8sl.html" target="_blank" rel="noopener noreferrer">mhlw.go.jp<span class="sr-only">（在新分頁開啟）</span></a>、Wright 著作 <a class="src" href="https://cornellpress.cornell.edu/book/9781501768040/robots-wont-save-japan/" target="_blank" rel="noopener noreferrer">cornellpress.cornell.edu<span class="sr-only">（在新分頁開啟）</span></a>、NBER 研究 <a class="src" href="https://www.nber.org/papers/w33116" target="_blank" rel="noopener noreferrer">nber.org<span class="sr-only">（在新分頁開啟）</span></a>、內政部 <a class="src" href="https://www.moi.gov.tw/News_Content.aspx?n=9&amp;s=335870" target="_blank" rel="noopener noreferrer">moi.gov.tw<span class="sr-only">（在新分頁開啟）</span></a>、中央社 <a class="src" href="https://www.cna.com.tw/news/ahel/202601090067.aspx" target="_blank" rel="noopener noreferrer">cna.com.tw<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
+    <div class="block"><h4>爭議點</h4><p>用關懷倫理怎麼看？關懷倫理重視具體的關係和個別需要，而不是一套通用規則。有的長輩希望移位時保有隱私，寧可用機器；有的需要熟悉的照服員安撫。設備省下的時間，有沒有真的回到被照顧的人身上？主管要聽取個別需要、配置能回應的人力，最後確認當事人真的得到幫助。可以搭配 Joan Tronto 的照顧四階段：關注、負責、能力、回應。</p></div>
+    <div class="block"><h4>為何選它</h4><p>同學家裡多半有長輩，切身相關；情緒負擔比自殺議題低，適合課堂討論；最直接挑戰「科技能取代照顧」的想像。</p></div>
+    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>討論問題：一位顧客偏好自己查帳，另一位已經第三次追問同一筆錯誤扣款。你怎麼讓前者保有自助的選擇，讓後者不必第四次從頭解釋？誰有權接案、修正帳務，並確認事情真的解決了？</p></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/WorldRobotDay/status/1618209068946165761" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#B45309" aria-hidden="true">W</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who" translate="no">@WorldRobotDay</span><span class="dotsep" aria-hidden="true">·</span><time>2023/1</time></span>
+    <span class="post-body">轉貼報導「照護機器人並沒有省下時間」</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a>
+<a class="post" href="https://x.com/beatrizbecerrab/status/994938856674754561" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#0E6780" aria-hidden="true">B</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who" translate="no">@beatrizbecerrab</span><span class="dotsep" aria-hidden="true">·</span><time>2018/5</time></span>
+    <span class="post-body">日本照護人力缺口</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a></div></div>
+    
   </div>
 </article>
 
-
 <article class="card">
+  
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-care-2">
       <span class="topline"><span class="badge badge-alt">備選</span><span class="year">2019 年至今</span></span>
@@ -703,90 +741,76 @@
     </button>
   </h3>
   <div class="detail" id="detail-care-2">
-    <div class="block">
-      <h4>故事簡介</h4>
-      <p>2019 年 10 月，台灣接連發生外送員車禍身亡事件，引發外送員勞動權益的討論。外送員被算成承攬而不是員工，派單和薪資由不透明的演算法決定，至今仍在爭取專法保障。</p>
-    </div>
-    <div class="block">
-      <h4>爭議點</h4>
-      <p>平台說自己只是「媒合」，但演算法實際上在指揮人。在演算法和人之間，誰該照顧外送員的安全？</p>
-    </div>
-    <div class="block">
-      <h4>為何選這個案例</h4>
-      <p>在地、天天看得到，可以把關懷倫理拉到台灣職場的真實場景。</p>
-    </div>
-    <div class="block back">
-      <h4>拉回 Klarna 的提問</h4>
-      <p>AI 化之後留下來的員工，被演算法管理得更緊，還是被照顧得更好？</p>
-    </div>
-    <div class="block">
-      <h4>X 代表貼文</h4>
-      <div class="xlinks">
-        <a class="xlink" href="https://x.com/divid1245/status/1450360840750698496" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@divid1245</span><span class="xdate">2021/10</span><span class="xdesc">評論外送員的低薪和不透明演算法</span><span class="sr-only">（在新分頁開啟）</span></a>
-<a class="xlink" href="https://x.com/scmanpower/status/1184186193904226304" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@scmanpower</span><span class="xdate">2019/10/15</span><span class="xdesc">勞動部認定外送員車禍事件</span><span class="sr-only">（在新分頁開啟）</span></a>
-      </div>
-    </div>
+    <div class="block"><h4>故事簡介</h4><p>2019 年 10 月，台灣接連發生外送員車禍身亡事件，引發外送員勞動權益的討論。平台主張和外送員是承攬關係，但勞動部當時針對死亡個案勞檢，依實際指揮監督情形認定雙方是僱傭關係。派單和報酬由不透明的演算法決定的問題持續被討論，《外送員權益保障及外送平臺管理法》已在 2026 年 7 月 21 日施行。（來源：勞動部外送平台專案檢查結果 <a class="src" href="https://www.mol.gov.tw/1607/1632/1640/12374/" target="_blank" rel="noopener noreferrer">mol.gov.tw<span class="sr-only">（在新分頁開啟）</span></a>、外送專法施行說明 <a class="src" href="https://www.mol.gov.tw/1607/1632/1633/95651/" target="_blank" rel="noopener noreferrer">mol.gov.tw<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
+    <div class="block"><h4>爭議點</h4><p>平台說自己只是「媒合」，但演算法實際上在指揮人。在演算法和人之間，誰該照顧外送員的安全？有了專法之後，誰注意到外送員累了、受傷了？</p></div>
+    <div class="block"><h4>為何選它</h4><p>在地、天天看得到，可以把關懷倫理拉到台灣職場的真實場景；Klarna 2025 年找的真人客服也是彈性上線的自由工作者，兩案可以對照。</p></div>
+    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>假設簡單案件都由 AI 完成，真人客服一天接到的幾乎都是憤怒、焦急的顧客，公司要怎麼知道他們還負荷得了？</p></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/divid1245/status/1450360840750698496" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#B45309" aria-hidden="true">D</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who" translate="no">@divid1245</span><span class="dotsep" aria-hidden="true">·</span><time>2021/10</time></span>
+    <span class="post-body">評論外送員的低薪和不透明演算法</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a>
+<a class="post" href="https://x.com/scmanpower/status/1184186193904226304" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#0E6780" aria-hidden="true">S</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who" translate="no">@scmanpower</span><span class="dotsep" aria-hidden="true">·</span><time>2019/10/15</time></span>
+    <span class="post-body">轉述勞動部認定外送員死亡個案為僱傭關係</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a></div></div>
+    
   </div>
 </article>
 
-
-<article class="card">
+<article class="card is-ext">
+  <div class="sensitive" role="note">
+  <strong>敏感內容</strong>
+  <p>（延伸閱讀使用提醒：以下案例涉及自殺議題，若在課堂使用，請先提醒內容敏感，不描述細節，最後附上台灣 1925 安心專線。）</p>
+  <a class="hotline" href="tel:1925">台灣 1925 安心專線</a>
+</div>
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-care-3">
-      <span class="topline"><span class="badge badge-alt">備選</span><span class="year">2018 年至今</span></span>
-      <span class="card-title">日本長照機器人</span>
-      <span class="hook">日本面對高齡化和照護人力短缺，大力推動照護機器人。</span>
+      <span class="topline"><span class="badge badge-ext">延伸閱讀</span><span class="year">2024–2026</span></span>
+      <span class="card-title">AI 聊天機器人與青少年自殺</span>
+      
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
   <div class="detail" id="detail-care-3">
-    <div class="block">
-      <h4>故事簡介</h4>
-      <p>日本面對高齡化和照護人力短缺，大力推動照護機器人。但後續研究發現，機器人並沒有真正替照護者省下時間，反而增加了額外的工作。</p>
-    </div>
-    <div class="block">
-      <h4>爭議點</h4>
-      <p>照顧能不能外包給機器？陪伴的「溫度」可以被取代嗎？</p>
-    </div>
-    <div class="block">
-      <h4>為何選這個案例</h4>
-      <p>最直接挑戰「科技能取代照顧」的想像，很適合拿來討論關懷倫理。</p>
-    </div>
-    <div class="block back">
-      <h4>拉回 Klarna 的提問</h4>
-      <p>客服本質上也是一種照顧關係。AI 可以回答問題，但能不能「照顧」顧客？</p>
-    </div>
-    <div class="block">
-      <h4>X 代表貼文</h4>
-      <div class="xlinks">
-        <a class="xlink" href="https://x.com/WorldRobotDay/status/1618209068946165761" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@WorldRobotDay</span><span class="xdate">2023/1</span><span class="xdesc">「照護機器人並沒有省下時間」</span><span class="sr-only">（在新分頁開啟）</span></a>
-<a class="xlink" href="https://x.com/beatrizbecerrab/status/994938856674754561" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@beatrizbecerrab</span><span class="xdate">2018/5</span><span class="xdesc">日本照護人力缺口</span><span class="sr-only">（在新分頁開啟）</span></a>
-      </div>
-    </div>
-  </div>
-</article>
-
-  </div>
-</section>
-
-<section class="panel" id="klarna" role="tabpanel" aria-labelledby="tab-klarna" tabindex="0">
-  <h2 class="core">主案例：Klarna（貫穿全報告）</h2>
-  <div class="feed">
+    <div class="block"><h4>故事簡介</h4><p>14 歲的美國少年 Sewell Setzer III 長期和 Character.AI 的角色聊天機器人建立情感依附，2024 年 2 月自殺；母親 Megan Garcia 2024 年 10 月提告，2026 年 1 月雙方告知法院原則上和解。2025 年 8 月，16 歲少年 Adam Raine 的家長控告 OpenAI，主張 ChatGPT 在對話中沒有適當介入（訴訟進行中，這是家長的主張）。2025 年 9 月 16 日美國參議院司法委員會舉行聽證，兩家家長出席作證；2026 年 4 月 30 日，同一委員會通過限制兒童使用 AI 陪伴機器人的法案。（來源：Garcia 案法院紀錄 <a class="src" href="https://storage.courtlistener.com/recap/gov.uscourts.flmd.433581/gov.uscourts.flmd.433581.242.0.pdf" target="_blank" rel="noopener noreferrer">storage.courtlistener.com<span class="sr-only">（在新分頁開啟）</span></a>、Raine 案起訴狀 <a class="src" href="https://www.law.berkeley.edu/wp-content/uploads/2025/09/Raine-v-OpenAI.pdf" target="_blank" rel="noopener noreferrer">law.berkeley.edu<span class="sr-only">（在新分頁開啟）</span></a>、參議院聽證 <a class="src" href="https://www.judiciary.senate.gov/committee-activity/hearings/examining-the-harm-of-ai-chatbots" target="_blank" rel="noopener noreferrer">judiciary.senate.gov<span class="sr-only">（在新分頁開啟）</span></a>、2026/4/30 委員會 <a class="src" href="https://www.blumenthal.senate.gov/newsroom/press/release/video-blumenthal-authored-bipartisan-bill-protecting-children-from-ai-chatbots-approved-by-senate-judiciary-committee" target="_blank" rel="noopener noreferrer">blumenthal.senate.gov<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
+    <div class="block"><h4>爭議點</h4><p>產品設計成讓人一直聊下去，對成年人可能只是黏著度，對孤單的青少年卻可能是危險。企業對最脆弱的使用者，負有什麼樣的照顧責任？家長和社會的責任又在哪裡？</p></div>
+    <div class="block"><h4>為何選它</h4><p>這是近年討論度很高的 AI 倫理議題，也最能點出關懷倫理的核心：關係、依賴、脆弱性。</p></div>
+    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>如果一位顧客的付款爭議快逾期了，卻一直被 AI 重複回答同一套說法，誰有責任察覺他已經無力自己解決？轉給真人之後，誰一路跟到解決？</p></div>
     
-<article class="card is-lead">
-  <div class="static-card">
-    <div class="topline"><span class="badge badge-lead"><span class="dot" aria-hidden="true"></span>主案例</span><span class="year">2024/5</span></div>
-    <h3 class="card-title">2024/5 CEO Sebastian Siemiatkowski 宣稱 AI 客服做了 700 名員工的工作</h3>
-    <a class="xlink" href="https://x.com/tsarnick/status/1790567056112517510" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@tsarnick</span><span class="xdate">2024/5</span><span class="sr-only">（在新分頁開啟）</span></a>
-  </div>
-</article>
-
-
-<article class="card is-lead">
-  <div class="static-card">
-    <div class="topline"><span class="badge badge-lead"><span class="dot" aria-hidden="true"></span>主案例</span><span class="year">2025 年</span></div>
-    <h3 class="card-title">2025 年改口，表示會讓顧客隨時都能找到真人客服</h3>
-    <a class="xlink" href="https://x.com/IndiaTodayTech/status/1930939066511446305" target="_blank" rel="noopener noreferrer"><svg class="xmark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="handle" translate="no">@IndiaTodayTech</span><span class="xdate">2025 年</span><span class="sr-only">（在新分頁開啟）</span></a>
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/Raindropsmedia1/status/1960490997705527784" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#0A7A4B" aria-hidden="true">R</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who" translate="no">@Raindropsmedia1</span><span class="dotsep" aria-hidden="true">·</span><time>2025/8</time></span>
+    <span class="post-body">家長控告 ChatGPT</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a>
+<a class="post" href="https://x.com/LuizaJarovsky/status/1983630537680957506" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#9A1B40" aria-hidden="true">L</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who" translate="no">@LuizaJarovsky</span><span class="dotsep" aria-hidden="true">·</span><time>2025/10</time></span>
+    <span class="post-body">AI 倫理學者評論 Character.AI 限制未成年使用</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a>
+<a class="post" href="https://x.com/TakeJusticeBack/status/2049957854132474042" target="_blank" rel="noopener noreferrer">
+  <span class="avatar" style="background:#4C3A8A" aria-hidden="true">T</span>
+  <span class="post-main">
+    <span class="post-head"><span class="who" translate="no">@TakeJusticeBack</span><span class="dotsep" aria-hidden="true">·</span><time>2026/4/30</time></span>
+    <span class="post-body">參議院司法委員會審議兒童 AI 聊天機器人法案時，議員點名受害青少年</span>
+    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
+  </span>
+</a></div></div>
+    <p class="hotline-end"><a class="hotline" href="tel:1925">台灣 1925 安心專線</a></p>
   </div>
 </article>
 
@@ -794,73 +818,95 @@
 </section>
 
     </main>
-    <footer class="site-footer">
-      <p>X 的搜尋只回傳部分樣本，貼文的按讚和觀看數是抓取當下的數字。</p>
-      <p>看完有想法，歡迎直接在 LINE 群組回饋。</p>
-      <p>頁面產生日期：2026-11-21</p>
-    </footer>
   </div>
-  <script>
-    (function () {
-      var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  <footer class="site-footer">
+    <p>延伸閱讀只放在閱讀頁，不上台。</p>
+  </footer>
+</div>
+<script>
 
-      function activate(tab, opts) {
-        opts = opts || {};
-        tabs.forEach(function (t) {
-          var on = t === tab;
-          t.setAttribute("aria-selected", on ? "true" : "false");
-          t.tabIndex = on ? 0 : -1;
-          var panel = document.getElementById(t.getAttribute("aria-controls"));
-          panel.classList.toggle("active", on);
-        });
-        if (opts.focus) tab.focus();
-        if (opts.hash) {
-          var id = tab.getAttribute("data-hash");
-          if (location.hash !== "#" + id) history.replaceState(null, "", "#" + id);
-        }
-        if (opts.scroll) {
-          var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-          document.getElementById(tab.getAttribute("aria-controls")).scrollIntoView({
-            block: "start",
-            behavior: reduce ? "auto" : "smooth"
-          });
-        }
-      }
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
 
-      tabs.forEach(function (tab, i) {
-        tab.addEventListener("click", function () {
-          activate(tab, { scroll: true, hash: true });
-        });
-        tab.addEventListener("keydown", function (e) {
-          var next = null;
-          if (e.key === "ArrowRight") next = tabs[(i + 1) % tabs.length];
-          else if (e.key === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
-          else if (e.key === "Home") next = tabs[0];
-          else if (e.key === "End") next = tabs[tabs.length - 1];
-          if (!next) return;
-          e.preventDefault();
-          activate(next, { focus: true, scroll: true, hash: true });
-        });
+  function systemDark() {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+  function resolved() {
+    var t = root.getAttribute("data-theme");
+    if (t === "light" || t === "dark") return t;
+    return systemDark() ? "dark" : "light";
+  }
+  function paintToggle() {
+    var mode = resolved();
+    btn.textContent = mode === "dark" ? "深色" : "淺色";
+    btn.setAttribute("aria-label", mode === "dark" ? "目前是深色，切換為淺色" : "目前是淺色，切換為深色");
+  }
+  btn.addEventListener("click", function () {
+    var next = resolved() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("emba-ethics-theme", next); } catch (e) {}
+    paintToggle();
+  });
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
+    var saved = null;
+    try { saved = localStorage.getItem("emba-ethics-theme"); } catch (e) {}
+    if (saved !== "light" && saved !== "dark") paintToggle();
+  });
+  paintToggle();
+
+  function activate(tab, opts) {
+    opts = opts || {};
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).classList.toggle("active", on);
+    });
+    if (opts.focus) tab.focus();
+    if (opts.hash) {
+      var id = tab.getAttribute("data-hash");
+      if (location.hash !== "#" + id) history.replaceState(null, "", "#" + id);
+    }
+    if (opts.scroll) {
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      document.getElementById(tab.getAttribute("aria-controls")).scrollIntoView({
+        block: "start",
+        behavior: reduce ? "auto" : "smooth"
       });
+    }
+  }
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener("click", function () { activate(tab, { scroll: true, hash: true }); });
+    tab.addEventListener("keydown", function (e) {
+      var next = null;
+      if (e.key === "ArrowRight") next = tabs[(i + 1) % tabs.length];
+      else if (e.key === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (e.key === "Home") next = tabs[0];
+      else if (e.key === "End") next = tabs[tabs.length - 1];
+      if (!next) return;
+      e.preventDefault();
+      activate(next, { focus: true, scroll: true, hash: true });
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".expander"), function (b) {
+    b.addEventListener("click", function () {
+      var open = b.getAttribute("aria-expanded") === "true";
+      b.setAttribute("aria-expanded", open ? "false" : "true");
+      document.getElementById(b.getAttribute("aria-controls")).classList.toggle("open", !open);
+    });
+  });
+  window.addEventListener("hashchange", function () {
+    var id = (location.hash || "").replace("#", "");
+    var tab = tabs.filter(function (t) { return t.getAttribute("data-hash") === id; })[0];
+    if (tab) activate(tab);
+  });
+  var initial = (location.hash || "").replace("#", "");
+  var start = tabs.filter(function (t) { return t.getAttribute("data-hash") === initial; })[0] || tabs[0];
+  activate(start);
+})();
 
-      Array.prototype.forEach.call(document.querySelectorAll(".expander"), function (btn) {
-        btn.addEventListener("click", function () {
-          var open = btn.getAttribute("aria-expanded") === "true";
-          btn.setAttribute("aria-expanded", open ? "false" : "true");
-          document.getElementById(btn.getAttribute("aria-controls")).classList.toggle("open", !open);
-        });
-      });
-
-      window.addEventListener("hashchange", function () {
-        var id = (location.hash || "").replace("#", "");
-        var tab = tabs.filter(function (t) { return t.getAttribute("data-hash") === id; })[0];
-        if (tab) activate(tab, { scroll: false, hash: false });
-      });
-
-      var initial = (location.hash || "").replace("#", "");
-      var start = tabs.filter(function (t) { return t.getAttribute("data-hash") === initial; })[0] || tabs[0];
-      activate(start, { scroll: false, hash: false });
-    })();
-  </script>
+</script>
 </body>
 </html>
