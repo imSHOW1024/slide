@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="主案例：Klarna 的 AI 客服做了相當於 700 人的工作，公司該如何決定哪些案件要由真人負責？（貫穿全報告）">
-<title>四個倫理視角：引導案例卡片（主推＋備選）</title>
+<meta name="description" content="主案例：橫店π 的採購規格要建「數字群演」授權資料集。假如劇組下次想再用同一張臉，誰決定、誰領酬？（貫穿全報告；「數位分身」是課堂延伸）">
+<title>橫店π：AI 影視的四個倫理視角</title>
 <script>
 (function () {
   try {
@@ -20,66 +20,34 @@
 <style>
 
 :root {
-  --bg: #FFFFFF;
-  --text: #0F1419;
-  --muted: #536471;
-  --line: #EFF3F4;
-  --hover: rgba(15, 20, 25, .04);
-  --accent: #1D9BF0;
-  --accent-soft: #E8F5FD;
-  --bar: rgba(255, 255, 255, .94);
-  --card: #FFFFFF;
-  --max: 600px;
-  --bar-h: 53px;
+  --bg: #FFFFFF; --text: #0F1419; --muted: #536471; --line: #EFF3F4;
+  --hover: rgba(15, 20, 25, .04); --accent: #1D9BF0; --accent-soft: #E8F5FD;
+  --bar: rgba(255, 255, 255, .94); --card: #FFFFFF; --max: 600px; --bar-h: 53px;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #000000;
-    --text: #E7E9EA;
-    --muted: #71767B;
-    --line: #2F3336;
-    --hover: rgba(231, 233, 234, .08);
-    --accent: #1D9BF0;
-    --accent-soft: rgba(29, 155, 240, .16);
-    --bar: rgba(0, 0, 0, .9);
-    --card: #000000;
-    color-scheme: dark;
+    --bg: #000000; --text: #E7E9EA; --muted: #71767B; --line: #2F3336;
+    --hover: rgba(231, 233, 234, .08); --accent: #1D9BF0; --accent-soft: rgba(29, 155, 240, .16);
+    --bar: rgba(0, 0, 0, .9); --card: #000000; color-scheme: dark;
   }
 }
 :root[data-theme="light"] {
-  --bg: #FFFFFF;
-  --text: #0F1419;
-  --muted: #536471;
-  --line: #EFF3F4;
-  --hover: rgba(15, 20, 25, .04);
-  --accent: #1D9BF0;
-  --accent-soft: #E8F5FD;
-  --bar: rgba(255, 255, 255, .94);
-  --card: #FFFFFF;
-  color-scheme: light;
+  --bg: #FFFFFF; --text: #0F1419; --muted: #536471; --line: #EFF3F4;
+  --hover: rgba(15, 20, 25, .04); --accent: #1D9BF0; --accent-soft: #E8F5FD;
+  --bar: rgba(255, 255, 255, .94); --card: #FFFFFF; color-scheme: light;
 }
 :root[data-theme="dark"] {
-  --bg: #000000;
-  --text: #E7E9EA;
-  --muted: #71767B;
-  --line: #2F3336;
-  --hover: rgba(231, 233, 234, .08);
-  --accent: #1D9BF0;
-  --accent-soft: rgba(29, 155, 240, .16);
-  --bar: rgba(0, 0, 0, .9);
-  --card: #000000;
-  color-scheme: dark;
+  --bg: #000000; --text: #E7E9EA; --muted: #71767B; --line: #2F3336;
+  --hover: rgba(231, 233, 234, .08); --accent: #1D9BF0; --accent-soft: rgba(29, 155, 240, .16);
+  --bar: rgba(0, 0, 0, .9); --card: #000000; color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 html, body { margin: 0; background: var(--bg); color: var(--text); }
 body {
   font-family: Inter, "Noto Sans TC", "PingFang TC", "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif;
-  font-size: 16px;
-  line-height: 1.65;
-  line-break: strict;
-  overflow-wrap: anywhere;
+  font-size: 16px; line-height: 1.65; line-break: strict; overflow-wrap: anywhere;
 }
 button, a { -webkit-tap-highlight-color: transparent; }
 :focus { outline: none; }
@@ -114,17 +82,21 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 #theme-toggle:hover { background: var(--hover); }
 .intro { padding: 18px 16px 6px; }
-h1 {
-  margin: 0; font-size: 23px; line-height: 1.35; font-weight: 800; letter-spacing: -0.3px;
-}
+h1 { margin: 0; font-size: 23px; line-height: 1.35; font-weight: 800; letter-spacing: -0.3px; }
 .fine { margin: 10px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.65; }
+.stance, .sensitive {
+  margin: 14px 16px 0; padding: 14px 16px; border-radius: 16px;
+  border: 2px solid var(--text); background: var(--hover);
+}
+.stance strong, .sensitive strong { display: block; margin: 0 0 6px; font-size: 15px; }
+.stance p, .sensitive p { margin: 0; color: var(--text); font-size: 15px; line-height: 1.65; }
+.card .sensitive { margin: 12px 12px 0; }
 .feature, .card {
   margin: 12px 16px; border: 1px solid var(--line); border-radius: 16px; background: var(--card);
 }
 .feature { margin-top: 14px; }
 .feature h2, .card h3 { margin: 0; font-size: inherit; font-weight: inherit; line-height: inherit; }
 .feature, .card.is-main { box-shadow: inset 3px 0 0 var(--accent); }
-.keep { white-space: nowrap; }
 .expander {
   display: grid; grid-template-columns: minmax(0, 1fr) auto;
   column-gap: 8px; row-gap: 6px;
@@ -133,10 +105,8 @@ h1 {
   font: inherit; text-align: left; cursor: pointer;
 }
 .expander:hover { background: var(--hover); }
-.topline { grid-column: 1; display: flex; align-items: center; gap: 8px; min-width: 0; }
-.feature-title, .card-title {
-  grid-column: 1; font-weight: 800; letter-spacing: -0.2px; line-height: 1.4;
-}
+.topline { grid-column: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-width: 0; }
+.feature-title, .card-title { grid-column: 1; font-weight: 800; letter-spacing: -0.2px; line-height: 1.4; }
 .feature-title { font-size: 18px; }
 .card-title { font-size: 16.5px; }
 .hook { grid-column: 1; color: var(--muted); font-size: 15px; font-weight: 400; line-height: 1.6; }
@@ -151,19 +121,20 @@ h1 {
 }
 .badge-main { color: var(--text); background: var(--accent-soft); box-shadow: inset 0 0 0 1px var(--accent); }
 .badge-alt, .badge-ext { color: var(--muted); background: transparent; box-shadow: inset 0 0 0 1px var(--line); }
+.badge-sim { color: var(--text); background: transparent; box-shadow: inset 0 0 0 1.5px var(--text); }
 .pip { width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; background: var(--accent); }
 .year { color: var(--muted); font-size: 13px; font-weight: 500; }
+.simline { margin: 0 0 10px; }
 html.js .detail { display: none; }
 html.js .detail.open { display: block; }
 .detail { padding: 0 14px 8px; }
+.feature-src { padding: 0 14px 14px; font-size: 14px; line-height: 1.6; color: var(--muted); }
 .k-sec { padding: 14px 0; border-top: 1px solid var(--line); }
-.k-sec h3, .block h4, .lens h4, .stake h4 {
+.k-sec h3, .block h4, .lens h4 {
   margin: 0 0 8px; font-size: 13px; font-weight: 800; letter-spacing: .04em; color: var(--muted);
 }
-.lens h4, .stake h4 { color: var(--text); font-size: 15px; letter-spacing: 0; }
-.k-sec p, .block p, .lens p, .stake p, .points, .timeline, .decision {
-  margin: 0; font-size: 15.5px; line-height: 1.7;
-}
+.lens h4 { color: var(--text); font-size: 15px; letter-spacing: 0; }
+.k-sec p, .block p, .lens p, .points, .timeline, .decision { margin: 0; font-size: 15.5px; line-height: 1.7; }
 .points, .timeline { padding: 0; list-style: none; }
 .points > li, .timeline > li { margin: 0 0 12px; }
 .points > li:last-child, .timeline > li:last-child { margin-bottom: 0; }
@@ -173,24 +144,14 @@ html.js .detail.open { display: block; }
   content: ""; position: absolute; left: -19px; top: .55em;
   width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
 }
-.timeline ul, .points ul { margin: 8px 0 0; padding-left: 1.1em; }
-.timeline ul li, .points ul li { margin: 0 0 6px; }
-.lens, .stake { padding: 12px 0; border-top: 1px solid var(--line); }
-.lens:first-child, .stake:first-child { border-top: 0; padding-top: 0; }
+.lens { padding: 12px 0; border-top: 1px solid var(--line); }
+.lens:first-child { border-top: 0; padding-top: 0; }
 .decision-lead, .decision-next { margin: 0 0 10px; font-size: 15.5px; line-height: 1.7; }
 .decision { margin: 0 0 12px; padding-left: 1.3em; }
 .decision li { margin: 0 0 8px; padding-left: 4px; }
-.decision-next { color: var(--text); }
-.sources { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.sources li {
-  display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: baseline;
-  padding: 10px 12px; border: 1px solid var(--line); border-radius: 16px;
-}
 .src { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 .block { margin: 0 0 14px; }
-.block.back {
-  padding: 12px 14px; border-radius: 16px; background: var(--hover);
-}
+.block.back { padding: 12px 14px; border-radius: 16px; background: var(--hover); }
 .posts { display: flex; flex-direction: column; gap: 10px; }
 .post {
   display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 10px;
@@ -205,25 +166,24 @@ html.js .detail.open { display: block; }
 .post-main { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .post-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 6px; min-width: 0; }
 .who { font-weight: 800; font-size: 15px; }
-.handle, time, .dotsep { color: var(--muted); font-size: 14px; font-weight: 400; }
-.post-body { font-size: 15px; line-height: 1.5; color: var(--text); }
-.post-go {
-  display: inline-flex; align-items: center; gap: 6px; margin-top: 6px;
-  color: var(--accent); font-size: 13px; font-weight: 700;
-}
+.handle, time, .dotsep { color: var(--muted); font-size: 14px; }
+.post-body { font-size: 15px; line-height: 1.55; }
+.post-go { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; color: var(--accent); font-size: 13px; font-weight: 700; }
 .xmark { display: block; }
+.rumor { border: 2px solid #F4212E; border-radius: 16px; padding: 12px; }
+.rumor-flag {
+  display: inline-flex; margin: 0 0 8px; padding: 4px 10px; border-radius: 999px;
+  background: #F4212E; color: #0F1419; font-size: 13px; font-weight: 800;
+}
+.rumor-note { margin-top: 8px; font-size: 14px; line-height: 1.6; }
 .play {
   display: inline-flex; margin-top: 4px; padding: 10px 14px; border-radius: 999px;
   border: 1px solid var(--accent); color: var(--text); font-weight: 800; text-decoration: none;
 }
-.play:hover { background: var(--hover); }
+.play:hover, .hotline:hover { background: var(--hover); }
 .hint { margin: -4px 0 8px; color: var(--muted); font-size: 13px; }
-.tail { margin: 8px 0 0; }
 .warmup { margin-top: 8px; }
-.warmup > h2, .theory {
-  margin: 0; padding: 16px 16px 0; font-size: 16px; line-height: 1.45; font-weight: 800;
-}
-.warmup > h2 { padding-bottom: 0; }
+.warmup > h2, .theory { margin: 0; padding: 16px 16px 0; font-size: 16px; line-height: 1.45; font-weight: 800; }
 .tabbar {
   position: sticky; top: calc(var(--bar-h) + env(safe-area-inset-top)); z-index: 20;
   background: var(--bar);
@@ -250,30 +210,23 @@ html.js .panel.active { display: block; }
 .bridge { margin: 12px 16px 0; padding: 12px 14px; border-radius: 16px; background: var(--accent-soft); }
 .bridge-kicker { margin: 0 0 4px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: var(--text); }
 .bridge p { margin: 0; font-size: 15px; line-height: 1.6; }
-.sensitive {
-  margin: 12px 12px 0; padding: 12px 14px; border-radius: 16px; border: 1px solid var(--line);
-}
-.sensitive strong { display: block; margin-bottom: 4px; font-size: 13px; }
-.sensitive p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
 .hotline {
   display: inline-flex; margin-top: 10px; padding: 8px 12px; border-radius: 999px;
   border: 1px solid var(--text); color: var(--text); font-weight: 800; text-decoration: none; font-size: 14px;
 }
-.hotline:hover { background: var(--hover); }
 .hotline-end { margin: 4px 0 12px; }
 .site-footer {
-  padding: 8px 16px calc(28px + env(safe-area-inset-bottom));
-  color: var(--muted); font-size: 13px; line-height: 1.6;
+  padding: 16px 16px calc(28px + env(safe-area-inset-bottom));
   border-top: 1px solid var(--line); margin-top: 8px;
 }
+.site-footer p { margin: 0 0 8px; font-size: 15px; line-height: 1.6; }
 @media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
 @media (min-width: 760px) {
   .shell { border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
   h1 { font-size: 26px; }
   .intro { padding: 22px 20px 8px; }
-  .feature, .card, .bridge { margin-left: 20px; margin-right: 20px; }
-  .warmup > h2, .theory { padding-left: 20px; padding-right: 20px; }
-  .site-footer { padding-left: 20px; padding-right: 20px; }
+  .feature, .card, .bridge, .stance { margin-left: 20px; margin-right: 20px; }
+  .warmup > h2, .theory, .site-footer { padding-left: 20px; padding-right: 20px; }
 }
 
 </style>
@@ -282,47 +235,38 @@ html.js .panel.active { display: block; }
 <a class="skip" href="#tabs">跳到四個視角</a>
 <div class="shell">
   <div class="appbar">
-    <p class="appbar-title">引導案例</p>
+    <p class="appbar-title">橫店π</p>
     <button type="button" id="theme-toggle">淺色</button>
   </div>
   <div class="intro">
-    <h1>四個倫理視角：引導案例卡片<span class="keep">（主推＋備選）</span></h1>
-    <p class="fine">主案例：Klarna 的 AI 客服做了相當於 700 人的工作，公司該如何決定哪些案件要由真人負責？（貫穿全報告）</p><p class="fine">每張卡片包含：故事簡介／爭議點／為何選它／拉回 Klarna 的提問／X 代表貼文</p><p class="fine">標籤：［主推］上台用；［備選］主推不適用時替換；［延伸］［延伸閱讀］只放在閱讀頁，不上台。</p><p class="fine">資料說明：每則事實都附原始來源；X 貼文只當輿論佐證，不當事實證據。標「公司自述」的數字是 Klarna 自己公布的，沒有第三方驗證。</p>
+    <h1>橫店π：AI 影視的四個倫理視角</h1>
+    <p class="fine">四個倫理視角：引導案例卡片（主推＋備選）</p><p class="fine">主案例：橫店π 的採購規格要建「數字群演」授權資料集。假如劇組下次想再用同一張臉，誰決定、誰領酬？（貫穿全報告；「數位分身」是課堂延伸）</p><p class="fine">每張卡片包含：故事簡介／爭議點／為何選它／拉回橫店π 的提問／X 代表貼文</p><p class="fine">標籤：［主推］上台用；［備選］主推不適用時替換；［延伸］［延伸閱讀］只放在閱讀頁，不上台。</p><p class="fine">資料說明：截至 2026-11-22。招標規格、公司自述、當事人訪談各附出處。X 貼文只當輿論佐證。課堂假設標為「教學模擬」。</p>
   </div>
+  <aside class="stance" role="note">
+    <strong>敏感與立場提示</strong>
+    <p>本案只從商業倫理角度討論，不做政治評論；「15 萬群演被餵給 AI」一律說成「已被否認的傳言」；影片當事人與素人不露臉、不截圖點名；影片 10:00 起談到焦慮與失眠，播放前請先提醒。</p>
+  </aside>
   
-<article class="feature" id="klarna">
+<article class="feature" id="core">
   <h2>
-    <button type="button" class="expander feature-btn" aria-expanded="false" aria-controls="klarna-detail">
+    <button type="button" class="expander feature-btn" aria-expanded="false" aria-controls="core-detail">
       <span class="topline"><span class="badge badge-main"><span class="pip" aria-hidden="true"></span>主案例</span><span class="year">貫穿全報告</span></span>
-      <span class="feature-title">Klarna 的 AI 客服做了相當於 700 名全職客服的工作量。效率提高之後，公司該如何決定哪些案件要由真人負責？</span>
+      <span class="feature-title">橫店π 的標書要求先取得群演授權，也明寫要減少實拍群演的調度成本。假如一位演員今天同意入鏡，明天另一個劇組要用他的數位分身，還要再問他、再付他一次錢嗎？</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h2>
-  <div class="detail" id="klarna-detail">
-    <section class="k-sec"><h3>Klarna 是誰</h3><ul class="points"><li>瑞典的「先買後付」（BNPL）金融科技公司，2005 年成立，2024 年自稱全球有 1.5 億名活躍消費者（公司自述）。2023 年和 OpenAI 合作，執行長 Sebastian Siemiatkowski 說想當 OpenAI「最喜歡的白老鼠」。（來源：Bloomberg 2025/5/8 報導，存檔 <a class="src" href="https://archive.is/lRplR" target="_blank" rel="noopener noreferrer">archive.is<span class="sr-only">（在新分頁開啟）</span></a>）</li><li>2021 年估值最高約 456 億美元，2022 年募資時跌到約 67 億美元，因此有很強的降成本壓力。（來源：Reuters 2025/3/24 <a class="src" href="https://www.reuters.com/technology/klarna-ipo-filing-spurs-hope-british-fintech-listings-2025-03-24/" target="_blank" rel="noopener noreferrer">reuters.com<span class="sr-only">（在新分頁開啟）</span></a>）</li></ul></section>
-<section class="k-sec"><h3>時間軸</h3><ul class="timeline"><li>2023 年起：Klarna 停止招募新人，靠自然離職縮編，同時擴大使用 AI。執行長說公司自然離職率每年約 15–20%。（來源：CNBC 2025/5/14 <a class="src" href="https://www.cnbc.com/2025/05/14/klarna-ceo-says-ai-helped-company-shrink-workforce-by-40percent.html" target="_blank" rel="noopener noreferrer">cnbc.com<span class="sr-only">（在新分頁開啟）</span></a>）</li><li>2024/2/27：Klarna 發新聞稿公布 AI 客服上線第一個月的成績（公司自述）：<ul><li>處理 230 萬則對話，約占客服聊天的三分之二。</li><li>工作量「相當於 700 名全職客服」。這是工作量的換算，不是裁員人數。</li><li>顧客滿意度和真人客服相當；重複詢問減少 25%。</li><li>顧客解決問題的時間，從過去的 11 分鐘縮短到 2 分鐘以內。</li><li>預估 2024 年為公司帶來約 4,000 萬美元的獲利改善。</li><li>新聞稿同時寫明：顧客如果比較想找真人，仍然可以選擇真人客服。</li></ul><p class="tail">（來源：Klarna 新聞稿 <a class="src" href="https://www.prnewswire.com/news-releases/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month-302072740.html" target="_blank" rel="noopener noreferrer">prnewswire.com<span class="sr-only">（在新分頁開啟）</span></a>）</p></li><li>2024/5：執行長的受訪片段在 X 上流傳，他說生成式 AI 已經自動化了 700 名客服的工作，而且顧客比較喜歡和 AI 互動。（來源：X 貼文影片 <a class="src" href="https://x.com/tsarnick/status/1790567056112517510" target="_blank" rel="noopener noreferrer">x.com<span class="sr-only">（在新分頁開啟）</span></a>）</li><li>2024/12：公司對 Bloomberg 表示，過去一年沒有招募新的員工。（來源：Fortune 2025/5/9 引述 <a class="src" href="https://fortune.com/2025/05/09/klarna-ai-humans-return-on-investment/" target="_blank" rel="noopener noreferrer">fortune.com<span class="sr-only">（在新分頁開啟）</span></a>）</li><li>2025/3/14：向美國證管會（SEC）遞件申請在紐約證交所上市。公開說明書寫到，全職員工從 2022 年底的 5,527 人降到 2024 年底的 3,422 人，公司把原因歸於運用 AI 和整體縮編。（來源：CNBC 2025/3/14 <a class="src" href="https://www.cnbc.com/2025/03/14/buy-now-pay-later-lender-klarna-files-for-us-ipo.html" target="_blank" rel="noopener noreferrer">cnbc.com<span class="sr-only">（在新分頁開啟）</span></a>、CNBC 2025/5/14 同上）</li><li>2025/4/4：因為美國關稅政策造成市場動盪，暫緩上市計畫。（來源：Reuters <a class="src" href="https://www.reuters.com/technology/klarna-pauses-us-ipo-plans-amid-tariff-turmoil-wsj-reports-2025-04-04/" target="_blank" rel="noopener noreferrer">reuters.com<span class="sr-only">（在新分頁開啟）</span></a>）</li><li>2025/5/8：執行長接受 Bloomberg 專訪，原話是：「很遺憾，成本似乎成了規劃時過於主導的評估因素，結果就是品質變差。真正投資在真人客服的品質，才是我們的未來。」他說要讓顧客「永遠都能選擇找真人」，並試辦一種「類似 Uber 的模式」：遠距、自己選時段上線的客服人員，起步只有 2 人，目標是逐步取代目前外包的「幾千名」真人客服。（來源：Bloomberg 存檔 <a class="src" href="https://archive.is/lRplR" target="_blank" rel="noopener noreferrer">archive.is<span class="sr-only">（在新分頁開啟）</span></a>、Fortune 同上）</li><li>同一時期，Klarna 發言人對 Fortune 說：公司「仍然是 AI 優先」，離職員工依然不補人，只有外包客服部門例外招募自由工作者。（來源：Fortune 同上）</li><li>2025/5/14：執行長在 CNBC 說，公司已經從約 5,000 人縮到將近 3,000 人，原因包括 AI 和自然離職，不只是 AI。（來源：CNBC 同上）</li><li>2025/7/16：Klarna 回覆 SEC 的提問。SEC 引用媒體報導，問 AI 服務「品質較低」的說法。Klarna 的書面說明是：<ul><li>執行長談的是試辦「高技能的自由工作者」來提升「真人客服」的品質，和 AI 客服品質無關，Forbes 的報導有誤。</li><li>AI 客服在截至 2025/3/31 的 12 個月處理了 66% 的客服聊天，工作量「相當於 700 多名全職客服」。這個數字是用 AI 上線後、全職客服每月處理的聊天和電話平均減少量估算出來的。</li><li>2024 年約省下 3,900 萬美元成本；AI 處理的對話平均 2 分鐘解決，真人客服 2024 年平均 12 分鐘。</li><li>公司說自己採取「雙軌」做法：大規模用 AI，同時提供高品質的真人服務，所有顧客都可以選真人。</li></ul><p class="tail">（來源：Klarna 給 SEC 的書面回覆 <a class="src" href="https://www.sec.gov/Archives/edgar/data/2003292/000162828025034998/filename1.htm" target="_blank" rel="noopener noreferrer">sec.gov<span class="sr-only">（在新分頁開啟）</span></a>）</p></li><li>2025/9/10：在紐約證交所掛牌（代號 KLAR），每股 40 美元，募得約 13.7 億美元，估值約 151 億美元。同一天，執行長對 Reuters 說公司可能在用 AI 降成本上走得太快，接下來會把重點放在改善服務和產品。（來源：Klarna 公告 <a class="src" href="https://investors.klarna.com/News--Events/news/news-details/2025/Klarna-Announces-Pricing-of-its-Initial-Public-Offering/default.aspx" target="_blank" rel="noopener noreferrer">investors.klarna.com<span class="sr-only">（在新分頁開啟）</span></a>、Reuters <a class="src" href="https://www.reuters.com/business/finance/klarna-raises-137-billion-us-ipo-boosting-fintech-hopefuls-2025-09-09/" target="_blank" rel="noopener noreferrer">reuters.com<span class="sr-only">（在新分頁開啟）</span></a>、Reuters <a class="src" href="https://www.reuters.com/business/swedens-klarna-shifts-ai-focus-cost-cuts-growth-2025-09-10/" target="_blank" rel="noopener noreferrer">reuters.com<span class="sr-only">（在新分頁開啟）</span></a>）</li><li>2025/11/18：公司說員工數已從 5,527 人降到 2,907 人，主要靠自然離職；AI 客服的工作量換算提高到相當於 853 名全職人員；省下的成本讓員工平均薪資提高近 60%（公司自述）。（來源：The Guardian <a class="src" href="https://www.theguardian.com/business/2025/nov/18/buy-now-pay-later-klarna-ai-helped-halve-staff-boost-pay" target="_blank" rel="noopener noreferrer">theguardian.com<span class="sr-only">（在新分頁開啟）</span></a>）</li></ul></section>
-<section class="k-sec"><h3>常見誤解</h3><p class="hint">簡報時要講對</p><ul class="points"><li>「Klarna 裁了 700 人」是錯的。700 是工作量的換算。公司縮編主要靠停止招募加上自然離職；外包客服受到多少影響，公司沒有公布具體數字。</li><li>「Klarna 放棄 AI、找回真人」也不準確。2024 年上線時就保留了真人管道，2025 年的調整是「AI 仍是主力，再加強真人服務的品質」，而新找的真人是彈性上線的自由工作者，不是回聘原本的員工。</li><li>「滿意度和真人相當」「11 分鐘降到 2 分鐘」都是公司自己公布的平均值。帳務爭議、疑似詐騙這類難案表現如何，外界看不到。另外，新聞稿說「過去 11 分鐘」，SEC 文件說真人 2024 年平均 12 分鐘，兩個數字的比較基準不同。</li></ul></section>
-<section class="k-sec"><h3>為什麼選它</h3><ul class="points"><li>同時牽涉效率、對員工的責任、執行長的公開說法和弱勢顧客，四個理論都切得進去，而且每個理論看到的重點不一樣。</li><li>場景是每個人都用過的 AI 客服，同學不需要專業背景就懂。</li><li>事件有前後轉折（大力宣傳 AI → 承認太看重成本 → 上市），可以比較「當時的判斷」和「事後的修正」。</li><li>有公司新聞稿、SEC 文件、主流媒體專訪三種來源，證據比多數 AI 爭議完整，也看得到公司說法前後的落差。</li><li>同學多半是主管，「客服要配置多少真人」本身就是真實的經營決策題。</li></ul></section>
-<section class="k-sec"><h3>四個視角</h3><div class="lens"><h4>效益論</h4><p>算總帳。省下的成本（公司自述 2024 年約 3,900 萬美元）、多數顧客省下的時間，要和難案顧客多次求助的損失、品牌信任的流失、外包人員失去工作的代價一起比。還要問：有沒有代價更低的做法？例如把例行查詢省下的錢，拿來保留一批專接詐騙和扣款爭議的真人。</p></div><div class="lens"><h4>義務論</h4><p>守原則。顧客有沒有被清楚告知對面是 AI？有沒有權利要求轉真人，而且真的接得到人？AI 答錯了，公司能不能把責任推給機器？就算真人覆核成本很高，有些義務（例如受理異議）是否仍然不能省？</p></div><div class="lens"><h4>德性論</h4><p>看品格。執行長 2024 年高調宣傳「顧客更喜歡 AI」，2025 年公開承認「太看重成本、品質變差」。主動認錯是誠實與實踐智慧，還是上市前的形象管理？如果是你，2024 年對外會怎麼說？會主動公布哪些可能對自己不利的數字？</p></div><div class="lens"><h4>關懷倫理</h4><p>顧關係。誰最脆弱？不熟悉 App 的年長顧客、正被詐騙或付款快逾期的人、看不見的外包客服、每天只接到最難案件的留任客服。把例行問題交給 AI 之後，誰負責察覺「一直沒得到幫助的人」，並一路跟到問題解決？</p></div></section>
-<section class="k-sec"><h3>利害關係人</h3><div class="stake"><h4>外包客服人員</h4><p>AI 接走的工作量，有很大一部分原本是外包人力在做，他們最先受影響，卻最少被討論。</p></div><div class="stake"><h4>留任員工</h4><p>公司說薪資提高了，但人數減少、工作內容改變，真人客服接到的可能多是最難的案件。</p></div><div class="stake"><h4>年長或弱勢顧客</h4><p>不擅長用 App 或文字對話的人，最需要容易找到的真人。</p></div><div class="stake"><h4>詐騙受害者和帳務爭議的顧客</h4><p>問題複雜、情緒急迫，最怕被 AI 重複回答同一套說法。</p></div><div class="stake"><h4>投資人</h4><p>「700 人工作量」「省下多少成本」是上市故事的一部分，他們需要知道數字怎麼算出來的。</p></div><div class="stake"><h4>監管機關</h4><p>SEC 已經就 AI 說法提問；歐盟也在規範 AI 的透明度和消費者保護。</p></div></section>
-<section class="k-sec"><h3>共同決策題</h3><p class="hint">四組都回答同一題</p><p class="decision-lead">你是 Klarna 的客服營運主管，下一季真人客服席次有限：</p><ol class="decision"><li>哪些案件繼續以 AI 為預設？</li><li>哪些情況顧客一提出，就要直接轉真人？（例如：否認交易、疑似詐騙、第三次為同一問題求助、付款即將逾期）</li><li>你會用什麼證據來調整？（例如：分案型的解決率、重複求助率、轉真人的等待時間、申訴與退款爭議的結果）</li></ol><p class="decision-next">先請各組依自己的理論回答，再揭露 Klarna 2025 年的實際調整，最後整合成一個決策。</p></section>
-<section class="k-sec"><h3>來源</h3><ul class="sources"><li><span>Klarna 新聞稿（2024/2/27）</span><a class="src" href="https://www.prnewswire.com/news-releases/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month-302072740.html" target="_blank" rel="noopener noreferrer">prnewswire.com<span class="sr-only">（在新分頁開啟）</span></a></li><li><span>Klarna 給 SEC 的書面回覆（2025/7/16）</span><a class="src" href="https://www.sec.gov/Archives/edgar/data/2003292/000162828025034998/filename1.htm" target="_blank" rel="noopener noreferrer">sec.gov<span class="sr-only">（在新分頁開啟）</span></a></li><li><span>Bloomberg 專訪（2025/5/8，存檔）</span><a class="src" href="https://archive.is/lRplR" target="_blank" rel="noopener noreferrer">archive.is<span class="sr-only">（在新分頁開啟）</span></a></li><li><span>Fortune（2025/5/9）</span><a class="src" href="https://fortune.com/2025/05/09/klarna-ai-humans-return-on-investment/" target="_blank" rel="noopener noreferrer">fortune.com<span class="sr-only">（在新分頁開啟）</span></a></li><li><span>CNBC（2025/5/14，員工數）</span><a class="src" href="https://www.cnbc.com/2025/05/14/klarna-ceo-says-ai-helped-company-shrink-workforce-by-40percent.html" target="_blank" rel="noopener noreferrer">cnbc.com<span class="sr-only">（在新分頁開啟）</span></a></li><li>Reuters（2025/4/4 暫緩上市；2025/9/9 上市定價；2025/9/10 專訪）：見時間軸</li><li><span>Klarna 上市定價公告（2025/9/9）</span><a class="src" href="https://investors.klarna.com/News--Events/news/news-details/2025/Klarna-Announces-Pricing-of-its-Initial-Public-Offering/default.aspx" target="_blank" rel="noopener noreferrer">investors.klarna.com<span class="sr-only">（在新分頁開啟）</span></a></li><li><span>The Guardian（2025/11/18，員工數與 853 人工作量）</span><a class="src" href="https://www.theguardian.com/business/2025/nov/18/buy-now-pay-later-klarna-ai-helped-halve-staff-boost-pay" target="_blank" rel="noopener noreferrer">theguardian.com<span class="sr-only">（在新分頁開啟）</span></a></li></ul></section>
-<section class="k-sec"><h3>X 貼文</h3><p class="hint">輿論佐證</p><div class="posts"><a class="post" href="https://x.com/tsarnick/status/1790567056112517510" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#0E6780" aria-hidden="true">T</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who" translate="no">@tsarnick</span><span class="dotsep" aria-hidden="true">·</span><time>2024/5/15</time></span>
-    <span class="post-body">執行長受訪片段：AI 自動化了 700 名客服的工作，顧客更喜歡 AI</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a>
-<a class="post" href="https://x.com/IndiaTodayTech/status/1930939066511446305" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#B0135E" aria-hidden="true">I</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who" translate="no">@IndiaTodayTech</span><span class="dotsep" aria-hidden="true">·</span><time>2025/6/6</time></span>
-    <span class="post-body">媒體標題：「大力宣傳 AI 之後，Klarna 執行長說會為 VIP 客戶提供真人客服」。這是媒體的詮釋，公司正式說法是所有顧客都能選真人</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a></div></section>
+  <div class="feature-src"><a class="src" href="https://zcy-gov-open-doc.oss-cn-north-2-gov-1.aliyuncs.com/1023FP/lcy/330783/10007451342/20269/61147c68-996e-415e-8530-ed89883f8a23.docx" target="_blank" rel="noopener noreferrer">官方招標文件<span class="sr-only">（在新分頁開啟）</span></a></div>
+  <div class="detail" id="core-detail">
+    <section class="k-sec"><h3>選題起點</h3><p class="hint">影片重點</p><ul class="points"><li>一位在橫店待了三年的短劇女演員，演過祕書、丫鬟。她說忙的時候一個月會跟十來個劇組（數的是劇組）；2026 年 5、6 月卻各只拍了一天戲，7 月兩天（數的是天數）。她仍去投資料、錄試戲片段，晚上擺攤賣檸檬茶。她說，擺攤能貼補生活，也讓自己少一點焦慮。這是個人自述，影片沒有官方字幕，Whisper 自動轉錄可能有誤字。<a class="src" href="https://www.youtube.com/watch?v=GtocTpVLs2k" target="_blank" rel="noopener noreferrer">胡萝卜原片，00:47、02:35、06:27、10:00 起<span class="sr-only">（在新分頁開啟）</span></a></li><li>她走回熟悉的六層拍攝樓，說以前這棟六層樓有時十多個劇組同時拍，那天只看到一組（她的說法，和《浙江日報》寫的 7 層樓不是同一棟）。她還提到做化妝、武行、攝影、燈光的朋友。正式採訪能對照到具體轉業經驗，例如化妝師改接遊客妝造、置景師傅去做裝修。這些見聞無法換算成全橫店的失業人數。<a class="src" href="https://www.youtube.com/watch?v=GtocTpVLs2k" target="_blank" rel="noopener noreferrer">原片，06:01、08:03 起<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.yicai.com/news/103208756.html" target="_blank" rel="noopener noreferrer">第一財經採訪<span class="sr-only">（在新分頁開啟）</span></a></li><li>她說的拍戲天數減少，發生在橫店π 於 10 月發布之前。帶進課堂的問題是：如果現在邀她授權，怎樣讓她既能靠分身賺錢，也能繼續爭取自己想演的角色？<a class="src" href="https://www.youtube.com/watch?v=GtocTpVLs2k" target="_blank" rel="noopener noreferrer">原片，02:35 起<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.chinanews.com.cn/cj/2026/10-24/10720344.shtml" target="_blank" rel="noopener noreferrer">中新網發布會報導<span class="sr-only">（在新分頁開啟）</span></a></li></ul></section>
+<section class="k-sec"><h3>橫店是誰</h3><ul class="points"><li><strong>橫店</strong>是浙江東陽的影視拍攝基地。<strong>橫店影視城</strong>提供攝影棚和拍攝場景，宣布免棚租的是影視城。<a class="src" href="https://www.hengdian.com/zh-cn/news/detail-11216" target="_blank" rel="noopener noreferrer">橫店集團公告<span class="sr-only">（在新分頁開啟）</span></a></li><li><strong>橫店π</strong>是東陽市政府與火山引擎共同發布的影視 AI 服務平台，涵蓋創意、拍攝、製作與發行。建置案由國企<strong>東陽數據資源有限公司</strong>採購。演員、劇組、場地業者、採購人各有自己的決定權。<a class="src" href="https://b.zhengcaiyun.cn/luban/detail?parentId=550016&amp;articleId=UPpA%2BAMLMyZ1PulXjrXyqw%3D%3D" target="_blank" rel="noopener noreferrer">中標公告<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.chinanews.com.cn/cj/2026/10-24/10720344.shtml" target="_blank" rel="noopener noreferrer">中新網現場報導<span class="sr-only">（在新分頁開啟）</span></a></li></ul></section>
+<section class="k-sec"><h3>時間軸</h3><ul class="timeline"><li><strong>2026-02-12｜生成工具發布。</strong> 字節跳動發布 Seedance 2.0。Disney 於 02-13、美國電影協會（MPA）於 02-20 分別向字節寄出停止侵害函（cease-and-desist letter），主張作品權利遭侵害。這是權利人發函提出的主張。這是產業背景；目前沒有證據顯示橫店的群演資料流入 Seedance 或紅果。<a class="src" href="https://seed.bytedance.com/zh/blog/official-launch-of-seedance-2-0" target="_blank" rel="noopener noreferrer">字節發布稿<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.axios.com/2026/02/13/disney-bytedance-seedance" target="_blank" rel="noopener noreferrer">Axios 查閱 Disney 函件<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.axios.com/2026/02/20/hollywood-seedance-intellectual-property" target="_blank" rel="noopener noreferrer">Axios 查閱 MPA 函件<span class="sr-only">（在新分頁開啟）</span></a></li><li><strong>2026-07-02／03｜先降實拍成本。</strong> 橫店影視城於 07-02 宣布免費開放 130 餘座攝影棚，集團於 07-03 刊出公告。10 月大會重申這項優惠。<a class="src" href="https://www.hengdian.com/zh-cn/news/detail-11216" target="_blank" rel="noopener noreferrer">橫店集團公告<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.chinanews.com.cn/cj/2026/10-24/10720344.shtml" target="_blank" rel="noopener noreferrer">中新網大會報導<span class="sr-only">（在新分頁開啟）</span></a></li><li><strong>2026-09-07｜可辨識的數位形象。</strong> 中國大陸最高人民法院發布法發〔2026〕10 號意見。第二部分第（四）項指出，除法律另有規定，未經本人同意，以 AI 處理姓名、肖像等，生成可識別該人的虛擬形象「並使用、公開」，法院依法支持當事人就姓名權、肖像權等人格權益提出的主張。同一項也處理未經同意以聲音為語料、生成可辨識合成人聲的情形。<a class="src" href="https://www.court.gov.cn/zixun/xiangqing/511101.html" target="_blank" rel="noopener noreferrer">最高人民法院原文<span class="sr-only">（在新分頁開啟）</span></a></li><li><strong>2026-09-14｜公開招標。</strong> 標書原文寫「数字群演高质量授权数据集……减少实拍群演的组织成本和调度难度」，要求授權可追溯、使用範圍清楚。另一處的「群演形象参考知识库」包括動態影像和基礎表演動作片段。這些條文說明買方要建什麼，實際入庫人數與演員報酬仍待執行紀錄確認。<a class="src" href="https://b.zhengcaiyun.cn/luban/detail?parentId=550016&amp;articleId=lQ1CjuCCIrf0pwUn7gEtAQ%3D%3D" target="_blank" rel="noopener noreferrer">招標公告<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://zcy-gov-open-doc.oss-cn-north-2-gov-1.aliyuncs.com/1023FP/lcy/330783/10007451342/20269/61147c68-996e-415e-8530-ed89883f8a23.docx" target="_blank" rel="noopener noreferrer">招標文件 DOCX，可搜尋上述原句<span class="sr-only">（在新分頁開啟）</span></a></li><li><strong>2026-10-13｜中標結果。</strong> 採購人為東陽數據資源有限公司。東陽深空引擎科技有限公司牽頭，與北京火山引擎科技有限公司組成聯合體（東陽深空引擎 2026-06-29 成立，由北京火山引擎全資持有，屬字節系），預算上限 2.35 億元，中標金額合計人民幣 <strong>230,179,000 元</strong>，涵蓋平台建置及算力租賃。<a class="src" href="https://b.zhengcaiyun.cn/luban/detail?parentId=550016&amp;articleId=UPpA%2BAMLMyZ1PulXjrXyqw%3D%3D" target="_blank" rel="noopener noreferrer">中標公告<span class="sr-only">（在新分頁開啟）</span></a></li><li><strong>2026-10-23｜橫店π 發布。</strong> 東陽市政府與火山引擎在橫店影視文化產業發展大會推出平台。影視城副總經理黃雷光其後受訪表示，實拍消費可部分抵扣 AI 算力與 Token 費用，反過來也可以；報導沒有列出固定比例（解放日報 11-04）。<a class="src" href="https://www.chinanews.com.cn/cj/2026/10-24/10720344.shtml" target="_blank" rel="noopener noreferrer">中新網現場報導<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.jfdaily.com/journal/getMobileArticle.htm?id=543335" target="_blank" rel="noopener noreferrer">解放日報訪影視城副總經理<span class="sr-only">（在新分頁開啟）</span></a></li><li><strong>2026-10-28｜傳言與闢謠。</strong> 網傳「15 萬名群演的肖像、聲音已整批交給字節訓練」。豆包公關負責人劉星當天發文稱傳言「嚴重失實」。他說火山引擎是技術支援方，資料資產歸橫店或授權方，使用個人肖像和聲音須本人授權，本案資料不會用於訓練字節大模型。這是公司公開說法，逐筆授權仍須看紀錄。<a class="src" href="https://www.sina.cn/news/detail/5359031859554904.html" target="_blank" rel="noopener noreferrer">劉星本人聲明<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://m.thepaper.cn/newsDetail_forward_34351293" target="_blank" rel="noopener noreferrer">澎湃新聞<span class="sr-only">（在新分頁開啟）</span></a></li><li><strong>2026-11-01 至 12 月底｜整治「盜臉」「偷聲」。</strong> 中國大陸國家廣電總局於 <strong>11-06 公布</strong>微短劇專項治理，將創作端的「盜臉」「偷聲」列為治理項目。公告適用於產業，未點名橫店違規。<a class="src" href="https://www.nrta.gov.cn/art/2026/11/6/art_114_74410.html" target="_blank" rel="noopener noreferrer">廣電總局公告<span class="sr-only">（在新分頁開啟）</span></a></li></ul></section>
+<section class="k-sec"><h3>常見誤解</h3><p class="hint">簡報時要講對</p><ul class="points"><li><strong>15 萬是累計註冊人數。</strong> 起算點是橫店演員公會於 2003 年成立。這個數字無法說明當下有多少人住在橫店、多少人授權，或多少人失業。長期活躍約一萬人（解放日報）；8,000–1 萬是 2026 年 2 月央視報導的時點數字，不是 10 月的現況。<a class="src" href="https://news.cctv.cn/2026/02/12/ARTIerSJPOUGWGZK4Oakb8oK260212.shtml" target="_blank" rel="noopener noreferrer">央視 2026-02-12<span class="sr-only">（在新分頁開啟）</span></a><a class="src" href="https://www.jfdaily.com/journal/getMobileArticle.htm?id=543335" target="_blank" rel="noopener noreferrer">解放日報訪影視城<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.sina.cn/news/detail/5359031859554904.html" target="_blank" rel="noopener noreferrer">劉星聲明<span class="sr-only">（在新分頁開啟）</span></a></li><li><strong>採購、供應、免租各有主體。</strong> 採購人是國企東陽數據資源，得標的是東陽深空引擎與北京火山引擎，提供免費攝影棚的是橫店影視城。<a class="src" href="https://b.zhengcaiyun.cn/luban/detail?parentId=550016&amp;articleId=UPpA%2BAMLMyZ1PulXjrXyqw%3D%3D" target="_blank" rel="noopener noreferrer">中標公告<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.hengdian.com/zh-cn/news/detail-11216" target="_blank" rel="noopener noreferrer">免租公告<span class="sr-only">（在新分頁開啟）</span></a></li><li><strong>中新網報導沒有下架。</strong> 10-24 的大會現場稿到 11-22 仍可讀，內文沒有提到 15 萬人；網路上說「已下架」查無證據。<a class="src" href="https://www.chinanews.com.cn/cj/2026/10-24/10720344.shtml" target="_blank" rel="noopener noreferrer">中新網原頁<span class="sr-only">（在新分頁開啟）</span></a></li><li><strong>「2026 白皮書」的降幅不採用。</strong> 媒體曾引述《2026 中國網絡視聽產業白皮書》，但查無可核對的原文、樣本與統計期間。協會正式發布的《中國網絡視聽發展研究報告（2026）》是另一個書名。<a class="src" href="https://m.sfccn.com/2026/10-28/yMMDE0MDdfMjI4NTQyMg.html" target="_blank" rel="noopener noreferrer">媒體引述<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.xinhuanet.com/politics/20260416/cac5d121fdbf4dd88a92f22bc2218e9d/c.html" target="_blank" rel="noopener noreferrer">正式出版品發布報導<span class="sr-only">（在新分頁開啟）</span></a></li><li><strong>院線與片場分開看。</strong> 股票代號 603103 的橫店影視股份有限公司經營電影院線，和浙江橫店影視城有限公司是不同法人。要看拍攝基地的工作機會，應查劇組名單、拍攝工日與演員訪談。<a class="src" href="https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-02/603103_20260402_8OJF.pdf" target="_blank" rel="noopener noreferrer">公司關係人公告<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.jfdaily.com/journal/getMobileArticle.htm?id=543335" target="_blank" rel="noopener noreferrer">解放日報追蹤劇組名單<span class="sr-only">（在新分頁開啟）</span></a></li><li><strong>倒閉原因不能全算在 AI 頭上。</strong> 紅果在 2 月調整部分承製方的保底機制，市場也有短劇供給過剩的問題。採訪能確認部分業者縮編或退出真人實拍，無法據此判定有幾家公司因 AI 倒閉。<a class="src" href="https://www.bjnews.com.cn/detail/1772871476129060.html" target="_blank" rel="noopener noreferrer">新京報<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.channelnewsasia.com/east-asia/ai-microdrama-china-film-industry-actors-jobs-6229191" target="_blank" rel="noopener noreferrer">CNA 產業採訪<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.yicai.com/news/103208756.html" target="_blank" rel="noopener noreferrer">第一財經<span class="sr-only">（在新分頁開啟）</span></a></li></ul></section>
+<section class="k-sec"><h3>為什麼選它</h3><p>同一份採購文件，一邊寫買方要減少實拍群演的組織與調度成本，一邊要求授權可追溯、使用範圍清楚。只要問「下一部戲能不能再用這張臉」，四組就得面對同一個經營決定。有人會算兩部戲合計省了多少錢，有人會先問，那位演員還有沒有說不的機會。<a class="src" href="https://zcy-gov-open-doc.oss-cn-north-2-gov-1.aliyuncs.com/1023FP/lcy/330783/10007451342/20269/61147c68-996e-415e-8530-ed89883f8a23.docx" target="_blank" rel="noopener noreferrer">官方招標文件<span class="sr-only">（在新分頁開啟）</span></a></p></section>
+<section class="k-sec"><h3>四個視角</h3><div class="lens"><h4>效益論</h4><p>比較共同決策題三案的後果：只提供場景、單片自願試辦、跨劇授權。各案的調度時間、有薪工日、授權收入、重新招募成本、爭議處理各是多少？哪個結果出現就停止擴大？</p></div><div class="lens"><h4>義務論</h4><p>演員答應演甲劇裡的路人，誰有權把他的臉放進乙劇當反派？即使全劇組都同意，仍要問本人答應了什麼。</p></div><div class="lens"><h4>德性論</h4><p>合約只約定一次給付，作品後來爆紅。主管會等演員自己發現，還是主動向劇組調出使用紀錄交給演員，並在下一份合約寫進爆紅後的重談條款？</p></div><div class="lens"><h4>關懷倫理</h4><p>如果發通告的人也負責收授權書，靠下一份通告付房租的新人敢不敢拒絕？誰會在他拒簽後，回頭確認他還接得到戲？</p></div></section>
+<section class="k-sec"><h3>利害關係人</h3><div class="lens"><h4>願意授權的演員、想繼續實拍的演員</h4><p>前者要能查到分身用在哪裡、該領多少錢。後者要能拒絕授權，也能照常投資料、接通告。</p></div><div class="lens"><h4>演員公會與影視城</h4><p>課堂上請他們回答，誰能協助演員讀懂條款？若派工有爭議，演員可以找哪個與派工無關的人反映？</p></div><div class="lens"><h4>採購人、技術供應商與劇組</h4><p>分別面對驗收、保存授權紀錄、決定鏡頭用途的問題。發現素材來源不明時，誰有權先停用？<a class="src" href="https://zcy-gov-open-doc.oss-cn-north-2-gov-1.aliyuncs.com/1023FP/lcy/330783/10007451342/20269/61147c68-996e-415e-8530-ed89883f8a23.docx" target="_blank" rel="noopener noreferrer">採購規格<span class="sr-only">（在新分頁開啟）</span></a></p></div><div class="lens"><h4>幕後工作者與觀眾</h4><p>群戲少拍一天，化妝、攝影、燈光可能一併少一天工作。觀眾若認得一張臉，也可能以為本人同意演出這個角色。<a class="src" href="https://www.yicai.com/news/103208756.html" target="_blank" rel="noopener noreferrer">第一財經採訪<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://english.bjinternetcourt.gov.cn/2026-03/24/c_840.htm" target="_blank" rel="noopener noreferrer">北京互聯網法院案例<span class="sr-only">（在新分頁開啟）</span></a></p></div></section>
+<section class="k-sec"><h3>共同決策題</h3><p class="simline"><span class="badge badge-sim">教學模擬</span></p><p class="decision-lead"><strong>假設你是橫店影視城負責群演服務的主管。下一部戲需要一場街景，你會同意提供哪些素材給橫店π？</strong></p><ol class="decision"><li><strong>只提供場景</strong>。街上的人物由劇組另外找真人演出。</li><li><strong>單片自願試辦</strong>。演員先看角色與用途，願意才參加。換一部戲就重新談。</li><li><strong>開放自願跨劇授權</strong>。先談妥可用的角色、期限與計酬方式，在約定範圍內重複使用。</li></ol><p class="decision-next">每組選一案，說明怎麼計酬、下次使用由誰核准、拒簽者如何繼續接真人通告。最後說出一項會讓你改選的證據。這是課堂設計：實際採購人是東陽數據資源，題目簡化成影視城主管的角度；企業實際表決與演員合約條款都沒有公開。選第 1 案的組，請說明放棄了哪些效益、什麼條件下會重新評估。<a class="src" href="https://zcy-gov-open-doc.oss-cn-north-2-gov-1.aliyuncs.com/1023FP/lcy/330783/10007451342/20269/61147c68-996e-415e-8530-ed89883f8a23.docx" target="_blank" rel="noopener noreferrer">情境依據：招標文件<span class="sr-only">（在新分頁開啟）</span></a></p></section>
+<section class="k-sec"><h3>原始來源</h3><ul class="points"><li>看「買什麼、誰得標」：<a class="src" href="https://zcy-gov-open-doc.oss-cn-north-2-gov-1.aliyuncs.com/1023FP/lcy/330783/10007451342/20269/61147c68-996e-415e-8530-ed89883f8a23.docx" target="_blank" rel="noopener noreferrer">招標文件原件<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://b.zhengcaiyun.cn/luban/detail?parentId=550016&amp;articleId=UPpA%2BAMLMyZ1PulXjrXyqw%3D%3D" target="_blank" rel="noopener noreferrer">中標公告<span class="sr-only">（在新分頁開啟）</span></a></li><li>看「誰宣布什麼」：<a class="src" href="https://www.hengdian.com/zh-cn/news/detail-11216" target="_blank" rel="noopener noreferrer">橫店集團免租公告<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.chinanews.com.cn/cj/2026/10-24/10720344.shtml" target="_blank" rel="noopener noreferrer">平台發布會現場報導<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.sina.cn/news/detail/5359031859554904.html" target="_blank" rel="noopener noreferrer">劉星本人聲明<span class="sr-only">（在新分頁開啟）</span></a></li><li>看「可辨識形象如何受保護」：<a class="src" href="https://www.court.gov.cn/zixun/xiangqing/511101.html" target="_blank" rel="noopener noreferrer">最高人民法院意見<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.nrta.gov.cn/art/2026/11/6/art_114_74410.html" target="_blank" rel="noopener noreferrer">廣電總局治理公告<span class="sr-only">（在新分頁開啟）</span></a></li></ul></section>
+<section class="k-sec"><h3>X 貼文</h3><p class="hint">輿論佐證</p><div class="rumor" role="note"><p class="rumor-flag">謠言示例，已被否認</p><a class="post" href="https://x.com/realzoushen/status/2115359370796224905" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0B6EAE" aria-hidden="true">R</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@realzoushen</span></span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a><div class="rumor-note">核對公司回應請讀<a class="src" href="https://www.sina.cn/news/detail/5359031859554904.html" target="_blank" rel="noopener noreferrer">劉星本人聲明<span class="sr-only">（在新分頁開啟）</span></a>。</div></div><a class="post" href="https://x.com/don_tech1/status/2115645411272905091" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#4C3A8A" aria-hidden="true">D</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@don_tech1</span></span><span class="post-body">闢謠與招標文件的討論</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a><a class="post" href="https://x.com/tinyMoment2046/status/2116853488818983031" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0B6EAE" aria-hidden="true">T</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@tinyMoment2046</span></span><span class="post-body">累計註冊與在場人數的討論</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a><a class="post" href="https://x.com/wapbook2022/status/2115427661711618355" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#5B3DB8" aria-hidden="true">W</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@wapbook2022</span></span><span class="post-body">免棚租與建 AI 平台的討論</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a><a class="post" href="https://x.com/iphonetap/status/2118584506559218025" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0B6EAE" aria-hidden="true">I</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@iphonetap</span></span><span class="post-body">數位分身授權的討論</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></section>
   </div>
 </article>
 
@@ -343,17 +287,11 @@ html.js .panel.active { display: block; }
   <div class="detail" id="detail-open">
     <div class="block"><h4>故事簡介</h4><p>MIT 媒體實驗室的團隊在 2016 年 6 月架設 Moral Machine 網站，讓全球網友面對「自駕車煞車失靈，只能二選一」的情境，例如撞向兩名乘客還是五名行人、守法的路人還是闖紅燈的人。2018 年 10 月，Edmond Awad 等人把結果發表在 Nature：資料來自 233 個國家和地區、約 4,000 萬次的選擇。全球最一致的偏好是救人優先於動物、救多數優先於少數、救年輕人優先於年長者；但依文化和地理可以分成「西方」「東方」「南方」三群，例如東方群體偏好救年輕人的傾向比較弱。參與者是自願上網作答，不能代表各國全體人口。（來源：Nature 論文 <a class="src" href="https://www.nature.com/articles/s41586-018-0637-6" target="_blank" rel="noopener noreferrer">nature.com<span class="sr-only">（在新分頁開啟）</span></a>、MIT News 2018/10/24 <a class="src" href="https://news.mit.edu/2018/how-autonomous-vehicles-programmed-1024" target="_blank" rel="noopener noreferrer">news.mit.edu<span class="sr-only">（在新分頁開啟）</span></a>、研究者說明 2016/6/23 上線 <a class="src" href="https://communities.springernature.com/posts/inside-the-moral-machine" target="_blank" rel="noopener noreferrer">communities.springernature.com<span class="sr-only">（在新分頁開啟）</span></a>、MIT 媒體實驗室專案頁 <a class="src" href="https://www.media.mit.edu/projects/moral-machine/overview/" target="_blank" rel="noopener noreferrer">media.mit.edu<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
     <div class="block"><h4>爭議點</h4><p>機器的道德判斷該由誰決定？多數網友的選擇，就是機器該採用的規則嗎？如果票選結果總是犧牲同一群人，車廠有理由照做嗎？</p></div>
-    <div class="block"><h4>為何選它</h4><p>一分鐘就能讓全班舉手表態，順勢說明「科技倫理就是：科技替我們做決定時，誰來決定什麼是對的」，再帶出今天用四種理論看同一件事，接著進入 Klarna。</p></div>
-    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>自駕車要決定撞誰，AI 客服要決定誰能找到真人。這些規則是誰寫的？依據什麼？</p></div>
+    <div class="block"><h4>為何選它</h4><p>一分鐘就能讓全班舉手表態，順勢說明「科技倫理就是：科技替我們做決定時，誰來決定什麼是對的」，再帶出今天用四種理論看同一件事，接著進入橫店π。</p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>自駕車的規則決定誰承擔碰撞風險。片場的授權規則決定誰能再用演員的臉。這些規則是誰寫的？受影響的人有沒有參與？</p></div>
+    
     <div class="block"><h4>互動</h4><a class="play" href="https://www.moralmachine.net/" target="_blank" rel="noopener noreferrer">可以現場讓同學用手機玩一題<span class="sr-only">（在新分頁開啟）</span></a></div>
-    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/iyadrahwan/status/1055474830118662145" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#0B6EAE" aria-hidden="true">I</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who">Iyad Rahwan</span><span class="handle" translate="no">@iyadrahwan</span><span class="dotsep" aria-hidden="true">·</span><time>2018/10/25</time></span>
-    <span class="post-body">研究者 Iyad Rahwan 公布 Nature 論文與資料集</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a></div></div>
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/iyadrahwan/status/1055474830118662145" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0B6EAE" aria-hidden="true">I</span><span class="post-main"><span class="post-head"><span class="who">Iyad Rahwan</span><span class="handle" translate="no">@iyadrahwan</span><span class="dotsep" aria-hidden="true">·</span><time>2018/10/25</time></span><span class="post-body">研究者 Iyad Rahwan 公布 Nature 論文與資料集</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></div></div>
     
   </div>
 </article>
@@ -363,49 +301,33 @@ html.js .panel.active { display: block; }
   <nav class="tabbar" id="tabs" aria-label="四個倫理視角">
     <div class="tablist" role="tablist" aria-label="四個倫理視角"><button type="button" class="tab" role="tab" id="tab-benefit" data-hash="benefit" aria-selected="true" aria-controls="benefit" tabindex="0">效益論</button><button type="button" class="tab" role="tab" id="tab-duty" data-hash="duty" aria-selected="false" aria-controls="duty" tabindex="-1">義務論</button><button type="button" class="tab" role="tab" id="tab-virtue" data-hash="virtue" aria-selected="false" aria-controls="virtue" tabindex="-1">德性論</button><button type="button" class="tab" role="tab" id="tab-care" data-hash="care" aria-selected="false" aria-controls="care" tabindex="-1">關懷倫理</button></div>
   </nav>
-  <div class="feed-wrap">
-    <main>
-      
+  <main>
+    
 <section class="panel" id="benefit" role="tabpanel" aria-labelledby="tab-benefit" tabindex="0">
   <aside class="bridge">
-    <p class="bridge-kicker">與 Klarna 的連結</p>
-    <p>Uber 的演算法在人最需要幫助時自動漲價，Klarna 的 AI 在難案時可能讓人找不到真人；兩家公司都要回答「效率省下的錢，該不該拿來照顧最急的那群人」。</p>
+    <p class="bridge-kicker">與核心案例的連結</p>
+    <p>同一場群戲，劇組省下的費用是收益，演員少掉的有薪工日也是代價。比較各方案時，兩邊都要入帳。</p>
   </aside>
   <h2 class="theory">效益論｜算總帳：比較好處和傷害各有多大，有沒有代價更低的做法</h2>
   <div class="feed">
-    
 <article class="card is-main">
   
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-benefit-1">
-      <span class="topline"><span class="badge badge-main"><span class="pip" aria-hidden="true"></span>主案例</span><span class="year">2014</span></span>
-      <span class="card-title">Uber 雪梨人質事件時動態加價</span>
-      <span class="hook">2014 年 12 月，雪梨市中心發生人質挾持事件，市中心民眾急著撤離，Uber 的演算法因為叫車需求暴增，自動啟動動態加價，引發眾怒。</span>
+      <span class="topline"><span class="badge badge-main"><span class="pip" aria-hidden="true"></span>主推</span></span>
+      <span class="card-title">橫店π 的帳：同一場街景，怎麼拍才划算？</span>
+      <span class="hook">標書希望數位群演能省下組織、調度真人的成本。</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
   <div class="detail" id="detail-benefit-1">
-    <div class="block"><h4>故事簡介</h4><p>2014 年 12 月，雪梨市中心發生人質挾持事件，市中心民眾急著撤離，Uber 的演算法因為叫車需求暴增，自動啟動動態加價，引發眾怒。Uber 事後發表道歉聲明，承認「沒有立即停止加價是錯誤的決定」，改為提供離開市中心的免費乘車，當天沒有乘客為離開市中心付費，先前加價的車資也全額退還。（來源：Uber 澳洲道歉聲明 2014/12/23 <a class="src" href="https://www.uber.com/au/en/newsroom/an-apology/" target="_blank" rel="noopener noreferrer">uber.com<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
-    <div class="block"><h4>爭議點</h4><p>用效益論怎麼看？動態加價的理由是吸引更多司機上路、讓更多人撤離，看起來能讓整體效益最大；但要算清楚：實際多了多少車、誰因為付不起而走不了、司機承擔什麼風險。Uber 最後的做法「平台吸收成本、乘客免費」是第三種方案，可能比「漲價」或「不漲價」帶來更大的整體利益。效益論不只是比人數，還要找代價更低的做法。</p></div>
-    <div class="block"><h4>為何選它</h4><p>一句話就懂，又能示範「演算法眼中的效益最大化」和「人心裡的公平」之間的落差；Uber 承認錯誤並退款，正好可以討論效益的帳該怎麼算。</p></div>
-    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>討論問題：Uber 可以讓平台負擔緊急運能。Klarna 要不要用例行查詢省下的成本（公司自述 2024 年約 3,900 萬美元），保留一批專接詐騙和扣款爭議的真人？多保留一席，能避免多少損失，又會讓誰等更久？</p></div>
+    <div class="block"><h4>故事簡介</h4><p>標書希望數位群演能省下組織、調度真人的成本。另一個可比較的例子是海外短劇平台 DramaWave。昆侖萬維管理層估計，同規模海外真人短劇每部約 15–20 萬美元，AI 短劇可控制在 2 萬美元以內。公司三季報說，2026 年 9 月該平台新上架劇集中，AI 生成占 95% 以上。這些數字只描述該平台的成本估算與當月新劇，橫店節省多少仍要另外量。橫店自己的景氣數字（都在橫店π 發布前）：上半年每週平均在拍 22.75 組，年減 24.84%；攝影棚空置率上半年最高時近八成；特約演員三句台詞的酬勞從 400 元降到 150–200 元（浙江日報）。第三季豎屏劇組年減 82.5%，依每週劇組名單統計（解放日報）。<a class="src" href="https://zjrb.zjol.com.cn/html/2026-11/11/content_3945530.htm" target="_blank" rel="noopener noreferrer">浙江日報 2026-11-11<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.jfdaily.com/journal/getMobileArticle.htm?id=543335" target="_blank" rel="noopener noreferrer">解放日報 2026-11-04<span class="sr-only">（在新分頁開啟）</span></a><a class="src" href="https://zcy-gov-open-doc.oss-cn-north-2-gov-1.aliyuncs.com/1023FP/lcy/330783/10007451342/20269/61147c68-996e-415e-8530-ed89883f8a23.docx" target="_blank" rel="noopener noreferrer">橫店招標文件<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://static.cninfo.com.cn/finalpage/2026-11-03/1225654452.PDF#page=7" target="_blank" rel="noopener noreferrer">昆侖萬維投資人問答，第 7 頁<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://static.cninfo.com.cn/finalpage/2026-10-30/1225644210.PDF#page=9" target="_blank" rel="noopener noreferrer">三季報，第 9 頁<span class="sr-only">（在新分頁開啟）</span></a></p></div>
+    <div class="block"><h4>爭議點</h4><p>劇組少付的出班費，也是演員少領的收入。若只看製作預算，就看不出有多少資源真的省下來，也看不出損失集中在誰身上。</p></div>
+    <div class="block"><h4>為何選它</h4><p>讓各組替同一個鏡頭排兩份拍攝計畫。分別記錄調度時數、現場工日、演員實領授權費和返工成本，就知道哪個判斷還缺資料。</p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>如果用真人演前景、數位群演補遠景，（教學模擬）假設成本比全數位高一些，但能保留工日與表演品質，你會選哪一案？差多少時會改選？</p></div>
     
-    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/bluecheddar1/status/544539475893030912" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#B45309" aria-hidden="true">B</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who" translate="no">@bluecheddar1</span><span class="dotsep" aria-hidden="true">·</span><time>2014/12/15</time></span>
-    <span class="post-body">轉述 Gawker 報導 Uber 道歉</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a>
-<a class="post" href="https://x.com/HimanshuKumar40/status/2122298340230758910" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#5B3DB8" aria-hidden="true">H</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who" translate="no">@HimanshuKumar40</span><span class="dotsep" aria-hidden="true">·</span><time>2026/11</time></span>
-    <span class="post-body">網友討論緊急情況下的動態加價</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a></div></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/wapbook2022/status/2115427661711618355" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#5B3DB8" aria-hidden="true">W</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@wapbook2022</span></span><span class="post-body">免租與 AI 平台的討論</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></div></div>
     
   </div>
 </article>
@@ -414,74 +336,95 @@ html.js .panel.active { display: block; }
   
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-benefit-2">
-      <span class="topline"><span class="badge badge-alt">備選</span><span class="year">2021</span></span>
+      <span class="topline"><span class="badge badge-alt">備選</span><span class="year">2014</span></span>
+      <span class="card-title">Uber 雪梨人質事件時動態加價</span>
+      <span class="hook">2014 年 12 月，雪梨市中心發生人質挾持事件，市中心民眾急著撤離，Uber 的演算法因為叫車需求暴增，自動啟動動態加價，引發眾怒。</span>
+      <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </h3>
+  <div class="detail" id="detail-benefit-2">
+    <div class="block"><h4>故事簡介</h4><p>2014 年 12 月，雪梨市中心發生人質挾持事件，市中心民眾急著撤離，Uber 的演算法因為叫車需求暴增，自動啟動動態加價，引發眾怒。Uber 事後發表道歉聲明，承認「沒有立即停止加價是錯誤的決定」，改為提供離開市中心的免費乘車，當天沒有乘客為離開市中心付費，先前加價的車資也全額退還。（來源：Uber 澳洲道歉聲明 2014/12/23 <a class="src" href="https://www.uber.com/au/en/newsroom/an-apology/" target="_blank" rel="noopener noreferrer">uber.com<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
+    <div class="block"><h4>爭議點</h4><p>用效益論怎麼看？動態加價的理由是吸引更多司機上路、讓更多人撤離，看起來能讓整體效益最大；但要算清楚：實際多了多少車、誰因為付不起而走不了、司機承擔什麼風險。Uber 最後的做法「平台吸收成本、乘客免費」是第三種方案，可能比「漲價」或「不漲價」帶來更大的整體利益。效益論不只是比人數，還要找代價更低的做法。</p></div>
+    <div class="block"><h4>為何選它</h4><p>一句話就懂，又能示範「演算法眼中的效益最大化」和「人心裡的公平」之間的落差；Uber 承認錯誤並退款，正好可以討論效益的帳該怎麼算。</p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>Uber 可以讓平台負擔緊急運能。如果劇組用數位群演省了調度費，拿出一部分支付逐次授權費、保留現場工日，整體效益會怎麼變？</p></div>
+    
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/bluecheddar1/status/544539475893030912" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#B45309" aria-hidden="true">B</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@bluecheddar1</span><span class="dotsep" aria-hidden="true">·</span><time>2014/12/15</time></span><span class="post-body">轉述 Gawker 報導 Uber 道歉</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a><a class="post" href="https://x.com/HimanshuKumar40/status/2122298340230758910" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#5B3DB8" aria-hidden="true">H</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@HimanshuKumar40</span><span class="dotsep" aria-hidden="true">·</span><time>2026/11</time></span><span class="post-body">網友討論緊急情況下的動態加價</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></div></div>
+    
+  </div>
+</article>
+
+<article class="card">
+  
+  <h3>
+    <button type="button" class="expander" aria-expanded="false" aria-controls="detail-benefit-3">
+      <span class="topline"><span class="badge badge-alt">備選</span></span>
+      <span class="card-title">Klarna 的 AI 客服：「700 人」怎麼算？</span>
+      <span class="hook">Klarna 公布，AI 客服上線首月處理 230 萬則對話，約占客服聊天的三分之二，工作量「相當於 700 名全職客服」。</span>
+      <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </h3>
+  <div class="detail" id="detail-benefit-3">
+    <div class="block"><h4>故事簡介</h4><p>Klarna 公布，AI 客服上線首月處理 230 萬則對話，約占客服聊天的三分之二，工作量「相當於 700 名全職客服」。公司後來向美國證管會（SEC）說明，估算依據是導入 AI 後真人客服每月減少的聊天與電話量。公司自述 2024 年約省下 3,900 萬美元，顧客仍可選真人客服。<a class="src" href="https://www.prnewswire.com/news-releases/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month-302072740.html" target="_blank" rel="noopener noreferrer">首月新聞稿<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.sec.gov/Archives/edgar/data/2003292/000162828025034998/filename1.htm" target="_blank" rel="noopener noreferrer">Klarna 給 SEC 的書面回覆<span class="sr-only">（在新分頁開啟）</span></a></p></div>
+    <div class="block"><h4>爭議點</h4><p>700 是工作量換算，不能讀成裁員人數。平均處理時間縮短，也還要問：遇到疑似詐騙或錯誤扣款的顧客，最後有沒有解決問題？</p></div>
+    <div class="block"><h4>為何選它</h4><p>客服可以數對話，片場可以數鏡頭。兩者都需要另外追蹤實際僱用、服務或成片品質。</p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>如果平台報告「生成了多少群演鏡頭」，你還要看哪些工時、收入與成片紀錄，才會同意擴大使用？</p></div>
+    
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/tsarnick/status/1790567056112517510" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0E6780" aria-hidden="true">T</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@tsarnick</span><span class="dotsep" aria-hidden="true">·</span><time>2024/5</time></span><span class="post-body">執行長受訪片段：AI 自動化了 700 名客服的工作</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a><a class="post" href="https://x.com/IndiaTodayTech/status/1930939066511446305" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#B0135E" aria-hidden="true">I</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@IndiaTodayTech</span><span class="dotsep" aria-hidden="true">·</span><time>媒體報導 Klarna 提供真人客服</time></span><span class="post-body">「VIP 客戶」是媒體詮釋</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></div></div>
+    
+  </div>
+</article>
+
+<article class="card is-ext">
+  
+  <h3>
+    <button type="button" class="expander" aria-expanded="false" aria-controls="detail-benefit-4">
+      <span class="topline"><span class="badge badge-ext">延伸</span><span class="year">2021</span></span>
       <span class="card-title">台灣簡訊實聯制</span>
       <span class="hook">2021 年 5 月疫情升溫，政府推出「簡訊實聯制」，民眾進店掃 QR Code 傳一封免費簡訊到 1922，就能留下足跡供疫調使用。</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
-  <div class="detail" id="detail-benefit-2">
+  <div class="detail" id="detail-benefit-4">
     <div class="block"><h4>故事簡介</h4><p>2021 年 5 月疫情升溫，政府推出「簡訊實聯制」，民眾進店掃 QR Code 傳一封免費簡訊到 1922，就能留下足跡供疫調使用。</p></div>
     <div class="block"><h4>爭議點</h4><p>同年 6 月，有法官撰文質疑警方拿實聯制簡訊辦案。指揮中心說明，刑事局是在法院核准的通訊監察中，看到嫌犯發送的實聯制簡訊，再依場所代碼到現場比對，並沒有向指揮中心調閱疫調資料；之後要求警方辦案時主動排除實聯制簡訊。即使程序合法，「僅供防疫」的承諾涵蓋到哪裡？民眾若因此不信任、不配合，防疫效益會不會反而下降？（來源：中央社 2021/6/20 <a class="src" href="https://www.cna.com.tw/news/ahel/202106200132.aspx" target="_blank" rel="noopener noreferrer">cna.com.tw<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
     <div class="block"><h4>為何選它</h4><p>多數同學都用過，很快就懂；正好示範效益論的「成本效益計算」，以及它的盲點：少數人的權利可能被多數人的效益犧牲掉。</p></div>
-    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>假設 AI 讓多數查詢變快，但少數帳務爭議要聯絡好幾次才解決。你會怎麼比較多數人省下的時間、少數人的損失，以及真人客服承接難案的負擔？</p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>開放跨劇使用可以省下再招募的成本。如果因此有更多演員不願授權，平台還划算嗎？</p></div>
     
-    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/glenna9305/status/1406500233622671363" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#9A1B40" aria-hidden="true">G</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who" translate="no">@glenna9305</span><span class="dotsep" aria-hidden="true">·</span><time>2021/6/20</time></span>
-    <span class="post-body">轉述指揮中心說明：刑事局未調閱實聯制資料，是通訊監察中包含實聯制簡訊</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a>
-<a class="post" href="https://x.com/tw_reporter_org/status/1395000391822053382" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#B45309" aria-hidden="true">T</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who">報導者</span><span class="handle" translate="no">@tw_reporter_org</span><span class="dotsep" aria-hidden="true">·</span><time>2021/5/19</time></span>
-    <span class="post-body">報導者：政府推出簡訊實聯制</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a></div></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/glenna9305/status/1406500233622671363" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#9A1B40" aria-hidden="true">G</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@glenna9305</span><span class="dotsep" aria-hidden="true">·</span><time>2021/6/20</time></span><span class="post-body">轉述指揮中心說明：刑事局未調閱實聯制資料，是通訊監察中包含實聯制簡訊</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a><a class="post" href="https://x.com/tw_reporter_org/status/1395000391822053382" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#B45309" aria-hidden="true">T</span><span class="post-main"><span class="post-head"><span class="who">報導者</span><span class="handle" translate="no">@tw_reporter_org</span><span class="dotsep" aria-hidden="true">·</span><time>2021/5/19</time></span><span class="post-body">報導者：政府推出簡訊實聯制</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></div></div>
     
   </div>
 </article>
-
-  </div>
+</div>
 </section>
-
 
 <section class="panel" id="duty" role="tabpanel" aria-labelledby="tab-duty" tabindex="0">
   <aside class="bridge">
-    <p class="bridge-kicker">與 Klarna 的連結</p>
-    <p>Air Canada 的 AI 客服答錯，公司想說「是機器講的」；Klarna 同樣用 AI 回答退款、扣款和爭議，答錯時責任一樣不能推給機器。</p>
+    <p class="bridge-kicker">與核心案例的連結</p>
+    <p>先問演員同意了哪一部戲、哪一種角色。劇組再趕、重拍再貴，也得有人能查明這一次使用的依據。</p>
   </aside>
   <h2 class="theory">義務論｜守原則：有些事不論結果多好都不該做</h2>
   <div class="feed">
-    
 <article class="card is-main">
   
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-duty-1">
-      <span class="topline"><span class="badge badge-main"><span class="pip" aria-hidden="true"></span>主案例</span><span class="year">2024</span></span>
-      <span class="card-title">Air Canada 聊天機器人答錯，公司想推給機器</span>
-      <span class="hook">2022 年 11 月，Jake Moffatt 的祖母過世。</span>
+      <span class="topline"><span class="badge badge-main"><span class="pip" aria-hidden="true"></span>主推</span></span>
+      <span class="card-title">AI 影視肖像權授權：《桃花簪》被下架之後</span>
+      <span class="hook">有民眾指稱自己的臉被用在《桃花簪》的反派角色。</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
   <div class="detail" id="detail-duty-1">
-    <div class="block"><h4>故事簡介</h4><p>2022 年 11 月，Jake Moffatt 的祖母過世。他在 Air Canada 官網問客服聊天機器人喪親優惠票價，機器人回答可以先買票，90 天內再申請差額退款；但官網另一頁其實寫著旅程結束後不受理。Moffatt 照機器人的說法買了來回機票，事後申請被拒。Air Canada 的客服人員後來也承認機器人用了「誤導的文字」。審理時，Air Canada 主張聊天機器人是「要為自己行為負責的獨立法律主體」。2024 年 2 月 14 日，卑詩省民事仲裁庭（BC Civil Resolution Tribunal）在 Moffatt v. Air Canada 一案判決：仲裁委員 Christopher Rivers 說這是「很不尋常的主張」，聊天機器人只是 Air Canada 網站的一部分，公司要為網站上所有資訊負責，判 Air Canada 過失不實陳述成立，賠償 650.88 加幣（加上利息和規費共約 812 加幣）。（來源：判決全文 <a class="src" href="https://decisions.civilresolutionbc.ca/crt/crtd/en/525448/1/document.do" target="_blank" rel="noopener noreferrer">decisions.civilresolutionbc.ca<span class="sr-only">（在新分頁開啟）</span></a>、CBC 報導 <a class="src" href="https://www.cbc.ca/news/canada/british-columbia/air-canada-chatbot-lawsuit-1.7116416" target="_blank" rel="noopener noreferrer">cbc.ca<span class="sr-only">（在新分頁開啟）</span></a>、Law360 Canada <a class="src" href="https://www.law360.ca/ca/articles/1804075/court-rejects-air-canada-s-remarkable-denial-of-liability-regarding-misinformation-by-its-chatbot" target="_blank" rel="noopener noreferrer">law360.ca<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
-    <div class="block"><h4>爭議點</h4><p>用義務論怎麼看？義務論不問「這樣做划不划算」，而是問「企業對顧客有哪些不能違背的承諾」。公司用 AI 代替真人回答，對顧客說的話就是公司說的話；誠實告知、為自己的說法負責，不會因為說話的是機器就消失。判決處理的是法律責任（過失不實陳述），課堂上要再往前一步問：就算法律沒有要求，企業有沒有道德上的義務？</p></div>
-    <div class="block"><h4>為何選它</h4><p>和 Klarna 幾乎一對一對照，同樣是 AI 客服答錯；「機器人說可以退，公司說不算」一句就懂。事實寫在判決書裡，來源最硬，也不敏感。</p></div>
-    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>討論問題：Klarna 的 AI 客服答錯了退款或扣款規則，責任在誰？顧客有沒有權利知道對面是 AI、有沒有權利要求轉給能負責的真人？就算真人覆核成本很高，哪些義務仍然不能省？</p></div>
+    <div class="block"><h4>故事簡介</h4><p>有民眾指稱自己的臉被用在《桃花簪》的反派角色。紅果於 2026-04-03 說明，出品方在 72 小時審核期內未能提出足夠的素材合規證據，平台全面下架該劇，並暫停出品方上傳作品。10-14 開庭，原告請求 11.5 萬元；截至 2026-11-22 尚未判決。另一起換臉案已有裁判：北京互聯網法院於 03-24 刊載案例，法院認定公眾能辨認出這位演員即構成侵權，製作方和播出平台都要負責。<a class="src" href="https://www.thepaper.cn/newsDetail_forward_32893995" target="_blank" rel="noopener noreferrer">紅果處理聲明<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.jiemian.com/article/15183853.html" target="_blank" rel="noopener noreferrer">界面新聞庭審旁聽<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://english.bjinternetcourt.gov.cn/2026-03/24/c_840.htm" target="_blank" rel="noopener noreferrer">北京互聯網法院案例<span class="sr-only">（在新分頁開啟）</span></a></p></div>
+    <div class="block"><h4>爭議點</h4><p>取得整部戲的播映權，是否足以證明也取得每位演員的肖像授權？最高人民法院 09-07 的意見保留了「並使用、公開」的條件，並說明當事人可主張的人格權益。<a class="src" href="https://www.court.gov.cn/zixun/xiangqing/511101.html" target="_blank" rel="noopener noreferrer">最高人民法院意見，第二部分第（四）項<span class="sr-only">（在新分頁開啟）</span></a></p></div>
+    <div class="block"><h4>為何選它</h4><p>從當事人、製作方、播出平台一路追問，就知道該向誰要憑證。跨產業對照也看得見同一個問題：Air Canada 官網的聊天機器人答錯，仲裁庭仍要求航空公司為自己網站提供的資訊負責。<a class="src" href="https://decisions.civilresolutionbc.ca/crt/crtd/en/525448/1/document.do" target="_blank" rel="noopener noreferrer">Air Canada 案裁決<span class="sr-only">（在新分頁開啟）</span></a></p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>如果甲劇只取得「背景路人」授權，乙劇想讓分身演反派，誰必須再向本人說明？查不到同意紀錄時，誰可以叫停這個鏡頭？</p></div>
+    <div class="block"><h4>使用提醒</h4><p>不展示當事人照片或劇中對照圖。</p></div>
     
-    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/washingtonpost/status/1759812894319906899" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#0B6EAE" aria-hidden="true">W</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who">華盛頓郵報</span><span class="handle" translate="no">@washingtonpost</span><span class="dotsep" aria-hidden="true">·</span><time>2024/2/20</time></span>
-    <span class="post-body">華盛頓郵報報導仲裁庭判決</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a></div></div>
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/lejjel78/status/2121766398607454270" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#4C3A8A" aria-hidden="true">L</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@lejjel78</span></span><span class="post-body">最高法意見與廣電治理的討論</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></div></div>
     
   </div>
 </article>
@@ -490,54 +433,42 @@ html.js .panel.active { display: block; }
   
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-duty-2">
+      <span class="topline"><span class="badge badge-alt">備選</span><span class="year">2024</span></span>
+      <span class="card-title">Air Canada 聊天機器人答錯，公司想推給機器</span>
+      <span class="hook">2022 年 11 月，Jake Moffatt 的祖母過世。</span>
+      <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </h3>
+  <div class="detail" id="detail-duty-2">
+    <div class="block"><h4>故事簡介</h4><p>2022 年 11 月，Jake Moffatt 的祖母過世。他在 Air Canada 官網問客服聊天機器人喪親優惠票價，機器人回答可以先買票，90 天內再申請差額退款；但官網另一頁其實寫著旅程結束後不受理。Moffatt 照機器人的說法買了來回機票，事後申請被拒。Air Canada 的客服人員後來也承認機器人用了「誤導的文字」。審理時，Air Canada 主張聊天機器人是「要為自己行為負責的獨立法律主體」。2024 年 2 月 14 日，卑詩省民事仲裁庭（BC Civil Resolution Tribunal）在 Moffatt v. Air Canada 一案判決：仲裁委員 Christopher Rivers 說這是「很不尋常的主張」，聊天機器人只是 Air Canada 網站的一部分，公司要為網站上所有資訊負責，判 Air Canada 過失不實陳述成立，賠償 650.88 加幣（加上利息和規費共約 812 加幣）。（來源：判決全文 <a class="src" href="https://decisions.civilresolutionbc.ca/crt/crtd/en/525448/1/document.do" target="_blank" rel="noopener noreferrer">decisions.civilresolutionbc.ca<span class="sr-only">（在新分頁開啟）</span></a>、CBC 報導 <a class="src" href="https://www.cbc.ca/news/canada/british-columbia/air-canada-chatbot-lawsuit-1.7116416" target="_blank" rel="noopener noreferrer">cbc.ca<span class="sr-only">（在新分頁開啟）</span></a>、Law360 Canada <a class="src" href="https://www.law360.ca/ca/articles/1804075/court-rejects-air-canada-s-remarkable-denial-of-liability-regarding-misinformation-by-its-chatbot" target="_blank" rel="noopener noreferrer">law360.ca<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
+    <div class="block"><h4>爭議點</h4><p>用義務論怎麼看？義務論不問「這樣做划不划算」，而是問「企業對顧客有哪些不能違背的承諾」。公司用 AI 代替真人回答，對顧客說的話就是公司說的話；誠實告知、為自己的說法負責，不會因為說話的是機器就消失。判決處理的是法律責任（過失不實陳述），課堂上要再往前一步問：就算法律沒有要求，企業有沒有道德上的義務？</p></div>
+    <div class="block"><h4>為何選它</h4><p>和備選卡 Klarna 一樣是 AI 客服答錯，也對應「授權責任不能推給供應商或工具」；「機器人說可以退，公司說不算」一句就懂。事實寫在判決書裡，來源最硬，也不敏感。</p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>供應商在系統勾選「已授權」，演員卻說只同意前一部戲。誰調出原始授權，誰通知劇組暫停使用？</p></div>
+    
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/washingtonpost/status/1759812894319906899" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0B6EAE" aria-hidden="true">W</span><span class="post-main"><span class="post-head"><span class="who">華盛頓郵報</span><span class="handle" translate="no">@washingtonpost</span><span class="dotsep" aria-hidden="true">·</span><time>2024/2/20</time></span><span class="post-body">華盛頓郵報報導仲裁庭判決</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></div></div>
+    
+  </div>
+</article>
+
+<article class="card">
+  
+  <h3>
+    <button type="button" class="expander" aria-expanded="false" aria-controls="detail-duty-3">
       <span class="topline"><span class="badge badge-alt">備選</span><span class="year">2016</span></span>
       <span class="card-title">Apple 拒絕 FBI 解鎖 iPhone</span>
       <span class="hook">2015 年聖貝納迪諾槍擊案後，2016/2/16 法院命令 Apple 提供技術協助，讓 FBI 能嘗試破解兇手使用的工作用 iPhone。</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
-  <div class="detail" id="detail-duty-2">
+  <div class="detail" id="detail-duty-3">
     <div class="block"><h4>故事簡介</h4><p>2015 年聖貝納迪諾槍擊案後，2016/2/16 法院命令 Apple 提供技術協助，讓 FBI 能嘗試破解兇手使用的工作用 iPhone。Tim Cook 同日發公開信拒絕，認為這等於做出可以重複使用的後門。後來 FBI 透過第三方取得手機資料，司法部撤回要求法院強制 Apple 協助的聲請。（來源：Apple 公開信 <a class="src" href="https://www.apple.com/customer-letter/" target="_blank" rel="noopener noreferrer">apple.com<span class="sr-only">（在新分頁開啟）</span></a>、美國司法部監察長報告 <a class="src" href="https://oig.justice.gov/archives/press/2018/2018-03-27.pdf" target="_blank" rel="noopener noreferrer">oig.justice.gov<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
     <div class="block"><h4>爭議點</h4><p>協助辦案的「結果」很可能是好的，但 Apple 主張「保護所有用戶隱私」是不能打破的原則。原則和公共安全衝突時，企業該站在哪一邊？</p></div>
     <div class="block"><h4>為何選它</h4><p>最能代表康德式的「無條件義務」，也是科技巨頭和政府正面衝突的經典案例，EMBA 同學多半記得。</p></div>
-    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>企業對員工和顧客有沒有不能違背的義務？例如誠實告知、不把人只當成可以刪減的成本？</p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>若演員只授權單片，你會要求系統如何阻止其他劇組直接取用？</p></div>
     
-    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/itspauldaniels/status/2122563667677810814" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#B0135E" aria-hidden="true">I</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who" translate="no">@itspauldaniels</span><span class="dotsep" aria-hidden="true">·</span><time>2026/11/17</time></span>
-    <span class="post-body">回顧「分裂美國的那支手機」</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a></div></div>
     
-  </div>
-</article>
-
-<article class="card is-ext">
-  
-  <h3>
-    <button type="button" class="expander" aria-expanded="false" aria-controls="detail-duty-3">
-      <span class="topline"><span class="badge badge-ext">延伸閱讀</span><span class="year">2018</span></span>
-      <span class="card-title">Facebook × Cambridge Analytica 個資事件</span>
-      <span class="hook">2014 年，研究者 Aleksandr Kogan 開發的心理測驗 App，約有 27 萬人安裝，卻連帶取得他們好友的資料，總數最多約 8,700 萬人。</span>
-      <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
-    </button>
-  </h3>
-  <div class="detail" id="detail-duty-3">
-    <div class="block"><h4>故事簡介</h4><p>2014 年，研究者 Aleksandr Kogan 開發的心理測驗 App，約有 27 萬人安裝，卻連帶取得他們好友的資料，總數最多約 8,700 萬人。Cambridge Analytica 拿這些資料做選民分析和政治廣告。2018 年 3 月由《衛報》《觀察家報》和《紐約時報》揭露，吹哨者是 Christopher Wylie，祖克柏因此出席國會聽證。（來源：《衛報》2018/3/17 原始報導 <a class="src" href="https://www.theguardian.com/news/2018/mar/17/cambridge-analytica-facebook-influence-us-election" target="_blank" rel="noopener noreferrer">theguardian.com<span class="sr-only">（在新分頁開啟）</span></a>、Facebook 2018/4 說明約 8,700 萬人 <a class="src" href="https://about.fb.com/news/2018/04/restricting-data-access/" target="_blank" rel="noopener noreferrer">about.fb.com<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
-    <div class="block"><h4>爭議點</h4><p>絕大多數被取得資料的好友，從來沒有同意過；安裝測驗的人，也是在「學術研究」的說法下授權的。資料被拿去影響選舉，把人當成工具操弄，本身就違反了義務論的「人是目的，不是手段」。</p></div>
-    <div class="block"><h4>為何選它</h4><p>知情同意是義務論最直覺的切入點，而且這個事件影響至今。</p></div>
-    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>顧客知道自己面對的是 AI 嗎？有沒有選擇找真人的權利？</p></div>
-    
-    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/carolecadwalla/status/976539356654653440" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#0E6780" aria-hidden="true">C</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who">Carole Cadwalladr</span><span class="handle" translate="no">@carolecadwalla</span><span class="dotsep" aria-hidden="true">·</span><time>2018/3/21</time></span>
-    <span class="post-body">揭露記者 Carole Cadwalladr 本人的貼文</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a></div></div>
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/itspauldaniels/status/2122563667677810814" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#B0135E" aria-hidden="true">I</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@itspauldaniels</span><span class="dotsep" aria-hidden="true">·</span><time>2026/11/17</time></span><span class="post-body">回顧「分裂美國的那支手機」</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></div></div>
     
   </div>
 </article>
@@ -546,74 +477,73 @@ html.js .panel.active { display: block; }
   
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-duty-4">
-      <span class="topline"><span class="badge badge-ext">延伸閱讀</span><span class="year">2018</span></span>
+      <span class="topline"><span class="badge badge-ext">延伸</span><span class="year">2018</span></span>
+      <span class="card-title">Facebook × Cambridge Analytica 個資事件</span>
+      <span class="hook">2014 年，研究者 Aleksandr Kogan 開發的心理測驗 App，約有 27 萬人安裝，卻連帶取得他們好友的資料，總數最多約 8,700 萬人。</span>
+      <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </h3>
+  <div class="detail" id="detail-duty-4">
+    <div class="block"><h4>故事簡介</h4><p>2014 年，研究者 Aleksandr Kogan 開發的心理測驗 App，約有 27 萬人安裝，卻連帶取得他們好友的資料，總數最多約 8,700 萬人。Cambridge Analytica 拿這些資料做選民分析和政治廣告。2018 年 3 月由《衛報》《觀察家報》和《紐約時報》揭露，吹哨者是 Christopher Wylie，祖克柏因此出席國會聽證。（來源：《衛報》2018/3/17 原始報導 <a class="src" href="https://www.theguardian.com/news/2018/mar/17/cambridge-analytica-facebook-influence-us-election" target="_blank" rel="noopener noreferrer">theguardian.com<span class="sr-only">（在新分頁開啟）</span></a>、Facebook 2018/4 說明約 8,700 萬人 <a class="src" href="https://about.fb.com/news/2018/04/restricting-data-access/" target="_blank" rel="noopener noreferrer">about.fb.com<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
+    <div class="block"><h4>爭議點</h4><p>絕大多數被取得資料的好友，從來沒有同意過；安裝測驗的人，也是在「學術研究」的說法下授權的。資料被拿去影響選舉，把人當成工具操弄，本身就違反了義務論的「人是目的，不是手段」。</p></div>
+    <div class="block"><h4>為何選它</h4><p>知情同意是義務論最直覺的切入點，而且這個事件影響至今。</p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>劇組交出一段群戲，每張可辨認的臉都由誰授權？其中一人拒絕，這段素材要怎麼處理？</p></div>
+    
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/carolecadwalla/status/976539356654653440" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0E6780" aria-hidden="true">C</span><span class="post-main"><span class="post-head"><span class="who">Carole Cadwalladr</span><span class="handle" translate="no">@carolecadwalla</span><span class="dotsep" aria-hidden="true">·</span><time>2018/3/21</time></span><span class="post-body">揭露記者 Carole Cadwalladr 本人的貼文</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></div></div>
+    
+  </div>
+</article>
+
+<article class="card is-ext">
+  
+  <h3>
+    <button type="button" class="expander" aria-expanded="false" aria-controls="detail-duty-5">
+      <span class="topline"><span class="badge badge-ext">延伸</span><span class="year">2018</span></span>
       <span class="card-title">Amazon AI 招募工具歧視女性</span>
       <span class="hook">Amazon 約從 2014 年開始，用過去十年的履歷訓練 AI 替求職者評分，結果系統會替出現「women&#x27;s」字樣的履歷（例如「女子西洋棋社社長」）扣分。</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
-  <div class="detail" id="detail-duty-4">
+  <div class="detail" id="detail-duty-5">
     <div class="block"><h4>故事簡介</h4><p>Amazon 約從 2014 年開始，用過去十年的履歷訓練 AI 替求職者評分，結果系統會替出現「women&#x27;s」字樣的履歷（例如「女子西洋棋社社長」）扣分。團隊約在 2017 年初解散，2018 年由 Reuters 揭露；Amazon 表示招募人員從未只靠這套工具做決定。（來源：Reuters 報導轉載 <a class="src" href="https://www.rte.ie/news/business/2018/1010/1002144-amazon-ai-bias/" target="_blank" rel="noopener noreferrer">rte.ie<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
     <div class="block"><h4>爭議點</h4><p>沒有人故意歧視，但結果就是不公平。企業對「平等對待每個人」的義務，能不能用「是演算法做的」來推卸？</p></div>
     <div class="block"><h4>為何選它</h4><p>和 HR 直接相關，學員都是主管，很有共鳴。</p></div>
-    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>如果 Klarna 用模型決定哪些客訴優先轉真人，結果某些顧客總是被留在自助流程裡，誰有義務發現、說明並修正？</p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>如果派工名單總把已授權數位分身的人排在前面，拒簽者如何要求說明和更正？</p></div>
     
-    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/CatherineAdenle/status/1051008424496922625" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#B45309" aria-hidden="true">C</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who" translate="no">@CatherineAdenle</span><span class="dotsep" aria-hidden="true">·</span><time>2018/10/13</time></span>
-    <span class="post-body">轉述 Reuters 報導</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a></div></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/CatherineAdenle/status/1051008424496922625" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#B45309" aria-hidden="true">C</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@CatherineAdenle</span><span class="dotsep" aria-hidden="true">·</span><time>2018/10/13</time></span><span class="post-body">轉述 Reuters 報導</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></div></div>
     
   </div>
 </article>
-
-  </div>
+</div>
 </section>
-
 
 <section class="panel" id="virtue" role="tabpanel" aria-labelledby="tab-virtue" tabindex="0">
   <aside class="bridge">
-    <p class="bridge-kicker">與 Klarna 的連結</p>
-    <p>Leike 公開說出對公司不利的事，Klarna 執行長也公開承認「太看重成本、品質變差」；德性論問的是，願意說出對自己不利的真話，算不算好的領導品格。</p>
+    <p class="bridge-kicker">與核心案例的連結</p>
+    <p>合約有寫的事容易查。更能看出主管品格的，是作品意外爆紅、利益增加，而演員還不知道的那一天。</p>
   </aside>
   <h2 class="theory">德性論｜看品格：一個好的企業、好的領導者會怎麼做？</h2>
   <div class="feed">
-    
 <article class="card is-main">
   
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-virtue-1">
-      <span class="topline"><span class="badge badge-main"><span class="pip" aria-hidden="true"></span>主案例</span><span class="year">2024</span></span>
-      <span class="card-title">OpenAI 安全團隊共同負責人 Jan Leike 離職</span>
-      <span class="hook">2024 年 5 月，和 Ilya Sutskever 共同領導 OpenAI 超級對齊團隊的 Jan Leike 宣布離職，並在 X 上公開說明原因：他和公司領導層對核心優先順序的看法長期不同，「安全文化和流程已經讓位給閃亮的產品」。</span>
+      <span class="topline"><span class="badge badge-main"><span class="pip" aria-hidden="true"></span>主推</span></span>
+      <span class="card-title">橫店π 情境題：數位分身爆紅，你會主動打這通電話嗎？</span>
+      <span class="hook">教學模擬。假設演員已同意單片使用並領取約定酬勞，後來分身成了全劇最受歡迎的角色。</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
   <div class="detail" id="detail-virtue-1">
-    <div class="block"><h4>故事簡介</h4><p>2024 年 5 月，和 Ilya Sutskever 共同領導 OpenAI 超級對齊團隊的 Jan Leike 宣布離職，並在 X 上公開說明原因：他和公司領導層對核心優先順序的看法長期不同，「安全文化和流程已經讓位給閃亮的產品」。這是他個人的說法，Sam Altman 和 Greg Brockman 當時也公開回應。（來源：OpenAI 成立團隊公告 <a class="src" href="https://openai.com/index/introducing-superalignment/" target="_blank" rel="noopener noreferrer">openai.com<span class="sr-only">（在新分頁開啟）</span></a>、Leike 本人貼文見下）</p></div>
-    <div class="block"><h4>爭議點</h4><p>德性論問的是「這是一家什麼樣的公司」。為了搶先推出產品而犧牲安全，是商業上的務實，還是品格的失守？</p></div>
-    <div class="block"><h4>為何選它</h4><p>主角親自在 X 上發聲，資料是第一手的；這也是 AI 產業具代表性的「品格與誠信」事件。</p></div>
-    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>執行長 2024 年高調宣傳 AI 做了 700 人的工作、顧客更喜歡 AI，2025 年又承認太看重成本、品質變差。主動認錯是誠實，還是事後補救？一個有德性的領導者會怎麼說、怎麼做？</p></div>
+    <div class="block"><h4>故事簡介</h4><p><strong>教學模擬。</strong> 假設演員已同意單片使用並領取約定酬勞，後來分身成了全劇最受歡迎的角色。合約沒有寫爆紅後如何分潤。真實對照是日本青二 Production 與 CoeFont 的合作。雙方在公布聲音 AI 計畫時，就先排除動畫角色演技、外國電影配音等表演用途。<a class="src" href="https://prtimes.jp/main/html/rd/p/000000089.000078329.html" target="_blank" rel="noopener noreferrer">青二與 CoeFont 合作公告<span class="sr-only">（在新分頁開啟）</span></a></p></div>
+    <div class="block"><h4>爭議點</h4><p>你會主動告訴演員分身用在哪些鏡頭、作品帶來哪些收益嗎？如果願意多付一筆錢，怎麼訂出下一位演員也適用的標準？</p></div>
+    <div class="block"><h4>為何選它</h4><p>青二在公布合作的同時（2024-10-07）就寫明不做哪些用途。把它和爆紅後的選擇並排，可以看出主管是否願意在有利可圖時仍守住承諾。</p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>你會在簽約前公開哪些用途一定不做？爆紅後，願意把哪些使用紀錄交給演員，又會怎麼向其他演員解釋分潤？</p></div>
     
-    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/janleike/status/1790603862132596961" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#0A7A4B" aria-hidden="true">J</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who">Jan Leike</span><span class="handle" translate="no">@janleike</span><span class="dotsep" aria-hidden="true">·</span><time>2024/5/15</time></span>
-    <span class="post-body">「I resigned」</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a>
-<a class="post" href="https://x.com/janleike/status/1791498178346549382" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#0A7A4B" aria-hidden="true">J</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who">Jan Leike</span><span class="handle" translate="no">@janleike</span><span class="dotsep" aria-hidden="true">·</span><time>2024/5/17</time></span>
-    <span class="post-body">說明和領導層的分歧</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a></div></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/iphonetap/status/2118584506559218025" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0B6EAE" aria-hidden="true">I</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@iphonetap</span></span><span class="post-body">數位分身授權的討論</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></div></div>
     
   </div>
 </article>
@@ -622,26 +552,42 @@ html.js .panel.active { display: block; }
   
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-virtue-2">
+      <span class="topline"><span class="badge badge-alt">備選</span><span class="year">2024</span></span>
+      <span class="card-title">OpenAI 安全團隊共同負責人 Jan Leike 離職</span>
+      <span class="hook">2024 年 5 月，和 Ilya Sutskever 共同領導 OpenAI 超級對齊團隊的 Jan Leike 宣布離職，並在 X 上公開說明原因：他和公司領導層對核心優先順序的看法長期不同，「安全文化和流程已經讓位給閃亮的產品」。</span>
+      <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </h3>
+  <div class="detail" id="detail-virtue-2">
+    <div class="block"><h4>故事簡介</h4><p>2024 年 5 月，和 Ilya Sutskever 共同領導 OpenAI 超級對齊團隊的 Jan Leike 宣布離職，並在 X 上公開說明原因：他和公司領導層對核心優先順序的看法長期不同，「安全文化和流程已經讓位給閃亮的產品」。這是他個人的說法，Sam Altman 和 Greg Brockman 當時也公開回應。（來源：OpenAI 成立團隊公告 <a class="src" href="https://openai.com/index/introducing-superalignment/" target="_blank" rel="noopener noreferrer">openai.com<span class="sr-only">（在新分頁開啟）</span></a>、Leike 本人貼文見下）</p></div>
+    <div class="block"><h4>爭議點</h4><p>德性論問的是「這是一家什麼樣的公司」。為了搶先推出產品而犧牲安全，是商業上的務實，還是品格的失守？</p></div>
+    <div class="block"><h4>為何選它</h4><p>主角親自在 X 上發聲，資料是第一手的；這也是 AI 產業具代表性的「品格與誠信」事件。</p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>驗收前夕，團隊發現部分人物素材找不到最初的同意紀錄。你會讓查出問題的同事直接向採購人說明嗎？</p></div>
+    
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/janleike/status/1790603862132596961" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0A7A4B" aria-hidden="true">J</span><span class="post-main"><span class="post-head"><span class="who">Jan Leike</span><span class="handle" translate="no">@janleike</span><span class="dotsep" aria-hidden="true">·</span><time>2024/5/15</time></span><span class="post-body">「I resigned」</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a><a class="post" href="https://x.com/janleike/status/1791498178346549382" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0A7A4B" aria-hidden="true">J</span><span class="post-main"><span class="post-head"><span class="who">Jan Leike</span><span class="handle" translate="no">@janleike</span><span class="dotsep" aria-hidden="true">·</span><time>2024/5/17</time></span><span class="post-body">說明和領導層的分歧</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></div></div>
+    
+  </div>
+</article>
+
+<article class="card">
+  
+  <h3>
+    <button type="button" class="expander" aria-expanded="false" aria-controls="detail-virtue-3">
       <span class="topline"><span class="badge badge-alt">備選</span><span class="year">2025</span></span>
       <span class="card-title">Duolingo 執行長宣布「AI 優先」，又出面澄清</span>
       <span class="hook">2025 年 4 月 28 日，Duolingo 執行長 Luis von Ahn 的全員信貼在公司官方 LinkedIn，宣布公司要「AI 優先」：會逐步停止用外包人員做 AI 能處理的工作；招募和績效考核都會看 AI 使用；團隊要先證明工作無法再自動化，才會給新人力。</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
-  <div class="detail" id="detail-virtue-2">
+  <div class="detail" id="detail-virtue-3">
     <div class="block"><h4>故事簡介</h4><p>2025 年 4 月 28 日，Duolingo 執行長 Luis von Ahn 的全員信貼在公司官方 LinkedIn，宣布公司要「AI 優先」：會逐步停止用外包人員做 AI 能處理的工作；招募和績效考核都會看 AI 使用；團隊要先證明工作無法再自動化，才會給新人力。信中也說「我們寧願帶著急迫感前進、偶爾在品質上吃點小虧」，以及「這不是用 AI 取代員工」。信件引發用戶和網友強烈反彈。2025 年 5 月下旬，他在 LinkedIn 補充說明：「我不認為 AI 會取代員工的工作（我們其實仍以同樣速度在招人）」，並承認發那封備忘錄時「沒有把話說清楚」。（來源：The Verge 備忘錄全文 <a class="src" href="https://www.theverge.com/news/657594/duolingo-ai-first-replace-contract-workers" target="_blank" rel="noopener noreferrer">theverge.com<span class="sr-only">（在新分頁開啟）</span></a>、Fortune 2025/5/24 <a class="src" href="https://fortune.com/2025/05/24/duolingo-ai-first-employees-ceo-luis-von-ahn/" target="_blank" rel="noopener noreferrer">fortune.com<span class="sr-only">（在新分頁開啟）</span></a>、Snopes 查核 <a class="src" href="https://www.snopes.com/fact-check/duolingo-ai-first/" target="_blank" rel="noopener noreferrer">snopes.com<span class="sr-only">（在新分頁開啟）</span></a>、TechRepublic（「沒有把話說清楚」原話）<a class="src" href="https://www.techrepublic.com/article/news-duolingo-ai-strategy-backlash/" target="_blank" rel="noopener noreferrer">techrepublic.com<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
     <div class="block"><h4>爭議點</h4><p>領導者宣布重大轉變時，怎樣才算誠實？說「這不是要取代員工」，同時寫「逐步停止用外包」，是沒說清楚，還是避重就輕？事後承認沒講清楚，算不算有德性的表現？</p></div>
-    <div class="block"><h4>為何選它</h4><p>和 Klarna 的結構幾乎一樣：執行長高調宣告 AI 優先、外包人員先受影響、反彈後出面說明，大家也都用過 Duolingo。使用建議：可以在 Klarna 段落當 30 秒對照，不必獨立成段，避免和主案例講同一件事。</p></div>
-    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>討論問題：同樣宣告 AI 優先，Klarna 執行長事後說「品質變差」，Duolingo 執行長說「沒把話說清楚」，哪一種比較有德性？如果是你，第一次宣布時會怎麼說？</p></div>
+    <div class="block"><h4>為何選它</h4><p>和 Klarna 的結構幾乎一樣：執行長高調宣告 AI 優先、外包人員先受影響、反彈後出面說明，大家也都用過 Duolingo。使用建議：當 30 秒對照即可。</p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>如果你同時面對投資人、劇組和群演，第一次說明建庫目的時，會怎麼把「授權收入」和「可能少掉的通告」都講清楚？</p></div>
     
-    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/FortuneMagazine/status/1917599533686522189" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#0E6780" aria-hidden="true">F</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who">Fortune</span><span class="handle" translate="no">@FortuneMagazine</span><span class="dotsep" aria-hidden="true">·</span><time>2025/4/30</time></span>
-    <span class="post-body">Fortune：Duolingo 將逐步淘汰可由 AI 處理工作的外包人員</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a></div></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/FortuneMagazine/status/1917599533686522189" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0E6780" aria-hidden="true">F</span><span class="post-main"><span class="post-head"><span class="who">Fortune</span><span class="handle" translate="no">@FortuneMagazine</span><span class="dotsep" aria-hidden="true">·</span><time>2025/4/30</time></span><span class="post-body">Fortune：Duolingo 將逐步淘汰可由 AI 處理工作的外包人員</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></div></div>
     
   </div>
 </article>
@@ -649,83 +595,52 @@ html.js .panel.active { display: block; }
 <article class="card is-ext">
   
   <h3>
-    <button type="button" class="expander" aria-expanded="false" aria-controls="detail-virtue-3">
-      <span class="topline"><span class="badge badge-ext">延伸閱讀</span><span class="year">2018</span></span>
+    <button type="button" class="expander" aria-expanded="false" aria-controls="detail-virtue-4">
+      <span class="topline"><span class="badge badge-ext">延伸</span><span class="year">2018</span></span>
       <span class="card-title">Google 員工抗議軍方 AI 專案 Maven</span>
       <span class="hook">2018 年 Google 參與美國國防部用 AI 分析無人機影像的 Project Maven，數千名員工連署抗議，部分員工辭職。</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
-  <div class="detail" id="detail-virtue-3">
+  <div class="detail" id="detail-virtue-4">
     <div class="block"><h4>故事簡介</h4><p>2018 年 Google 參與美國國防部用 AI 分析無人機影像的 Project Maven，數千名員工連署抗議，部分員工辭職。Google 最後決定合約到期後不再續約，並發布 AI 原則，承諾不把 AI 用在武器和監控。2025 年 2 月，Google 修改 AI 原則，刪除了這項承諾。2026 年 10 月，Bloomberg 報導 Google 正洽談參與美國「金穹」（Golden Dome）飛彈防禦計畫的資料安全工作，尚未簽約。（來源：Washington Post 2025/2/4 <a class="src" href="https://www.washingtonpost.com/technology/2025/02/04/google-ai-policies-weapons-harm/" target="_blank" rel="noopener noreferrer">washingtonpost.com<span class="sr-only">（在新分頁開啟）</span></a>、Bloomberg 2026/10 <a class="src" href="https://news.bloomberglaw.com/federal-contracting/alphabet-is-in-talks-to-join-trumps-golden-dome-defense-program" target="_blank" rel="noopener noreferrer">news.bloomberglaw.com<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
     <div class="block"><h4>爭議點</h4><p>員工的道德勇氣能不能改變公司方向？七年後公司把承諾拿掉，原則是真的，還是會隨著商業利益調整？</p></div>
     <div class="block"><h4>為何選它</h4><p>示範德性論的「勇氣」和「言行一致」，而且有 2025 到 2026 年的新發展，很有反思空間。</p></div>
-    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>第一線客服發現 AI 把部分沒解決的申訴算成「已解決」，主管收到這樣的意見，該怎麼回應？</p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>若大客戶希望放寬原先排除的角色用途，哪一項承諾值得你拒絕這筆生意？</p></div>
     
-    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/mer__edith/status/1008724675483095042" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#0B6EAE" aria-hidden="true">M</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who">Meredith Whittaker</span><span class="handle" translate="no">@mer__edith</span><span class="dotsep" aria-hidden="true">·</span><time>2018/6</time></span>
-    <span class="post-body">抗議發起人之一 Meredith Whittaker</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a>
-<a class="post" href="https://x.com/akishore/status/2116576748905373836" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#9A1B40" aria-hidden="true">A</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who" translate="no">@akishore</span><span class="dotsep" aria-hidden="true">·</span><time>2026/10/31</time></span>
-    <span class="post-body">網友評論 Google 從抗議 Maven 走到洽談飛彈防禦的資料安全工作</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a></div></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/mer__edith/status/1008724675483095042" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0B6EAE" aria-hidden="true">M</span><span class="post-main"><span class="post-head"><span class="who">Meredith Whittaker</span><span class="handle" translate="no">@mer__edith</span><span class="dotsep" aria-hidden="true">·</span><time>2018/6</time></span><span class="post-body">抗議發起人之一 Meredith Whittaker</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a><a class="post" href="https://x.com/akishore/status/2116576748905373836" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#9A1B40" aria-hidden="true">A</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@akishore</span><span class="dotsep" aria-hidden="true">·</span><time>2026/10/31</time></span><span class="post-body">網友評論 Google 從抗議 Maven 走到洽談飛彈防禦的資料安全工作</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></div></div>
     
   </div>
 </article>
-
-  </div>
+</div>
 </section>
-
 
 <section class="panel" id="care" role="tabpanel" aria-labelledby="tab-care" tabindex="0">
   <aside class="bridge">
-    <p class="bridge-kicker">與 Klarna 的連結</p>
-    <p>照護機器人和 AI 客服都把一部分工作交給科技；關懷倫理問的是，交出去之後，誰負責察覺那個一直沒得到幫助的人。</p>
+    <p class="bridge-kicker">與核心案例的連結</p>
+    <p>同一張授權書，對想增加收入的演員是機會，對擔心拒簽後就沒通告的人卻可能是壓力。誰有辦法聽到兩種聲音？</p>
   </aside>
   <h2 class="theory">關懷倫理｜顧關係：誰最脆弱？誰在照顧他們？</h2>
   <div class="feed">
-    
 <article class="card is-main">
   
   <h3>
     <button type="button" class="expander" aria-expanded="false" aria-controls="detail-care-1">
-      <span class="topline"><span class="badge badge-main"><span class="pip" aria-hidden="true"></span>主案例</span><span class="year">2012 年至今</span></span>
-      <span class="card-title">日本照護機器人與台灣超高齡社會</span>
-      <span class="hook">日本面對高齡化和照護人力短缺，經產省和厚勞省從 2012 年起訂定照護機器人的重點發展領域（例如移位輔助、行走輔助、如廁輔助、失智者看護），大力推動。</span>
+      <span class="topline"><span class="badge badge-main"><span class="pip" aria-hidden="true"></span>主推</span></span>
+      <span class="card-title">橫店演員等不到下一通電話：誰來問他需要什麼？</span>
+      <span class="hook">畢志強告訴新加坡 CNA，以前有時一天有好幾組邀約，後來一個月只接到一兩通電話。</span>
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
   <div class="detail" id="detail-care-1">
-    <div class="block"><h4>故事簡介</h4><p>日本面對高齡化和照護人力短缺，經產省和厚勞省從 2012 年起訂定照護機器人的重點發展領域（例如移位輔助、行走輔助、如廁輔助、失智者看護），大力推動。人類學者 James Wright 在照護機構的田野研究發現，部分設備反而增加了設定、搬運和協調的工作，照服員陪伴長輩的時間不一定變多；但也有研究發現導入機器人和照服員留任率較高有關。結果因設備和指標而異，不能一概而論。台灣也走到同一個路口：內政部統計，2025 年 12 月底 65 歲以上人口占 20.06%，正式進入超高齡社會。（來源：厚勞省 <a class="src" href="https://www.mhlw.go.jp/stf/houdou/2r9852000002p8sl.html" target="_blank" rel="noopener noreferrer">mhlw.go.jp<span class="sr-only">（在新分頁開啟）</span></a>、Wright 著作 <a class="src" href="https://cornellpress.cornell.edu/book/9781501768040/robots-wont-save-japan/" target="_blank" rel="noopener noreferrer">cornellpress.cornell.edu<span class="sr-only">（在新分頁開啟）</span></a>、NBER 研究 <a class="src" href="https://www.nber.org/papers/w33116" target="_blank" rel="noopener noreferrer">nber.org<span class="sr-only">（在新分頁開啟）</span></a>、內政部 <a class="src" href="https://www.moi.gov.tw/News_Content.aspx?n=9&amp;s=335870" target="_blank" rel="noopener noreferrer">moi.gov.tw<span class="sr-only">（在新分頁開啟）</span></a>、中央社 <a class="src" href="https://www.cna.com.tw/news/ahel/202601090067.aspx" target="_blank" rel="noopener noreferrer">cna.com.tw<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
-    <div class="block"><h4>爭議點</h4><p>用關懷倫理怎麼看？關懷倫理重視具體的關係和個別需要，而不是一套通用規則。有的長輩希望移位時保有隱私，寧可用機器；有的需要熟悉的照服員安撫。設備省下的時間，有沒有真的回到被照顧的人身上？主管要聽取個別需要、配置能回應的人力，最後確認當事人真的得到幫助。可以搭配 Joan Tronto 的照顧四階段：關注、負責、能力、回應。</p></div>
-    <div class="block"><h4>為何選它</h4><p>同學家裡多半有長輩，切身相關；情緒負擔比自殺議題低，適合課堂討論；最直接挑戰「科技能取代照顧」的想像。</p></div>
-    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>討論問題：一位顧客偏好自己查帳，另一位已經第三次追問同一筆錯誤扣款。你怎麼讓前者保有自助的選擇，讓後者不必第四次從頭解釋？誰有權接案、修正帳務，並確認事情真的解決了？</p></div>
+    <div class="block"><h4>故事簡介</h4><p>畢志強告訴新加坡 CNA，以前有時一天有好幾組邀約，後來一個月只接到一兩通電話。CNN 訪問的 Junlin 說自己 6 月只拍了 7 天，同篇的 Liu Yuzhan 說房貸和父母養老都靠他，改送外賣補收入。《浙江日報》也報導有特約演員改做景區 NPC、外送或擺攤。<a class="src" href="https://zjrb.zjol.com.cn/html/2026-11/11/content_3945530.htm" target="_blank" rel="noopener noreferrer">浙江日報<span class="sr-only">（在新分頁開啟）</span></a>選題影片裡的女演員晚上賣檸檬茶，仍在等試戲機會。最後一例是<strong>個人自述，Whisper 自動轉錄</strong>。這些經歷都不能直接歸因於 10 月才發布的橫店π。<a class="src" href="https://www.channelnewsasia.com/east-asia/ai-microdrama-china-film-industry-actors-jobs-6229191" target="_blank" rel="noopener noreferrer">CNA 訪畢志強<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.cnn.com/2026/08/22/style/short-drama-ai-china-intl-hnk" target="_blank" rel="noopener noreferrer">CNN 橫店採訪<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.youtube.com/watch?v=GtocTpVLs2k" target="_blank" rel="noopener noreferrer">影片原檔，02:35、06:21 起<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.chinanews.com.cn/cj/2026/10-24/10720344.shtml" target="_blank" rel="noopener noreferrer">平台發布會報導<span class="sr-only">（在新分頁開啟）</span></a></p></div>
+    <div class="block"><h4>爭議點</h4><p>願意靠授權付房租的人，需要清楚的報酬與到帳時間。想靠實拍累積經驗的人，需要拒絕後仍能接通告。兩人都在同意書上簽名，能說明兩人的需要都被照顧到了嗎？</p></div>
+    <div class="block"><h4>為何選它</h4><p>台灣也聽得到工作者自己的聲音。《烏龍派出所》國語配音遭 AI 惡搞後，台北市配音人員職業工會 2026-01 發表聲明：「配音員不是素材庫」。<a class="src" href="https://news.cts.com.tw/cts/entertain/202601/202601122551984.html" target="_blank" rel="noopener noreferrer">華視報導工會聲明<span class="sr-only">（在新分頁開啟）</span></a></p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>若由公會設一個與派工分開的窗口，誰要主動聯絡拒簽者，確認他還收得到通告？若演員發現分身演了未同意的角色，誰陪他查到下架與補償結果？</p></div>
     
-    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/WorldRobotDay/status/1618209068946165761" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#B45309" aria-hidden="true">W</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who" translate="no">@WorldRobotDay</span><span class="dotsep" aria-hidden="true">·</span><time>2023/1</time></span>
-    <span class="post-body">轉貼報導「照護機器人並沒有省下時間」</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a>
-<a class="post" href="https://x.com/beatrizbecerrab/status/994938856674754561" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#0E6780" aria-hidden="true">B</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who" translate="no">@beatrizbecerrab</span><span class="dotsep" aria-hidden="true">·</span><time>2018/5</time></span>
-    <span class="post-body">日本照護人力缺口</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a></div></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><p>無</p></div></div>
     
   </div>
 </article>
@@ -743,25 +658,33 @@ html.js .panel.active { display: block; }
   <div class="detail" id="detail-care-2">
     <div class="block"><h4>故事簡介</h4><p>2019 年 10 月，台灣接連發生外送員車禍身亡事件，引發外送員勞動權益的討論。平台主張和外送員是承攬關係，但勞動部當時針對死亡個案勞檢，依實際指揮監督情形認定雙方是僱傭關係。派單和報酬由不透明的演算法決定的問題持續被討論，《外送員權益保障及外送平臺管理法》已在 2026 年 7 月 21 日施行。（來源：勞動部外送平台專案檢查結果 <a class="src" href="https://www.mol.gov.tw/1607/1632/1640/12374/" target="_blank" rel="noopener noreferrer">mol.gov.tw<span class="sr-only">（在新分頁開啟）</span></a>、外送專法施行說明 <a class="src" href="https://www.mol.gov.tw/1607/1632/1633/95651/" target="_blank" rel="noopener noreferrer">mol.gov.tw<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
     <div class="block"><h4>爭議點</h4><p>平台說自己只是「媒合」，但演算法實際上在指揮人。在演算法和人之間，誰該照顧外送員的安全？有了專法之後，誰注意到外送員累了、受傷了？</p></div>
-    <div class="block"><h4>為何選它</h4><p>在地、天天看得到，可以把關懷倫理拉到台灣職場的真實場景；Klarna 2025 年找的真人客服也是彈性上線的自由工作者，兩案可以對照。</p></div>
-    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>假設簡單案件都由 AI 完成，真人客服一天接到的幾乎都是憤怒、焦急的顧客，公司要怎麼知道他們還負荷得了？</p></div>
+    <div class="block"><h4>為何選它</h4><p>在地、天天看得到，可以把關懷倫理拉到台灣職場的真實場景；和橫店接案演員一樣，都是「表面可拒絕、實際怕失去派工」的處境。</p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>演員說拒簽後通告變少，卻不敢公開投訴。誰能保密受理、查派工紀錄，並回覆當事人？</p></div>
     
-    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/divid1245/status/1450360840750698496" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#B45309" aria-hidden="true">D</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who" translate="no">@divid1245</span><span class="dotsep" aria-hidden="true">·</span><time>2021/10</time></span>
-    <span class="post-body">評論外送員的低薪和不透明演算法</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a>
-<a class="post" href="https://x.com/scmanpower/status/1184186193904226304" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#0E6780" aria-hidden="true">S</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who" translate="no">@scmanpower</span><span class="dotsep" aria-hidden="true">·</span><time>2019/10/15</time></span>
-    <span class="post-body">轉述勞動部認定外送員死亡個案為僱傭關係</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a></div></div>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/divid1245/status/1450360840750698496" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#B45309" aria-hidden="true">D</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@divid1245</span><span class="dotsep" aria-hidden="true">·</span><time>2021/10</time></span><span class="post-body">評論外送員的低薪和不透明演算法</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a><a class="post" href="https://x.com/scmanpower/status/1184186193904226304" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0E6780" aria-hidden="true">S</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@scmanpower</span><span class="dotsep" aria-hidden="true">·</span><time>2019/10/15</time></span><span class="post-body">轉述勞動部認定外送員死亡個案為僱傭關係</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></div></div>
+    
+  </div>
+</article>
+
+<article class="card is-ext">
+  
+  <h3>
+    <button type="button" class="expander" aria-expanded="false" aria-controls="detail-care-3">
+      <span class="topline"><span class="badge badge-ext">延伸</span><span class="year">2012 年至今</span></span>
+      <span class="card-title">日本照護機器人與台灣超高齡社會</span>
+      <span class="hook">日本面對高齡化和照護人力短缺，經產省和厚勞省從 2012 年起訂定照護機器人的重點發展領域（例如移位輔助、行走輔助、如廁輔助、失智者看護），大力推動。</span>
+      <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </h3>
+  <div class="detail" id="detail-care-3">
+    <div class="block"><h4>故事簡介</h4><p>日本面對高齡化和照護人力短缺，經產省和厚勞省從 2012 年起訂定照護機器人的重點發展領域（例如移位輔助、行走輔助、如廁輔助、失智者看護），大力推動。人類學者 James Wright 在照護機構的田野研究發現，部分設備反而增加了設定、搬運和協調的工作，照服員陪伴長輩的時間不一定變多；但也有研究發現導入機器人和照服員留任率較高有關。結果因設備和指標而異，不能一概而論。台灣也走到同一個路口：內政部統計，2025 年 12 月底 65 歲以上人口占 20.06%，正式進入超高齡社會。（來源：厚勞省 <a class="src" href="https://www.mhlw.go.jp/stf/houdou/2r9852000002p8sl.html" target="_blank" rel="noopener noreferrer">mhlw.go.jp<span class="sr-only">（在新分頁開啟）</span></a>、Wright 著作 <a class="src" href="https://cornellpress.cornell.edu/book/9781501768040/robots-wont-save-japan/" target="_blank" rel="noopener noreferrer">cornellpress.cornell.edu<span class="sr-only">（在新分頁開啟）</span></a>、NBER 研究 <a class="src" href="https://www.nber.org/papers/w33116" target="_blank" rel="noopener noreferrer">nber.org<span class="sr-only">（在新分頁開啟）</span></a>、內政部 <a class="src" href="https://www.moi.gov.tw/News_Content.aspx?n=9&amp;s=335870" target="_blank" rel="noopener noreferrer">moi.gov.tw<span class="sr-only">（在新分頁開啟）</span></a>、中央社 <a class="src" href="https://www.cna.com.tw/news/ahel/202601090067.aspx" target="_blank" rel="noopener noreferrer">cna.com.tw<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
+    <div class="block"><h4>爭議點</h4><p>用關懷倫理怎麼看？關懷倫理重視具體的關係和個別需要，而不是一套通用規則。有的長輩希望移位時保有隱私，寧可用機器；有的需要熟悉的照服員安撫。設備省下的時間，有沒有真的回到被照顧的人身上？主管要聽取個別需要、配置能回應的人力，最後確認當事人真的得到幫助。可以搭配 Joan Tronto 的照顧四階段：關注、負責、能力、回應。</p></div>
+    <div class="block"><h4>為何選它</h4><p>同學家裡多半有長輩，切身相關；情緒負擔比自殺議題低，適合課堂討論；最直接挑戰「科技能取代照顧」的想像。</p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>一位演員希望多接授權，一位更想回片場。除了統計總授權數，誰負責追蹤兩人各自想要的結果？</p></div>
+    
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/WorldRobotDay/status/1618209068946165761" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#B45309" aria-hidden="true">W</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@WorldRobotDay</span><span class="dotsep" aria-hidden="true">·</span><time>2023/1</time></span><span class="post-body">轉貼報導「照護機器人並沒有省下時間」</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a><a class="post" href="https://x.com/beatrizbecerrab/status/994938856674754561" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0E6780" aria-hidden="true">B</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@beatrizbecerrab</span><span class="dotsep" aria-hidden="true">·</span><time>2018/5</time></span><span class="post-body">日本照護人力缺口</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></div></div>
     
   </div>
 </article>
@@ -770,57 +693,33 @@ html.js .panel.active { display: block; }
   <div class="sensitive" role="note">
   <strong>敏感內容</strong>
   <p>（延伸閱讀使用提醒：以下案例涉及自殺議題，若在課堂使用，請先提醒內容敏感，不描述細節，最後附上台灣 1925 安心專線。）</p>
-  <a class="hotline" href="tel:1925">台灣 1925 安心專線</a>
+  <a class="hotline" href="tel:1925">台灣 1925 安心專線（24 小時免付費）。</a>
 </div>
   <h3>
-    <button type="button" class="expander" aria-expanded="false" aria-controls="detail-care-3">
+    <button type="button" class="expander" aria-expanded="false" aria-controls="detail-care-4">
       <span class="topline"><span class="badge badge-ext">延伸閱讀</span><span class="year">2024–2026</span></span>
       <span class="card-title">AI 聊天機器人與青少年自殺</span>
       
       <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </button>
   </h3>
-  <div class="detail" id="detail-care-3">
+  <div class="detail" id="detail-care-4">
     <div class="block"><h4>故事簡介</h4><p>14 歲的美國少年 Sewell Setzer III 長期和 Character.AI 的角色聊天機器人建立情感依附，2024 年 2 月自殺；母親 Megan Garcia 2024 年 10 月提告，2026 年 1 月雙方告知法院原則上和解。2025 年 8 月，16 歲少年 Adam Raine 的家長控告 OpenAI，主張 ChatGPT 在對話中沒有適當介入（訴訟進行中，這是家長的主張）。2025 年 9 月 16 日美國參議院司法委員會舉行聽證，兩家家長出席作證；2026 年 4 月 30 日，同一委員會通過限制兒童使用 AI 陪伴機器人的法案。（來源：Garcia 案法院紀錄 <a class="src" href="https://storage.courtlistener.com/recap/gov.uscourts.flmd.433581/gov.uscourts.flmd.433581.242.0.pdf" target="_blank" rel="noopener noreferrer">storage.courtlistener.com<span class="sr-only">（在新分頁開啟）</span></a>、Raine 案起訴狀 <a class="src" href="https://www.law.berkeley.edu/wp-content/uploads/2025/09/Raine-v-OpenAI.pdf" target="_blank" rel="noopener noreferrer">law.berkeley.edu<span class="sr-only">（在新分頁開啟）</span></a>、參議院聽證 <a class="src" href="https://www.judiciary.senate.gov/committee-activity/hearings/examining-the-harm-of-ai-chatbots" target="_blank" rel="noopener noreferrer">judiciary.senate.gov<span class="sr-only">（在新分頁開啟）</span></a>、2026/4/30 委員會 <a class="src" href="https://www.blumenthal.senate.gov/newsroom/press/release/video-blumenthal-authored-bipartisan-bill-protecting-children-from-ai-chatbots-approved-by-senate-judiciary-committee" target="_blank" rel="noopener noreferrer">blumenthal.senate.gov<span class="sr-only">（在新分頁開啟）</span></a>）</p></div>
     <div class="block"><h4>爭議點</h4><p>產品設計成讓人一直聊下去，對成年人可能只是黏著度，對孤單的青少年卻可能是危險。企業對最脆弱的使用者，負有什麼樣的照顧責任？家長和社會的責任又在哪裡？</p></div>
     <div class="block"><h4>為何選它</h4><p>這是近年討論度很高的 AI 倫理議題，也最能點出關懷倫理的核心：關係、依賴、脆弱性。</p></div>
-    <div class="block back"><h4>拉回 Klarna 的提問</h4><p>如果一位顧客的付款爭議快逾期了，卻一直被 AI 重複回答同一套說法，誰有責任察覺他已經無力自己解決？轉給真人之後，誰一路跟到解決？</p></div>
+    <div class="block back"><h4>拉回橫店π 的提問</h4><p>回到工作處境，一位不敢向派工者申訴的演員，怎麼才找得到獨立窗口？誰有能力處理，也會回頭確認他得到幫助？</p></div>
     
-    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/Raindropsmedia1/status/1960490997705527784" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#0A7A4B" aria-hidden="true">R</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who" translate="no">@Raindropsmedia1</span><span class="dotsep" aria-hidden="true">·</span><time>2025/8</time></span>
-    <span class="post-body">家長控告 ChatGPT</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a>
-<a class="post" href="https://x.com/LuizaJarovsky/status/1983630537680957506" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#9A1B40" aria-hidden="true">L</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who" translate="no">@LuizaJarovsky</span><span class="dotsep" aria-hidden="true">·</span><time>2025/10</time></span>
-    <span class="post-body">AI 倫理學者評論 Character.AI 限制未成年使用</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a>
-<a class="post" href="https://x.com/TakeJusticeBack/status/2049957854132474042" target="_blank" rel="noopener noreferrer">
-  <span class="avatar" style="background:#4C3A8A" aria-hidden="true">T</span>
-  <span class="post-main">
-    <span class="post-head"><span class="who" translate="no">@TakeJusticeBack</span><span class="dotsep" aria-hidden="true">·</span><time>2026/4/30</time></span>
-    <span class="post-body">參議院司法委員會審議兒童 AI 聊天機器人法案時，議員點名受害青少年</span>
-    <span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span>
-  </span>
-</a></div></div>
-    <p class="hotline-end"><a class="hotline" href="tel:1925">台灣 1925 安心專線</a></p>
+    
+    <div class="block"><h4>X 代表貼文</h4><div class="posts"><a class="post" href="https://x.com/Raindropsmedia1/status/1960490997705527784" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0A7A4B" aria-hidden="true">R</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@Raindropsmedia1</span><span class="dotsep" aria-hidden="true">·</span><time>2025/8</time></span><span class="post-body">家長控告 ChatGPT</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a><a class="post" href="https://x.com/LuizaJarovsky/status/1983630537680957506" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#9A1B40" aria-hidden="true">L</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@LuizaJarovsky</span><span class="dotsep" aria-hidden="true">·</span><time>2025/10</time></span><span class="post-body">AI 倫理學者評論 Character.AI 限制未成年使用</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a><a class="post" href="https://x.com/TakeJusticeBack/status/2049957854132474042" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#4C3A8A" aria-hidden="true">T</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@TakeJusticeBack</span><span class="dotsep" aria-hidden="true">·</span><time>2026/4/30</time></span><span class="post-body">參議院司法委員會審議兒童 AI 聊天機器人法案時，議員點名受害青少年</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></div></div>
+    <p class="hotline-end"><a class="hotline" href="tel:1925">台灣 1925 安心專線（24 小時免付費）。</a></p>
   </div>
 </article>
-
-  </div>
+</div>
 </section>
 
-    </main>
-  </div>
+  </main>
   <footer class="site-footer">
-    <p>延伸閱讀只放在閱讀頁，不上台。</p>
+    <p><a class="hotline" href="tel:1925">台灣 1925 安心專線（24 小時免付費）。</a></p>
   </footer>
 </div>
 <script>
@@ -829,10 +728,7 @@ html.js .panel.active { display: block; }
   var root = document.documentElement;
   var btn = document.getElementById("theme-toggle");
   var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
-
-  function systemDark() {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
-  }
+  function systemDark() { return window.matchMedia("(prefers-color-scheme: dark)").matches; }
   function resolved() {
     var t = root.getAttribute("data-theme");
     if (t === "light" || t === "dark") return t;
@@ -855,7 +751,6 @@ html.js .panel.active { display: block; }
     if (saved !== "light" && saved !== "dark") paintToggle();
   });
   paintToggle();
-
   function activate(tab, opts) {
     opts = opts || {};
     tabs.forEach(function (t) {
@@ -872,8 +767,7 @@ html.js .panel.active { display: block; }
     if (opts.scroll) {
       var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       document.getElementById(tab.getAttribute("aria-controls")).scrollIntoView({
-        block: "start",
-        behavior: reduce ? "auto" : "smooth"
+        block: "start", behavior: reduce ? "auto" : "smooth"
       });
     }
   }
