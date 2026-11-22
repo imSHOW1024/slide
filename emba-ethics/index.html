@@ -74,7 +74,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border-bottom: 1px solid var(--line);
 }
 .appbar-title { margin: 0; font-size: 17px; font-weight: 800; letter-spacing: -0.2px; }
+.appbar-subtitle { margin: 0; font-size: 13px; line-height: 1.4; color: var(--muted); }
+.appbar-subtitle span { display: inline-block; }
+.appbar-heading { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.appbar-heading .appbar-title { flex: none; }
+.appbar-subtitle { padding-left: 10px; border-left: 1px solid var(--muted); }
 #theme-toggle {
+  flex: none;
   appearance: none; -webkit-appearance: none;
   margin: 0; border: 1px solid var(--line); background: transparent; color: var(--text);
   font: inherit; font-size: 13px; font-weight: 700;
@@ -191,18 +197,46 @@ html.js .detail.open { display: block; }
   -webkit-backdrop-filter: saturate(180%) blur(12px);
   border-bottom: 1px solid var(--line);
 }
-.tablist { display: flex; }
+.tablist { display: flex; gap: 2px; padding: 4px; }
 .tab {
-  position: relative; flex: 1 1 0; min-width: 0; min-height: 48px;
-  margin: 0; padding: 14px 4px 12px; border: 0; background: transparent;
-  color: var(--muted); font: inherit; font-size: 15px; font-weight: 600;
-  cursor: pointer; white-space: nowrap;
+  position: relative; flex: 1 1 0; min-width: 0; min-height: 46px;
+  padding: 6px 0 9px; border: 0; border-radius: 10px;
+  background: transparent; color: var(--muted); font: inherit;
+  font-size: 15px; font-weight: 650; cursor: pointer; white-space: nowrap;
 }
-.tab:hover { background: var(--hover); }
-.tab[aria-selected="true"] { color: var(--text); font-weight: 800; }
+.tab:hover, .lens-links a:hover { background: var(--accent-soft); }
+.tab[aria-selected="true"] { color: var(--text); background: var(--accent-soft); font-weight: 800; }
 .tab[aria-selected="true"]::after {
-  content: ""; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
-  width: min(56px, 70%); height: 4px; border-radius: 999px; background: var(--accent);
+  content: ""; position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%);
+  width: 2em; height: 4px; border-radius: 99px; background: var(--accent);
+}
+.lens-nav { margin: 24px 16px 30px; border-top: 1px solid var(--line); padding-top: 18px; }
+.lens-nav h3 { margin: 0; display: flex; align-items: center; gap: 10px; font-size: 17px; }
+.lens-nav h3::before {
+  content: ""; width: 10px; height: 10px; margin-left: 3px; border: 3px solid var(--accent);
+  border-radius: 50%; box-sizing: border-box;
+}
+.lens-links {
+  position: relative; margin: 4px 0 0 7px; padding: 8px 0 0 16px;
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.lens-links::before {
+  content: ""; position: absolute; top: -5px; left: 0; width: 11px; height: 36px;
+  border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+  border-bottom-left-radius: 8px;
+}
+.lens-links a {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 6px 14px;
+  border: 1px solid var(--muted); border-radius: 999px; color: var(--text);
+  font-weight: 700; text-decoration: none;
+}
+.lens-links a:first-child { background: #0867a4; border-color: transparent; color: white; }
+.lens-links a:first-child:hover { background: #075284; }
+.lens-links a:active { transform: translateY(1px); }
+@media (max-width: 480px) {
+  .lens-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lens-links a { justify-content: center; }
+  .lens-links a:first-child { grid-column: 1 / -1; justify-self: start; }
 }
 html.js .panel { display: none; }
 html.js .panel.active { display: block; }
@@ -210,6 +244,7 @@ html.js .panel.active { display: block; }
 .bridge { margin: 12px 16px 0; padding: 12px 14px; border-radius: 16px; background: var(--accent-soft); }
 .bridge-kicker { margin: 0 0 4px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: var(--text); }
 .bridge p { margin: 0; font-size: 15px; line-height: 1.6; }
+.bridge p + p { margin-top: 8px; }
 .hotline {
   display: inline-flex; margin-top: 10px; padding: 8px 12px; border-radius: 999px;
   border: 1px solid var(--text); color: var(--text); font-weight: 800; text-decoration: none; font-size: 14px;
@@ -266,7 +301,10 @@ html.js .panel.active { display: block; }
 <a class="skip" href="#tabs">跳到四個視角</a>
 <div class="shell">
   <div class="appbar">
-    <p class="appbar-title">橫店π</p>
+    <div class="appbar-heading">
+      <p class="appbar-title">橫店π</p>
+      <p class="appbar-subtitle"><span>1151 企業倫理</span> <span>團隊報告 案例導覽</span></p>
+    </div>
     <button type="button" id="theme-toggle">淺色</button>
   </div>
   <div class="intro">
@@ -316,7 +354,7 @@ html.js .panel.active { display: block; }
 <section class="k-sec"><h3>為什麼選它</h3><p>同一份採購文件，一邊寫買方要減少實拍群演的組織與調度成本，一邊要求授權可追溯、使用範圍清楚。只要問「下一部戲能不能再用這張臉」，四組就得面對同一個經營決定。有人會算兩部戲合計省了多少錢，有人會先問，那位演員還有沒有說不的機會。<a class="src" href="https://zcy-gov-open-doc.oss-cn-north-2-gov-1.aliyuncs.com/1023FP/lcy/330783/10007451342/20269/61147c68-996e-415e-8530-ed89883f8a23.docx" target="_blank" rel="noopener noreferrer">官方招標文件<span class="sr-only">（在新分頁開啟）</span></a></p></section>
 <section class="k-sec"><h3>四個視角</h3><div class="lens"><h4>效益論</h4><p>比較共同決策題三案的後果：只提供場景、單片自願試辦、跨劇授權。各案的調度時間、有薪工日、授權收入、重新招募成本、爭議處理各是多少？哪個結果出現就停止擴大？</p></div><div class="lens"><h4>義務論</h4><p>演員答應演甲劇裡的路人，誰有權把他的臉放進乙劇當反派？即使全劇組都同意，仍要問本人答應了什麼。</p></div><div class="lens"><h4>德性論</h4><p>合約只約定一次給付，作品後來爆紅。主管會等演員自己發現，還是主動向劇組調出使用紀錄交給演員，並在下一份合約寫進爆紅後的重談條款？</p></div><div class="lens"><h4>關懷倫理</h4><p>如果發通告的人也負責收授權書，靠下一份通告付房租的新人敢不敢拒絕？誰會在他拒簽後，回頭確認他還接得到戲？</p></div></section>
 <section class="k-sec"><h3>利害關係人</h3><div class="lens"><h4>願意授權的演員、想繼續實拍的演員</h4><p>前者要能查到分身用在哪裡、該領多少錢。後者要能拒絕授權，也能照常投資料、接通告。</p></div><div class="lens"><h4>演員公會與影視城</h4><p>課堂上請他們回答，誰能協助演員讀懂條款？若派工有爭議，演員可以找哪個與派工無關的人反映？</p></div><div class="lens"><h4>採購人、技術供應商與劇組</h4><p>分別面對驗收、保存授權紀錄、決定鏡頭用途的問題。發現素材來源不明時，誰有權先停用？<a class="src" href="https://zcy-gov-open-doc.oss-cn-north-2-gov-1.aliyuncs.com/1023FP/lcy/330783/10007451342/20269/61147c68-996e-415e-8530-ed89883f8a23.docx" target="_blank" rel="noopener noreferrer">採購規格<span class="sr-only">（在新分頁開啟）</span></a></p></div><div class="lens"><h4>幕後工作者與觀眾</h4><p>群戲少拍一天，化妝、攝影、燈光可能一併少一天工作。觀眾若認得一張臉，也可能以為本人同意演出這個角色。<a class="src" href="https://www.yicai.com/news/103208756.html" target="_blank" rel="noopener noreferrer">第一財經採訪<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://english.bjinternetcourt.gov.cn/2026-03/24/c_840.htm" target="_blank" rel="noopener noreferrer">北京互聯網法院案例<span class="sr-only">（在新分頁開啟）</span></a></p></div></section>
-<section class="k-sec"><h3>共同決策題</h3><p class="simline"><span class="badge badge-sim">教學模擬</span></p><p class="decision-lead"><strong>假設你是橫店影視城負責群演服務的主管。下一部戲需要一場街景，你會同意提供哪些素材給橫店π？</strong></p><ol class="decision"><li><strong>只提供場景</strong>。街上的人物由劇組另外找真人演出。</li><li><strong>單片自願試辦</strong>。演員先看角色與用途，願意才參加。換一部戲就重新談。</li><li><strong>開放自願跨劇授權</strong>。先談妥可用的角色、期限與計酬方式，在約定範圍內重複使用。</li></ol><p class="decision-next">每組選一案，說明怎麼計酬、下次使用由誰核准、拒簽者如何繼續接真人通告。最後說出一項會讓你改選的證據。這是課堂設計：實際採購人是東陽數據資源，題目簡化成影視城主管的角度；企業實際表決與演員合約條款都沒有公開。選第 1 案的組，請說明放棄了哪些效益、什麼條件下會重新評估。<a class="src" href="https://zcy-gov-open-doc.oss-cn-north-2-gov-1.aliyuncs.com/1023FP/lcy/330783/10007451342/20269/61147c68-996e-415e-8530-ed89883f8a23.docx" target="_blank" rel="noopener noreferrer">情境依據：招標文件<span class="sr-only">（在新分頁開啟）</span></a></p></section>
+<section class="k-sec"><h3>共同決策題</h3><p class="simline"><span class="badge badge-sim">教學模擬</span></p><p class="decision-lead"><strong>開拍前，劇組來找你談一場街景。你是橫店影視城負責群演服務的主管。劇組想知道：這次可以用演員的數位分身嗎？下一部戲還想用同一張臉，要再找誰談？</strong></p><p>你要在招募演員前，決定影視城願意提供哪一種服務。有人想靠分身多一筆收入，有人只想接真人演出。你可以訂出合作條件，每位演員則自行決定要不要授權。</p><ol class="decision"><li><strong>只提供場景</strong>。街上的人物由劇組另外找真人演出。</li><li><strong>單片自願試辦</strong>。演員先看角色與用途，願意才參加。換一部戲就重新談。</li><li><strong>開放自願跨劇授權</strong>。先談妥可用的角色、期限與計酬方式，在約定範圍內重複使用。</li></ol><p class="decision-next">每組選一案，說明怎麼計酬、下次使用由誰核准、拒簽者如何繼續接真人通告。最後說出一項會讓你改選的證據。這是課堂設計：實際採購人是東陽數據資源，題目簡化成影視城主管的角度；企業實際表決與演員合約條款都沒有公開。選第 1 案的組，請說明放棄了哪些效益、什麼條件下會重新評估。<a class="src" href="https://zcy-gov-open-doc.oss-cn-north-2-gov-1.aliyuncs.com/1023FP/lcy/330783/10007451342/20269/61147c68-996e-415e-8530-ed89883f8a23.docx" target="_blank" rel="noopener noreferrer">情境依據：招標文件<span class="sr-only">（在新分頁開啟）</span></a></p></section>
 <section class="k-sec"><h3>原始來源</h3><ul class="points"><li>看「買什麼、誰得標」：<a class="src" href="https://zcy-gov-open-doc.oss-cn-north-2-gov-1.aliyuncs.com/1023FP/lcy/330783/10007451342/20269/61147c68-996e-415e-8530-ed89883f8a23.docx" target="_blank" rel="noopener noreferrer">招標文件原件<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://b.zhengcaiyun.cn/luban/detail?parentId=550016&amp;articleId=UPpA%2BAMLMyZ1PulXjrXyqw%3D%3D" target="_blank" rel="noopener noreferrer">中標公告<span class="sr-only">（在新分頁開啟）</span></a></li><li>看「誰宣布什麼」：<a class="src" href="https://www.hengdian.com/zh-cn/news/detail-11216" target="_blank" rel="noopener noreferrer">橫店集團免租公告<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.chinanews.com.cn/cj/2026/10-24/10720344.shtml" target="_blank" rel="noopener noreferrer">平台發布會現場報導<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.sina.cn/news/detail/5359031859554904.html" target="_blank" rel="noopener noreferrer">劉星本人聲明<span class="sr-only">（在新分頁開啟）</span></a></li><li>看「可辨識形象如何受保護」：<a class="src" href="https://www.court.gov.cn/zixun/xiangqing/511101.html" target="_blank" rel="noopener noreferrer">最高人民法院意見<span class="sr-only">（在新分頁開啟）</span></a>｜<a class="src" href="https://www.nrta.gov.cn/art/2026/11/6/art_114_74410.html" target="_blank" rel="noopener noreferrer">廣電總局治理公告<span class="sr-only">（在新分頁開啟）</span></a></li></ul></section>
 <section class="k-sec"><h3>X 貼文</h3><p class="hint">輿論佐證</p><div class="rumor" role="note"><p class="rumor-flag">謠言示例，已被否認</p><a class="post" href="https://x.com/realzoushen/status/2115359370796224905" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0B6EAE" aria-hidden="true">R</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@realzoushen</span></span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a><div class="rumor-note">核對公司回應請讀<a class="src" href="https://www.sina.cn/news/detail/5359031859554904.html" target="_blank" rel="noopener noreferrer">劉星本人聲明<span class="sr-only">（在新分頁開啟）</span></a>。</div></div><a class="post" href="https://x.com/don_tech1/status/2115645411272905091" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#4C3A8A" aria-hidden="true">D</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@don_tech1</span></span><span class="post-body">闢謠與招標文件的討論</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a><a class="post" href="https://x.com/tinyMoment2046/status/2116853488818983031" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0B6EAE" aria-hidden="true">T</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@tinyMoment2046</span></span><span class="post-body">累計註冊與在場人數的討論</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a><a class="post" href="https://x.com/wapbook2022/status/2115427661711618355" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#5B3DB8" aria-hidden="true">W</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@wapbook2022</span></span><span class="post-body">免棚租與建 AI 平台的討論</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a><a class="post" href="https://x.com/iphonetap/status/2118584506559218025" target="_blank" rel="noopener noreferrer"><span class="avatar" style="background:#0B6EAE" aria-hidden="true">I</span><span class="post-main"><span class="post-head"><span class="who" translate="no">@iphonetap</span></span><span class="post-body">數位分身授權的討論</span><span class="post-go"><svg class="xmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>查看原貼文</span><span class="sr-only">（在新分頁開啟）</span></span></span></a></section>
   </div>
@@ -357,8 +395,9 @@ html.js .panel.active { display: block; }
     
 <section class="panel" id="benefit" role="tabpanel" aria-labelledby="tab-benefit" tabindex="0">
   <aside class="bridge">
-    <p class="bridge-kicker">與核心案例的連結</p>
-    <p>同一場群戲，劇組省下的費用是收益，演員少掉的有薪工日也是代價。比較各方案時，兩邊都要入帳。</p>
+    <p class="bridge-kicker">效益論討論 · 教學模擬</p>
+    <p>你是影視城群演服務主管。劇組估計用分身能省下一天的群演調度；演員原本能領一天通告費，改用分身後能領多少授權費還沒談妥。</p>
+    <p><strong>請你決定</strong>　接案前，你會向劇組和演員各要哪一項數字，才能決定要用真人、試辦單片，還是開放跨劇使用？誰得到好處，誰承擔代價？</p>
   </aside>
   <h2 class="theory">效益論｜算總帳：比較好處和傷害各有多大，有沒有代價更低的做法</h2>
   <div class="feed">
@@ -472,12 +511,14 @@ html.js .panel.active { display: block; }
   </div>
 </article>
 </div>
+<nav class="lens-nav" aria-label="效益論後的視角選擇"><h3>換個視角看案例</h3><div class="lens-links"><a href="#duty">下一個視角 · 義務論 <span aria-hidden="true">→</span></a><a href="#virtue">德性論</a><a href="#care">關懷倫理</a></div></nav>
 </section>
 
 <section class="panel" id="duty" role="tabpanel" aria-labelledby="tab-duty" tabindex="0">
   <aside class="bridge">
-    <p class="bridge-kicker">與核心案例的連結</p>
-    <p>先問演員同意了哪一部戲、哪一種角色。劇組再趕、重拍再貴，也得有人能查明這一次使用的依據。</p>
+    <p class="bridge-kicker">義務論討論 · 教學模擬</p>
+    <p>你是影視城群演服務主管。假設採單片試辦。演員只同意在甲劇當街景路人。乙劇開拍前，製片想沿用這張臉演反派，願意加錢，但演員還沒回覆。</p>
+    <p><strong>請你決定</strong>　劇組今天就要定鏡頭。你會怎麼回覆？由誰說明新角色、取得誰的同意後，你才會提供素材？</p>
   </aside>
   <h2 class="theory">義務論｜守原則：有些事不論結果多好都不該做</h2>
   <div class="feed">
@@ -599,12 +640,14 @@ html.js .panel.active { display: block; }
   </div>
 </article>
 </div>
+<nav class="lens-nav" aria-label="義務論後的視角選擇"><h3>換個視角看案例</h3><div class="lens-links"><a href="#virtue">下一個視角 · 德性論 <span aria-hidden="true">→</span></a><a href="#care">關懷倫理</a><a href="#benefit">效益論</a></div></nav>
 </section>
 
 <section class="panel" id="virtue" role="tabpanel" aria-labelledby="tab-virtue" tabindex="0">
   <aside class="bridge">
-    <p class="bridge-kicker">與核心案例的連結</p>
-    <p>合約有寫的事容易查。更能看出主管品格的，是作品意外爆紅、利益增加，而演員還不知道的那一天。</p>
+    <p class="bridge-kicker">德性論討論 · 教學模擬</p>
+    <p>你是影視城群演服務主管。假設單片試辦的作品爆紅。演員已領約定的一次性報酬，合約沒寫分紅。劇組來談續作時，你先看到分身的使用紀錄，演員還不知道自己的角色有多受歡迎。</p>
+    <p><strong>請你決定</strong>　續約前，你會向演員公開哪些資訊？維持原報酬或主動重談，各自對演員和下一位合作對象傳達了什麼承諾？</p>
   </aside>
   <h2 class="theory">德性論｜看品格：一個好的企業、好的領導者會怎麼做？</h2>
   <div class="feed">
@@ -704,12 +747,14 @@ html.js .panel.active { display: block; }
   </div>
 </article>
 </div>
+<nav class="lens-nav" aria-label="德性論後的視角選擇"><h3>換個視角看案例</h3><div class="lens-links"><a href="#care">下一個視角 · 關懷倫理 <span aria-hidden="true">→</span></a><a href="#benefit">效益論</a><a href="#duty">義務論</a></div></nav>
 </section>
 
 <section class="panel" id="care" role="tabpanel" aria-labelledby="tab-care" tabindex="0">
   <aside class="bridge">
-    <p class="bridge-kicker">與核心案例的連結</p>
-    <p>同一張授權書，對想增加收入的演員是機會，對擔心拒簽後就沒通告的人卻可能是壓力。誰有辦法聽到兩種聲音？</p>
+    <p class="bridge-kicker">關懷倫理討論 · 教學模擬</p>
+    <p>你是影視城群演服務主管。招募時，一位新人私下說只想接真人演出，但發通告的人也收授權書。他擔心拒簽後沒戲可接；另一位演員則希望靠授權增加收入。</p>
+    <p><strong>請你決定</strong>　你會讓誰收授權書、誰排下一場戲？一個月後，你會怎麼知道那位拒簽的新人仍有公平接戲的機會？</p>
   </aside>
   <h2 class="theory">關懷倫理｜顧關係：誰最脆弱？誰在照顧他們？</h2>
   <div class="feed">
@@ -827,6 +872,7 @@ html.js .panel.active { display: block; }
   </div>
 </article>
 </div>
+<nav class="lens-nav" aria-label="關懷倫理後的視角選擇"><h3>換個視角看案例</h3><div class="lens-links"><a href="#benefit">回看 · 效益論 <span aria-hidden="true">→</span></a><a href="#duty">義務論</a><a href="#virtue">德性論</a></div></nav>
 </section>
 
   </main>
@@ -894,6 +940,14 @@ html.js .panel.active { display: block; }
       if (!next) return;
       e.preventDefault();
       activate(next, { focus: true, scroll: true, hash: true });
+    });
+  });
+  document.querySelectorAll(".lens-links a").forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+      event.preventDefault();
+      var tab = document.getElementById("tab-" + link.hash.slice(1));
+      activate(tab, { focus: true, scroll: true, hash: true });
     });
   });
   Array.prototype.forEach.call(document.querySelectorAll(".expander"), function (b) {
